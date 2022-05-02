@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+
+    
+
+    
+    <title>Chapter_6_Self_Check | Hexo</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="" />
+    
+    <meta name="description" content="6장 테이블 사이를 연결해 주는 조인과 서브 쿼리 알아 보기  1234DESC employees;  -- employee_id, emp_name, email, phone_number, hire_date, salary, manager_id, department_id, DESC departments; -- department_id, department_name">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Chapter_6_Self_Check">
+<meta property="og:url" content="http://eomtaehyeon.github.io/2022/05/02/Chapter_6_Self_Check/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="6장 테이블 사이를 연결해 주는 조인과 서브 쿼리 알아 보기  1234DESC employees;  -- employee_id, emp_name, email, phone_number, hire_date, salary, manager_id, department_id, DESC departments; -- department_id, department_name">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://eomtaehyeon.github.io/2022/05/02/Chapter_6_Self_Check/themes/SELFCHECK.png">
+<meta property="article:published_time" content="2022-05-02T00:47:50.785Z">
+<meta property="article:modified_time" content="2022-05-02T00:51:58.296Z">
+<meta property="article:author" content="Taehyeon Eom">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://eomtaehyeon.github.io/2022/05/02/Chapter_6_Self_Check/themes/SELFCHECK.png">
+    
+
+    
+        <link rel="alternate" href="/" title="Hexo" type="application/atom+xml" />
+    
+
+    
+        <link rel="icon" href="/themes/favicon.png" />
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/titillium-web/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/3.5.0/jquery.min.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+    
+    
+
+
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">Home</a>
+                                </li>
+                            
+                                    
+                                
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/themes/Logo.png">About</a>
+                                </li>
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/null">index.tags</a>
+                                    <ul class="main-nav-list-child">
+                                        <li class="main-nav-list-item">
+                                            
+                                        </li>
+                                    </ul>
+                                </li>
+                                
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    uncategorized
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-Chapter_6_Self_Check" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        Chapter_6_Self_Check
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+  <div class="article-date">
+    <i class="fa fa-calendar"></i>
+    <a href="/2022/05/02/Chapter_6_Self_Check/" class="article-date">
+       <time datetime="2022-05-02T00:47:50.785Z" itemprop="datePublished">2022-05-02</time>
+    </a>
+  </div>
+
+
+<div class="article-date">
+  <i class="fa fa-calendar-plus-o"></i>
+  <a href="/2022/05/02/Chapter_6_Self_Check/" class="article-date">
+     <time datetime="2022-05-02T00:51:58.296Z" itemprop="dateModified">2022-05-02</time>
+  </a>
+</div>
+
+
+                
+
+                
+                
+
+                
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            
+
+            
+
+            
+
+            <p><a target="_blank" rel="noopener" href="https://thebook.io/006696/part01/ch06/">6장 테이블 사이를 연결해 주는 조인과 서브 쿼리 알아 보기</a></p>
+<p><img src="/images/Chapter_6_Self_Check/041_1.jpg"></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DESC</span> employees;  <span class="comment">-- employee_id, emp_name, email, phone_number, hire_date, salary, manager_id, department_id, </span></span><br><span class="line"><span class="keyword">DESC</span> departments; <span class="comment">-- department_id, department_name, parent_id, manager_id, create_date, update_date</span></span><br><span class="line"><span class="keyword">DESC</span> job_history;  <span class="comment">-- employee_id, start_date, end_date, job_id, department_id, create_date, update_date</span></span><br><span class="line"><span class="keyword">DESC</span> jobs; <span class="comment">-- job_id, job_title, min_salary, max_salary, ...</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="CHAPTER-6-테이블-사이를-연결해-주는-조인과-서브-쿼리-알아보기"><a href="#CHAPTER-6-테이블-사이를-연결해-주는-조인과-서브-쿼리-알아보기" class="headerlink" title="CHAPTER_6. 테이블 사이를 연결해 주는 조인과 서브 쿼리 알아보기"></a>CHAPTER_6. 테이블 사이를 연결해 주는 조인과 서브 쿼리 알아보기</h1><h2 id="1-101번-사원에-대해-아래의-결과를-산출하는-쿼리를-작성해보자"><a href="#1-101번-사원에-대해-아래의-결과를-산출하는-쿼리를-작성해보자" class="headerlink" title="1. 101번 사원에 대해 아래의 결과를 산출하는 쿼리를 작성해보자."></a>1. 101번 사원에 대해 아래의 결과를 산출하는 쿼리를 작성해보자.</h2><p>—  사번 사원명 job명칭 job시작일자 job종료일자 job수행부서명  —</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 입력</span></span><br><span class="line"><span class="comment">-- 101번 사원 조회 </span></span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> </span><br><span class="line">    a.employee_id <span class="keyword">as</span> 사번</span><br><span class="line">    , a.emp_name <span class="keyword">as</span> 사원명</span><br><span class="line">    , d.job_title <span class="keyword">as</span> job명칭</span><br><span class="line">    , a.hire_date <span class="keyword">as</span> job시작일자</span><br><span class="line">    , c.end_date <span class="keyword">as</span> job종료일자</span><br><span class="line">    , b.department_name <span class="keyword">as</span> job수행부서명</span><br><span class="line"><span class="keyword">FROM</span> </span><br><span class="line">    employees a</span><br><span class="line">    , departments b</span><br><span class="line">    , job_history c</span><br><span class="line">    , jobs d</span><br><span class="line"><span class="keyword">WHERE</span> </span><br><span class="line">    a.employee_id <span class="operator">=</span> c.employee_id</span><br><span class="line">    <span class="keyword">AND</span> a.department_id <span class="operator">=</span> b.department_id</span><br><span class="line">    <span class="keyword">AND</span> c.job_id <span class="operator">=</span> d.job_id</span><br><span class="line">    <span class="keyword">AND</span> a.employee_id <span class="operator">=</span> <span class="number">101</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 결과</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>정답 :</li>
+</ul>
+<p><img src="/images/Chapter_6_Self_Check/Untitled.png"></p>
+<h2 id="2-아래의-쿼리를-수행하면-오류가-발생한다-오류의-원인은-무엇인지-설명해-보자"><a href="#2-아래의-쿼리를-수행하면-오류가-발생한다-오류의-원인은-무엇인지-설명해-보자" class="headerlink" title="2. 아래의 쿼리를 수행하면 오류가 발생한다. 오류의 원인은 무엇인지 설명해 보자."></a>2. 아래의 쿼리를 수행하면 오류가 발생한다. 오류의 원인은 무엇인지 설명해 보자.</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 입력</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">    a.employee_id</span><br><span class="line">    , a.emp_name</span><br><span class="line">    , b.job_id</span><br><span class="line">    , b.department_id</span><br><span class="line"><span class="keyword">FROM</span> </span><br><span class="line">    employees a</span><br><span class="line">    , job_history b</span><br><span class="line"><span class="keyword">WHERE</span> </span><br><span class="line">    a.employee_id <span class="operator">=</span> b.employee_id(<span class="operator">+</span>)</span><br><span class="line">    <span class="keyword">and</span> a.department_id(<span class="operator">+</span>) <span class="operator">=</span> b.department_id;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 결과</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/Chapter_6_Self_Check/Untitled_1.png"></p>
+<ul>
+<li>ORA-01416 : 두 개의 테이블을 outer-join할 수 없습니다. 라는 오류구문이 발생.</li>
+<li>동등 조인(EQUI-JOIN) : 동등 조인은 WHERE절에서 등호(’&#x3D;’)연산자를 사용해 2개 이상의 테이블이나 뷰를 연결한 조인이다. 즉 등호 연산자를 사용한 WHERE절 조건에 만족하는 데이터를 추출하는 조인이다. 이때 WHERE절에 기술한 조건을 조인 조건이라고 한다.</li>
+<li>조인 조건은 컬럼 단위로 기술한다. 예를 들어, A와 B 테이블이 있다고 한다면 두 테이블에서 공통된 값을 가진 컬럼을 등호 연산자로 연결해 조인 조건에 일치하는, 즉 조인 조건 결과가 참(TRUE)에 해당하는, 다시 말해 두 컬럼 값이 같은 행을 추출하는 것이다.</li>
+<li>외부조인(OUTER-JOIN) : 외부조인은 일반 조인을 확장한 개념으로, 조인 조건에 만족하는 데이터 뿐만 아니라, 어느 한 쪽 테이블에 조인 조건에 명시된 컬럼에 값이 없거나(NULL 이더라도) 해당 로우가 아예 없더라도 데이터를 모두 추출한다.</li>
+<li>외부 조인 시 알아야 할 내용 :<ul>
+<li>조인 대상 테이블 중 데이터가 없는 테이블 조인 조건에 (+)를 붙인다.</li>
+<li>외부 조인의 조인 조건이 여러 개일 때 모든 조건에 (+)를 붙인다.</li>
+<li>한 번에 한 테이블에만 외부 조인을 할 수 있다. 예를 들어, 조인 대상 테이블이 A, B, C 3개이고, A를 기준으로 B테이블을 외부 조인으로 연결 했다면, 동시에 C를 기준으로 B테이블에 외부 조인을 걸 수는 없다.</li>
+<li>(+) 연산자가 붙은 조건과 OR를 같이 사용할 수 없다.</li>
+<li>(+) 연산자가 붙은 조건에는 IN 연산자를 같이 사용할 수 없다. (단 IN절에 포함되는 값이 1개인 때는 사용가능)</li>
+</ul>
+</li>
+<li>정답 :</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">AND</span> a.department_id(<span class="operator">+</span>) <span class="operator">=</span> b.department_id; <span class="comment">-- 오답</span></span><br><span class="line"><span class="keyword">AND</span> a.department_id <span class="operator">=</span> b.department_id(<span class="operator">+</span>); <span class="comment">-- 정답</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="3-외부조인시-연산자를-같이-사용할-수-없는데-IN절에-사용하는-값이-1개인-경우는-사용-가능하다-그-이유는-무엇일까"><a href="#3-외부조인시-연산자를-같이-사용할-수-없는데-IN절에-사용하는-값이-1개인-경우는-사용-가능하다-그-이유는-무엇일까" class="headerlink" title="3. 외부조인시 (+)연산자를 같이 사용할 수 없는데, IN절에 사용하는 값이 1개인 경우는 사용 가능하다. 그 이유는 무엇일까?"></a>3. 외부조인시 (+)연산자를 같이 사용할 수 없는데, IN절에 사용하는 값이 1개인 경우는 사용 가능하다. 그 이유는 무엇일까?</h2><ul>
+<li>세미 조인(SEMI-JOIN) : 세미 조인은 서브 쿼리를 사용해 서브 쿼리에 존재하는 데이터만 메인 쿼리에서 추출하는 조인 방법으로 IN과 EXISTS 연산자를 사용하는 조인이다. 서브 쿼리에 있는 테이블을 B, 메인 쿼리에 사용된 테이블을 A라고 한다면 세미 조인은 B 테이블에 존재하는 A 테이블의 데이터를 추출하는 조인이다.</li>
+<li>IN 연산자는 OR 조건으로 변환할 수 있는데, 즉 “이것이거나 저것이거나” 로 풀어쓸 수 있다. 세미 조인은 서브쿼리에 존재하는 메인 쿼리 데이터가 여러 건 존재하더라도 최종 반환되는 메인 쿼리 데이터에는 중복되는 건이 없다는 점이 일반 조인과의 차이점이다. 반면 일반 조인을 하면 SELECT 절에는 B 테이블 컬럼을 전혀 명시하지 않더라도 중복되는 건이 발생 한다.</li>
+<li>정답 :</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">오라클은 <span class="keyword">IN</span> 절에 포함된 값을 기준으로 <span class="keyword">OR</span>로 변환한다.</span><br><span class="line">예를 들어, </span><br><span class="line">   department_id <span class="keyword">IN</span> (<span class="number">10</span>, <span class="number">20</span>, <span class="number">30</span>) 은</span><br><span class="line">   department_id <span class="operator">=</span> <span class="number">10</span></span><br><span class="line">   <span class="keyword">OR</span> department_id <span class="operator">=</span> <span class="number">20</span></span><br><span class="line">   <span class="keyword">OR</span> department_id <span class="operator">=</span> <span class="number">30</span>) 로 바꿔 쓸 수 있다.</span><br><span class="line">   </span><br><span class="line">그런데 <span class="keyword">IN</span>절에 값이 <span class="number">1</span>개인 경우, 즉 department_id <span class="keyword">IN</span> (<span class="number">10</span>)일 경우 department_id <span class="operator">=</span> <span class="number">10</span> 로 </span><br><span class="line">변환할 수 있으므로, 외부조인을 하더라도 값이 <span class="number">1</span>개인 경우는 사용할 수 있다.</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>사실 잘 모르겠다. 예를 들어봐도 오류만 뜬다.</li>
+</ul>
+<h2 id="4-다음의-쿼리를-ANSI-문법으로-변경해-보자"><a href="#4-다음의-쿼리를-ANSI-문법으로-변경해-보자" class="headerlink" title="4. 다음의 쿼리를 ANSI 문법으로 변경해 보자."></a>4. 다음의 쿼리를 ANSI 문법으로 변경해 보자.</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 기존 문법</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">    a.department_id</span><br><span class="line">    , a.department_name</span><br><span class="line">    </span><br><span class="line"><span class="keyword">FROM</span> </span><br><span class="line">    departments a</span><br><span class="line">    , employees b</span><br><span class="line">    </span><br><span class="line"><span class="keyword">WHERE</span> </span><br><span class="line">     a.department_id <span class="operator">=</span> b.department_id <span class="comment">-- 조인 조건 </span></span><br><span class="line">     <span class="keyword">AND</span> b.salary <span class="operator">&gt;</span> <span class="number">3000</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> a.department_name;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>정답 :</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- ANSI 문법</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">    a.department_id</span><br><span class="line">    , a.department_name</span><br><span class="line">    </span><br><span class="line"><span class="keyword">FROM</span> </span><br><span class="line">    departments a</span><br><span class="line">    <span class="keyword">INNER</span> <span class="keyword">JOIN</span> employees b</span><br><span class="line">    <span class="keyword">ON</span> ( a.department_id <span class="operator">=</span> b.department_id) <span class="comment">-- 조인 조건</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">WHERE</span> </span><br><span class="line">    b.salary <span class="operator">&gt;</span> <span class="number">3000</span></span><br><span class="line">    </span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> a.department_name;</span><br></pre></td></tr></table></figure>
+
+<h2 id="5-다음은-연관성-있는-서브-쿼리다-이를-연관성-없는-서브-쿼리로-변환해-보자"><a href="#5-다음은-연관성-있는-서브-쿼리다-이를-연관성-없는-서브-쿼리로-변환해-보자" class="headerlink" title="5. 다음은 연관성 있는 서브 쿼리다. 이를 연관성 없는 서브 쿼리로 변환해 보자."></a>5. 다음은 연관성 있는 서브 쿼리다. 이를 연관성 없는 서브 쿼리로 변환해 보자.</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 입력</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> </span><br><span class="line">    a.department_id</span><br><span class="line">    , a.department_name</span><br><span class="line"><span class="keyword">FROM</span> </span><br><span class="line">    departments a</span><br><span class="line"><span class="keyword">WHERE</span> <span class="keyword">EXISTS</span> ( <span class="keyword">SELECT</span> <span class="number">1</span></span><br><span class="line">                <span class="keyword">FROM</span> job_history b</span><br><span class="line">                <span class="keyword">WHERE</span> a.department_id <span class="operator">=</span> b.department_id ); <span class="comment">-- 조인 조건</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>연관성 있는 서브 쿼리 : 메인쿼리와의 연관성이 잇는 서브 쿼리, 즉 메인 테이블과 조인 조건이 걸린 서브 쿼리를 말한다.</li>
+<li>이 쿼리는 연관성 있는 서브 쿼리로 서브 쿼리 안에서 메인 쿼리에서 사용된 부서 테이블의 부서 번호와 job_history 테이블의 부서번호가 같은 건을 조회하고 있다.  또한 EXISTS 연산자를 사용해서 서브 쿼리 내에 조인 조건이 포함되어 있다.</li>
+<li>연관성 없는 서브 쿼리 : 메인 쿼리와 연관성이 없는 서브 쿼리를 말한다. 즉 메인 테이블과 조인 조건이 걸리지 않는 서브 쿼리를 가리킨다.</li>
+<li>즉, 조인 조건을 제거하고 출력값이 같게 나오도록 하는 것이 정답이다.</li>
+<li>정답 :</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> </span><br><span class="line">	a.department_id</span><br><span class="line">	, a.department_name</span><br><span class="line"> <span class="keyword">FROM</span> </span><br><span class="line">	departments a</span><br><span class="line"><span class="keyword">WHERE</span> a.department_id <span class="keyword">IN</span> ( <span class="keyword">SELECT</span> department_id</span><br><span class="line">                             <span class="keyword">FROM</span> job_history  );</span><br></pre></td></tr></table></figure>
+
+<h2 id="6-연도별-이탈리아-최대매출액과-사원을-작성하는-쿼리를-학습했다-이-쿼리를-기준으로-최대매출액-뿐만-아니라-최소매출액과-해당-사원을-조회하는-쿼리를-작성해-보자"><a href="#6-연도별-이탈리아-최대매출액과-사원을-작성하는-쿼리를-학습했다-이-쿼리를-기준으로-최대매출액-뿐만-아니라-최소매출액과-해당-사원을-조회하는-쿼리를-작성해-보자" class="headerlink" title="6. 연도별 이탈리아 최대매출액과 사원을 작성하는 쿼리를 학습했다. 이 쿼리를 기준으로 최대매출액 뿐만 아니라 최소매출액과 해당 사원을 조회하는 쿼리를 작성해 보자."></a>6. 연도별 이탈리아 최대매출액과 사원을 작성하는 쿼리를 학습했다. 이 쿼리를 기준으로 최대매출액 뿐만 아니라 최소매출액과 해당 사원을 조회하는 쿼리를 작성해 보자.</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> </span><br><span class="line">    emp.years </span><br><span class="line">    , emp.employee_id</span><br><span class="line">    , emp2.emp_name</span><br><span class="line">    , emp.amount_sold</span><br><span class="line"></span><br><span class="line"><span class="keyword">FROM</span> </span><br><span class="line">    ( <span class="keyword">SELECT</span> </span><br><span class="line">        SUBSTR(a.sales_month, <span class="number">1</span>, <span class="number">4</span>) <span class="keyword">as</span> years</span><br><span class="line">        , a.employee_id</span><br><span class="line">        , <span class="built_in">SUM</span>(a.amount_sold) <span class="keyword">AS</span> amount_sold</span><br><span class="line">        <span class="keyword">FROM</span> </span><br><span class="line">            sales a</span><br><span class="line">            , customers b</span><br><span class="line">            , countries c</span><br><span class="line">        <span class="keyword">WHERE</span> </span><br><span class="line">            a.cust_id <span class="operator">=</span> b.cust_id</span><br><span class="line">            <span class="keyword">AND</span> b.country_id <span class="operator">=</span> c.COUNTRY_ID</span><br><span class="line">            <span class="keyword">AND</span> c.country_name <span class="operator">=</span> <span class="string">&#x27;Italy&#x27;</span>     </span><br><span class="line">        <span class="keyword">GROUP</span> <span class="keyword">BY</span> </span><br><span class="line">            SUBSTR(a.sales_month, <span class="number">1</span>, <span class="number">4</span>)</span><br><span class="line">            , a.employee_id   </span><br><span class="line">        ) emp,</span><br><span class="line">       ( <span class="keyword">SELECT</span>  </span><br><span class="line">            years </span><br><span class="line">            , <span class="built_in">MAX</span>(amount_sold) <span class="keyword">AS</span> max_sold</span><br><span class="line">            , <span class="built_in">MIN</span>(amount_sold) <span class="keyword">AS</span> min_sold</span><br><span class="line">          <span class="keyword">FROM</span> ( <span class="keyword">SELECT</span> </span><br><span class="line">                    SUBSTR(a.sales_month, <span class="number">1</span>, <span class="number">4</span>) <span class="keyword">as</span> years</span><br><span class="line">                    , a.employee_id </span><br><span class="line">                    , <span class="built_in">SUM</span>(a.amount_sold) <span class="keyword">AS</span> amount_sold</span><br><span class="line">                   <span class="keyword">FROM</span> sales a</span><br><span class="line">                        , customers b</span><br><span class="line">                        , countries c</span><br><span class="line">                  <span class="keyword">WHERE</span> a.cust_id <span class="operator">=</span> b.CUST_ID</span><br><span class="line">                    <span class="keyword">AND</span> b.country_id <span class="operator">=</span> c.COUNTRY_ID</span><br><span class="line">                    <span class="keyword">AND</span> c.country_name <span class="operator">=</span> <span class="string">&#x27;Italy&#x27;</span>     </span><br><span class="line">                  <span class="keyword">GROUP</span> <span class="keyword">BY</span> </span><br><span class="line">                    SUBSTR(a.sales_month, <span class="number">1</span>, <span class="number">4</span>)</span><br><span class="line">                    , a.employee_id    </span><br><span class="line">               ) K</span><br><span class="line">          <span class="keyword">GROUP</span> <span class="keyword">BY</span> years</span><br><span class="line">       ) sale</span><br><span class="line">        , employees emp2</span><br><span class="line"><span class="keyword">WHERE</span> emp.years <span class="operator">=</span> sale.years</span><br><span class="line">   <span class="keyword">AND</span> (emp.amount_sold <span class="operator">=</span> sale.max_sold  <span class="keyword">OR</span> emp.amount_sold <span class="operator">=</span> sale.min_sold)</span><br><span class="line">   <span class="keyword">AND</span> emp.employee_id <span class="operator">=</span> emp2.employee_id</span><br><span class="line">  </span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> years;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>출력 항목 : 연도, 사원번호, 사원이름, 매출액</li>
+<li>필요한 테이블 :<ul>
+<li>이탈리아 찾기 : countries</li>
+<li>이탈리아 고객 찾기 : customers</li>
+<li>매출 : sales</li>
+<li>사원정보 : employees</li>
+</ul>
+</li>
+<li>단위 분할<ul>
+<li>연도, 사원별 이탈리아 매출액 구하기<ul>
+<li>이탈리아 고객 찾기 : customers, countries를 country_id로 조인, country_name이 ‘Italy’인 것 찾기</li>
+<li>이탈리아 매출 찾기 : 위 결과와 sales 테이블을 cust_id로 조인</li>
+<li>최대 최소 매출액을 구하려면 MAX, MIN 함수를 쓰고, 연도별로 GROUP BY 필요.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ol>
+<li>연도, 사원별 이탈리아 매출액 구하기</li>
+</ol>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 1. 연도, 사원별 이탈리아 매출액 구하기</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> </span><br><span class="line">    SUBSTR(a.sales_month, <span class="number">1</span>, <span class="number">4</span>) <span class="keyword">as</span> years</span><br><span class="line">    , a.employee_id </span><br><span class="line">    , <span class="built_in">SUM</span>(a.amount_sold) <span class="keyword">AS</span> amount_sold</span><br><span class="line">    </span><br><span class="line"><span class="keyword">FROM</span> </span><br><span class="line">    sales a</span><br><span class="line">    , customers b</span><br><span class="line">    , countries c</span><br><span class="line">                  </span><br><span class="line"><span class="keyword">WHERE</span> </span><br><span class="line">    a.cust_id <span class="operator">=</span> b.CUST_ID</span><br><span class="line">    <span class="keyword">AND</span> b.country_id <span class="operator">=</span> c.COUNTRY_ID</span><br><span class="line">    <span class="keyword">AND</span> c.country_name <span class="operator">=</span> <span class="string">&#x27;Italy&#x27;</span>     </span><br><span class="line">                  </span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> </span><br><span class="line">    SUBSTR(a.sales_month, <span class="number">1</span>, <span class="number">4</span>)</span><br><span class="line">    , a.employee_id</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li><ol>
+<li>에서 구한 결과에서 연도별 최대, 최소 매출액 구하기</li>
+</ol>
+</li>
+</ol>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 2. 1.에서 구한 결과에서 연도별 최대, 최소 매출액 구하기</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span>  </span><br><span class="line">    years </span><br><span class="line">    , <span class="built_in">MAX</span>(amount_sold) <span class="keyword">AS</span> max_sold</span><br><span class="line">    , <span class="built_in">MIN</span>(amount_sold) <span class="keyword">AS</span> min_sold</span><br><span class="line">    </span><br><span class="line"><span class="keyword">FROM</span> ( <span class="keyword">SELECT</span> </span><br><span class="line">            SUBSTR(a.sales_month, <span class="number">1</span>, <span class="number">4</span>) <span class="keyword">as</span> years</span><br><span class="line">            , a.employee_id </span><br><span class="line">            , <span class="built_in">SUM</span>(a.amount_sold) <span class="keyword">AS</span> amount_sold</span><br><span class="line">            </span><br><span class="line">        <span class="keyword">FROM</span> </span><br><span class="line">            sales a</span><br><span class="line">            , customers b</span><br><span class="line">            , countries c</span><br><span class="line">            </span><br><span class="line">        <span class="keyword">WHERE</span> </span><br><span class="line">            a.cust_id <span class="operator">=</span> b.CUST_ID</span><br><span class="line">            <span class="keyword">AND</span> b.country_id <span class="operator">=</span> c.COUNTRY_ID</span><br><span class="line">            <span class="keyword">AND</span> c.country_name <span class="operator">=</span> <span class="string">&#x27;Italy&#x27;</span> </span><br><span class="line">            </span><br><span class="line">        <span class="keyword">GROUP</span> <span class="keyword">BY</span> </span><br><span class="line">            SUBSTR(a.sales_month, <span class="number">1</span>, <span class="number">4</span>)</span><br><span class="line">            , a.employee_id    </span><br><span class="line">        ) K</span><br><span class="line">        </span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> years</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> years;</span><br></pre></td></tr></table></figure>
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="http://eomtaehyeon.github.io/2022/05/02/Chapter_6_Self_Check/" data-id="cl2o0c63v0000vstobz6g1uvx" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "Taehyeon Eom"
+        },
+        "headline": "Chapter_6_Self_Check",
+        "image": "http://eomtaehyeon.github.iothemes/SELFCHECK.png",
+        "keywords": "",
+        "genre": "",
+        "datePublished": "2022-05-02",
+        "dateCreated": "2022-05-02",
+        "dateModified": "2022-05-02",
+        "url": "http://eomtaehyeon.github.io/2022/05/02/Chapter_6_Self_Check/",
+        "description": "6장 테이블 사이를 연결해 주는 조인과 서브 쿼리 알아 보기
+
+1234DESC employees;  -- employee_id, emp_name, email, phone_number, hire_date, salary, manager_id, department_id, DESC departments; -- department_id, department_name",
+        "wordCount": 2822
+    }
+</script>
+
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+
+    
+    </section>
+
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>follow:</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="twitter" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-twitter"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="facebook" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-facebook"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="stack-overflow" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-stack-overflow"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/eomtaehyeon" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="weibo" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-weibo"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="rss" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-rss"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/2022/05/01/Oracle_Install/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">older</strong>
+        <p class="article-nav-title">Oracle Install</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">recents</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2022/05/02/Chapter_6_Self_Check/" class="thumbnail">
+    
+    
+        <span style="background-image:url(themes/SELFCHECK.png)" alt="Chapter_6_Self_Check" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2022/05/02/Chapter_6_Self_Check/" class="title">Chapter_6_Self_Check</a></p>
+                            <p class="item-date"><time datetime="2022-05-02T00:47:50.785Z" itemprop="datePublished">2022-05-02</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2022/05/01/Oracle_Install/" class="thumbnail">
+    
+    
+        <span style="background-image:url(themes/Oracle_install.png)" alt="Oracle Install" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2022/05/01/Oracle_Install/" class="title">Oracle Install</a></p>
+                            <p class="item-date"><time datetime="2022-05-01T00:32:34.000Z" itemprop="datePublished">2022-05-01</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2022/05/01/hello-world/" class="thumbnail">
+    
+    
+        <span style="background-image:url(themes/helloworld.jpg)" alt="Hello World" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2022/05/01/hello-world/" class="title">Hello World</a></p>
+                            <p class="item-date"><time datetime="2022-04-30T15:00:00.000Z" itemprop="datePublished">2022-05-01</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2022/04/19/Spark_Inst%20/" class="thumbnail">
+    
+    
+        <span style="background-image:url(themes/spark.png)" alt="Spark Installation on Windows 10" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2022/04/19/Spark_Inst%20/" class="title">Spark Installation on Windows 10</a></p>
+                            <p class="item-date"><time datetime="2022-04-19T13:39:36.956Z" itemprop="datePublished">2022-04-19</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2022/04/19/BERT%20_review/" class="thumbnail">
+    
+    
+        <span style="background-image:url(themes/BERT.png)" alt="BERT Review" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2022/04/19/BERT%20_review/" class="title">BERT Review</a></p>
+                            <p class="item-date"><time datetime="2022-04-19T12:59:50.310Z" itemprop="datePublished">2022-04-19</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">archives</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/05/">May 2022</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/04/">April 2022</a><span class="archive-list-count">2</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+
+            
+                
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">links</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2022 Taehyeon Eom</p>
+                
+                <p>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="https://github.com/ppoffice" target="_blank">PPOffice</a></p>
+                
+            </div>
+            <div class="footer-plugins">
+              
+    
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+    </div>
+    
+    
+    <script>
+    var disqus_shortname = 'hexo-theme-hueman';
+    
+    
+    var disqus_url = 'http://eomtaehyeon.github.io/2022/05/02/Chapter_6_Self_Check/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+
+
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+
+    
+    
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+</body>
+</html>
