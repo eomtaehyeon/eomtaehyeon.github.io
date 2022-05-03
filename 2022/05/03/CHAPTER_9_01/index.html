@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+
+    
+
+    
+    <title>Oracle Chapter_9_01 | Hexo</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="" />
+    
+    <meta name="description" content="— 핵심 정리 — PL&#x2F;SQL에서 제공하는 제어문에는 IF, CASE, LOOP, WHILE, FOR, GOTO, NULL 문이 있다. 특정 조건에 따라 처리할 때는 IF나 CASE문을, 반복처리를 위해서는 LOOP, WHILE, FOR문을 사용한다. 대표적인 PL&#x2F;SQL 서브 프로그램으로는 함수와 프로시저가 있는데, 함수는 특정 연산을">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Oracle Chapter_9_01">
+<meta property="og:url" content="http://eomtaehyeon.github.io/2022/05/03/CHAPTER_9_01/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="— 핵심 정리 — PL&#x2F;SQL에서 제공하는 제어문에는 IF, CASE, LOOP, WHILE, FOR, GOTO, NULL 문이 있다. 특정 조건에 따라 처리할 때는 IF나 CASE문을, 반복처리를 위해서는 LOOP, WHILE, FOR문을 사용한다. 대표적인 PL&#x2F;SQL 서브 프로그램으로는 함수와 프로시저가 있는데, 함수는 특정 연산을">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://eomtaehyeon.github.io/2022/05/03/CHAPTER_9_01/themes/ORACLE.png">
+<meta property="article:published_time" content="2022-05-03T03:42:56.263Z">
+<meta property="article:modified_time" content="2022-05-03T03:48:47.359Z">
+<meta property="article:author" content="Taehyeon Eom">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://eomtaehyeon.github.io/2022/05/03/CHAPTER_9_01/themes/ORACLE.png">
+    
+
+    
+        <link rel="alternate" href="/" title="Hexo" type="application/atom+xml" />
+    
+
+    
+        <link rel="icon" href="/themes/favicon.png" />
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/titillium-web/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/3.5.0/jquery.min.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+    
+    
+
+
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">Home</a>
+                                </li>
+                            
+                                    
+                                
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/themes/Logo.png">About</a>
+                                </li>
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/null">index.tags</a>
+                                    <ul class="main-nav-list-child">
+                                        <li class="main-nav-list-item">
+                                            
+                                        </li>
+                                    </ul>
+                                </li>
+                                
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    uncategorized
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-CHAPTER_9_01" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        Oracle Chapter_9_01
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+  <div class="article-date">
+    <i class="fa fa-calendar"></i>
+    <a href="/2022/05/03/CHAPTER_9_01/" class="article-date">
+       <time datetime="2022-05-03T03:42:56.263Z" itemprop="datePublished">2022-05-03</time>
+    </a>
+  </div>
+
+
+<div class="article-date">
+  <i class="fa fa-calendar-plus-o"></i>
+  <a href="/2022/05/03/CHAPTER_9_01/" class="article-date">
+     <time datetime="2022-05-03T03:48:47.359Z" itemprop="dateModified">2022-05-03</time>
+  </a>
+</div>
+
+
+                
+
+                
+                
+
+                
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            
+
+            
+
+            
+
+            <h1 id="—-핵심-정리-—"><a href="#—-핵심-정리-—" class="headerlink" title="— 핵심 정리 —"></a>— 핵심 정리 —</h1><ul>
+<li>PL&#x2F;SQL에서 제공하는 제어문에는 IF, CASE, LOOP, WHILE, FOR, GOTO, NULL 문이 있다.</li>
+<li>특정 조건에 따라 처리할 때는 IF나 CASE문을, 반복처리를 위해서는 LOOP, WHILE, FOR문을 사용한다.</li>
+<li>대표적인 PL&#x2F;SQL 서브 프로그램으로는 함수와 프로시저가 있는데, 함수는 특정 연산을 수행한 후 결과 값을 반환하지만 프로시저는 반환 값이 없다.</li>
+<li>PL&#x2F;SQL 함수는 SQL 함수와 마찬가지로 SELECT문이나 다른 프로시저, 함수에서도 사용 할 수 있다.</li>
+<li>프로시저는 DML문을 이용해 다양한 처리를 할 수 있지만 반환 값은 없다.</li>
+<li>함수나 프로시저로 매개변수를 전달할 수 있는데 매개변수 종류로는 IN, OUT, IN OUT 매개변수가 있다.</li>
+<li>디폴트인 IN 매개변수는 값을 전달 받는 매개변수로 디폴트 값 설정이 가능하다.</li>
+<li>OUT, IN OUT 매개변수는 디폴트 값을 설정할 수 없고, 함수에서 사용하는 RETURN문처럼 이 매개변수에 값을 할당해 호출 시점에서 이 값을 참조할 수 있다.</li>
+<li>프로시저에서도 RETURN문을 사용할 수 있는데, 프로시저에서 RETURN문을 만나면 값을 반환하는 것이 아니라 나머지 로직을 처리하지 않고 프로시저 수행이 종료된다.</li>
+</ul>
+<h1 id="—-IF-문-—"><a href="#—-IF-문-—" class="headerlink" title="— IF 문 —"></a>— IF 문 —</h1><ul>
+<li>특정 조건에 따라 처리를 하는 것을 조건문이라 하는데 그 대표적인 것이 바로 IF문이며 그 구조는 다음과 같다.</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 기본 유형</span></span><br><span class="line"></span><br><span class="line"><span class="operator">&lt;</span>조건이 <span class="number">1</span>개일 경우<span class="operator">&gt;</span></span><br><span class="line"></span><br><span class="line">IF 조건 <span class="keyword">THEN</span></span><br><span class="line"></span><br><span class="line">	조건 처리;</span><br><span class="line"></span><br><span class="line"><span class="keyword">END</span> IF;</span><br><span class="line"></span><br><span class="line"><span class="operator">&lt;</span>조건이 <span class="number">2</span>개일 경우<span class="operator">&gt;</span></span><br><span class="line"></span><br><span class="line">IF 조건 <span class="keyword">THEN</span></span><br><span class="line"></span><br><span class="line">	조건 처리 <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">ELSE</span></span><br><span class="line"></span><br><span class="line">	조건 처리 <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">END</span> IF;</span><br><span class="line"></span><br><span class="line"><span class="operator">&lt;</span>조건이 n개일 경우<span class="operator">&gt;</span></span><br><span class="line"></span><br><span class="line">IF 조건 <span class="number">1</span> <span class="keyword">THEN</span></span><br><span class="line"></span><br><span class="line">	조건 처리 <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">ELSIF 조건 <span class="number">2</span> <span class="keyword">THEN</span></span><br><span class="line"></span><br><span class="line">	`조건 처리 <span class="number">2</span>;`</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line"><span class="keyword">ELSE</span></span><br><span class="line"></span><br><span class="line">	조건 처리 n;</span><br><span class="line"></span><br><span class="line"><span class="keyword">END</span> IF;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>IF</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- IF 문</span></span><br><span class="line"><span class="comment">-- 입력</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">DECLARE</span></span><br><span class="line">    vn_num1 NUMBER :<span class="operator">=</span> <span class="number">1</span>;</span><br><span class="line">    vn_num2 NUMBER :<span class="operator">=</span> <span class="number">2</span>;</span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line">    IF vn_num1 <span class="operator">&gt;=</span> vn_num2 <span class="keyword">THEN</span></span><br><span class="line">        DBMS_OUTPUT.PUT_LINE(vn_num1 <span class="operator">||</span> <span class="string">&#x27;이 큰 수&#x27;</span>);</span><br><span class="line">    <span class="keyword">ELSE</span></span><br><span class="line">        DBMS_OUTPUT.PUT_LINE(vn_num2 <span class="operator">||</span> <span class="string">&#x27;이 큰 수&#x27;</span>);</span><br><span class="line">    <span class="keyword">END</span> IF;</span><br><span class="line"><span class="keyword">END</span>;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>ELSIF</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- ELSIF 문</span></span><br><span class="line"><span class="comment">-- 입력</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">DECLARE</span></span><br><span class="line">    vn_salary NUMBER :<span class="operator">=</span> <span class="number">0</span>; <span class="comment">-- 변수 초기화</span></span><br><span class="line">    vn_department_id NUMBER :<span class="operator">=</span> <span class="number">0</span>; <span class="comment">-- 변수 초기화</span></span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line">    vn_department_id :<span class="operator">=</span> ROUND (DBMS_RANDOM.VALUE (<span class="number">10</span>, <span class="number">120</span>), <span class="number">-1</span>);</span><br><span class="line">    <span class="keyword">SELECT</span> salary</span><br><span class="line">        <span class="keyword">INTO</span> vn_salary</span><br><span class="line">    <span class="keyword">FROM</span> employees</span><br><span class="line">    <span class="keyword">WHERE</span> department_id <span class="operator">=</span> vn_department_id</span><br><span class="line">        <span class="keyword">AND</span> ROWNUM <span class="operator">=</span> <span class="number">1</span>;</span><br><span class="line">        </span><br><span class="line">    DBMS_OUTPUT.PUT_LINE(vn_salary);</span><br><span class="line">    </span><br><span class="line">    IF vn_salary <span class="keyword">BETWEEN</span> <span class="number">1</span> <span class="keyword">AND</span> <span class="number">3000</span> <span class="keyword">THEN</span></span><br><span class="line">        DBMS_OUTPUT.PUT_LINE(<span class="string">&#x27;낮음&#x27;</span>);</span><br><span class="line">    ELSIF vn_salary <span class="keyword">BETWEEN</span> <span class="number">3001</span> <span class="keyword">AND</span> <span class="number">6000</span> <span class="keyword">THEN</span></span><br><span class="line">        DBMS_OUTPUT.PUT_LINE(<span class="string">&#x27;중간&#x27;</span>);</span><br><span class="line">    ELSIF vn_salary <span class="keyword">BETWEEN</span> <span class="number">6001</span> <span class="keyword">AND</span> <span class="number">10000</span> <span class="keyword">THEN</span></span><br><span class="line">        DBMS_OUTPUT.PUT_LINE(<span class="string">&#x27;높음&#x27;</span>);</span><br><span class="line">    <span class="keyword">ELSE</span></span><br><span class="line">        DBMS_OUTPUT.PUT_LINE(<span class="string">&#x27;최상위&#x27;</span>);</span><br><span class="line">    <span class="keyword">END</span> IF;</span><br><span class="line"><span class="keyword">END</span>;</span><br></pre></td></tr></table></figure>
+
+<p>→ DBMS_RANDOM 패키지를 사용해 10부터 120까지 숫자를 생성한 후 10의 자리(-1)에서 ROUND 처리를 해서 실행할 때마다 무작위로 10, 20, 30, … 120 까지 수를 vn_department_id 변수에 할당한다.</p>
+<ul>
+<li>중첩 IF 문</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 중첩 IF 문</span></span><br><span class="line"><span class="comment">-- 입력</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">DECLARE</span></span><br><span class="line">    vn_salary NUMBER :<span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">    vn_department_id NUMBER :<span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">    vn_commission NUMBER :<span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line">    vn_department_id :<span class="operator">=</span> ROUND(DBMS_RANDOM.VALUE (<span class="number">10</span>, <span class="number">120</span>), <span class="number">-1</span>);</span><br><span class="line">    <span class="keyword">SELECT</span> salary, commission_pct</span><br><span class="line">        <span class="keyword">INTO</span> vn_salary, vn_commission</span><br><span class="line">    <span class="keyword">FROM</span> employees</span><br><span class="line">    <span class="keyword">WHERE</span> department_id <span class="operator">=</span> vn_department_id</span><br><span class="line">        <span class="keyword">AND</span> ROWNUM <span class="operator">=</span> <span class="number">1</span>;</span><br><span class="line">    DBMS_OUTPUT.PUT_LINE(vn_salary);</span><br><span class="line">    IF vn_commission <span class="operator">&gt;</span> <span class="number">0</span> <span class="keyword">THEN</span></span><br><span class="line">        IF vn_commission <span class="operator">&gt;</span> <span class="number">0.15</span> <span class="keyword">THEN</span></span><br><span class="line">            DBMS_OUTPUT.PUT_LINE(vn_salary <span class="operator">*</span> vn_commission);</span><br><span class="line">        <span class="keyword">END</span> IF;</span><br><span class="line">    <span class="keyword">ELSE</span></span><br><span class="line">        DBMS_OUTPUT.PUT_LINE(vn_salary);</span><br><span class="line">    <span class="keyword">END</span> IF;</span><br><span class="line"><span class="keyword">END</span>;</span><br></pre></td></tr></table></figure>
+
+<h1 id="—-CASE-문-—"><a href="#—-CASE-문-—" class="headerlink" title="— CASE 문 —"></a>— CASE 문 —</h1><ul>
+<li>구조는 다음과 같다.</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 기본 유형</span></span><br><span class="line"></span><br><span class="line"><span class="operator">&lt;</span>유형 <span class="number">1</span><span class="operator">&gt;</span></span><br><span class="line"><span class="keyword">CASE</span> 표현식</span><br><span class="line">	<span class="keyword">WHEN</span> 결과 <span class="number">1</span> <span class="keyword">THEN</span></span><br><span class="line">				처리문 <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">WHEN</span> 결과 <span class="number">2</span> <span class="keyword">THEN</span></span><br><span class="line">				처리문 <span class="number">2</span>;</span><br><span class="line">	...</span><br><span class="line">	<span class="keyword">ELSE</span></span><br><span class="line">				기타 처리문;</span><br><span class="line"><span class="keyword">END</span> <span class="keyword">CASE</span>;</span><br><span class="line"></span><br><span class="line"><span class="operator">&lt;</span>유형 <span class="number">2</span><span class="operator">&gt;</span></span><br><span class="line"><span class="keyword">CASE</span> <span class="keyword">WHEN</span> 표현식 <span class="number">1</span> <span class="keyword">THEN</span></span><br><span class="line">					처리문 <span class="number">1</span>;</span><br><span class="line">		 <span class="keyword">WHEN</span> 표현식 <span class="number">2</span> <span class="keyword">THEN</span></span><br><span class="line">					처리문 <span class="number">2</span>;</span><br><span class="line">			...</span><br><span class="line">		 <span class="keyword">ELSE</span></span><br><span class="line">					기타 처리문;</span><br><span class="line"><span class="keyword">END</span> <span class="keyword">CASE</span>;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- CASE 문</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">DECLARE</span></span><br><span class="line">    vn_salary NUMBER :<span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">    vn_department_id NUMBER :<span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line">    vn_department_id :<span class="operator">=</span> ROUND(DBMS_RANDOM.VALUE(<span class="number">10</span>, <span class="number">120</span>), <span class="number">-1</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">SELECT</span> salary</span><br><span class="line">        <span class="keyword">INTO</span> vn_salary</span><br><span class="line">    <span class="keyword">FROM</span> employees</span><br><span class="line">    <span class="keyword">WHERE</span> department_id <span class="operator">=</span> vn_department_id</span><br><span class="line">        <span class="keyword">AND</span> ROWNUM <span class="operator">=</span> <span class="number">1</span>;</span><br><span class="line">        </span><br><span class="line">    DBMS_OUTPUT.PUT_LINE(vn_salary);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">CASE</span> <span class="keyword">WHEN</span> vn_salary <span class="keyword">BETWEEN</span> <span class="number">1</span> <span class="keyword">AND</span> <span class="number">3000</span> <span class="keyword">THEN</span></span><br><span class="line">            DBMS_OUTPUT.PUT_LINE(<span class="string">&#x27;낮음&#x27;</span>);</span><br><span class="line">         <span class="keyword">WHEN</span> vn_salary <span class="keyword">BETWEEN</span> <span class="number">3001</span> <span class="keyword">AND</span> <span class="number">6000</span> <span class="keyword">THEN</span></span><br><span class="line">            DBMS_OUTPUT.PUT_LINE(<span class="string">&#x27;중간&#x27;</span>);</span><br><span class="line">         <span class="keyword">WHEN</span> vn_salary <span class="keyword">BETWEEN</span> <span class="number">6001</span> <span class="keyword">AND</span> <span class="number">10000</span> <span class="keyword">THEN</span></span><br><span class="line">            DBMS_OUTPUT.PUT_LINE(<span class="string">&#x27;높음&#x27;</span>);</span><br><span class="line">         <span class="keyword">ELSE</span></span><br><span class="line">            DBMS_OUTPUT.PUT_LINE(<span class="string">&#x27;최상위&#x27;</span>);</span><br><span class="line">    <span class="keyword">END</span> <span class="keyword">CASE</span>;</span><br><span class="line"><span class="keyword">END</span>;</span><br></pre></td></tr></table></figure>
+
+<h1 id="—-LOOP-문-—"><a href="#—-LOOP-문-—" class="headerlink" title="— LOOP 문 —"></a>— LOOP 문 —</h1><ul>
+<li>LOOP문은 루프를 돌며 반복해서 로직을 처리하는 반복문이다. 이러한 반복문에는 LOOP문 외에도 WHILE문, FOR문이 있다.</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 기본 유형</span></span><br><span class="line"></span><br><span class="line">LOOP</span><br><span class="line">	처리문;</span><br><span class="line">	EXIT [<span class="keyword">WHEN</span> 조건];</span><br><span class="line"><span class="keyword">END</span> LOOP;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 구구단 3단 LOOP문</span></span><br><span class="line"><span class="comment">-- 입력</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">DECLARE</span></span><br><span class="line">    vn_base_num NUMBER :<span class="operator">=</span> <span class="number">3</span>;</span><br><span class="line">    vn_cnt      NUMBER :<span class="operator">=</span> <span class="number">1</span>;</span><br><span class="line"><span class="keyword">BEGIN</span>  </span><br><span class="line">    LOOP</span><br><span class="line">        DBMS_OUTPUT.PUT_LINE(vn_base_num <span class="operator">||</span> <span class="string">&#x27;*&#x27;</span> <span class="operator">||</span> vn_cnt <span class="operator">||</span> <span class="string">&#x27;=&#x27;</span> <span class="operator">||</span> vn_base_num <span class="operator">*</span> vn_cnt);</span><br><span class="line">        vn_cnt :<span class="operator">=</span> vn_cnt <span class="operator">+</span> <span class="number">1</span>;  <span class="comment">-- 루프를 돌면서 vn_cnt 값은 1씩 증가됨</span></span><br><span class="line">        </span><br><span class="line">        EXIT <span class="keyword">WHEN</span> vn_cnt <span class="operator">&gt;</span> <span class="number">9</span>;  <span class="comment">-- vn_cnt가 9보다 크면 루프 종료</span></span><br><span class="line">    <span class="keyword">END</span> LOOP;</span><br><span class="line"><span class="keyword">END</span>;</span><br></pre></td></tr></table></figure>
+
+<h1 id="—-WHILE-문-—"><a href="#—-WHILE-문-—" class="headerlink" title="— WHILE 문 —"></a>— WHILE 문 —</h1><ul>
+<li>WHILE문은 LOOP문과 비슷하지만 WHILE 다음에 조건을 붙여 해당 조건에 만족할 때만 루프를 돌면서 로직을 처리한다.</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 기본 유형</span></span><br><span class="line"></span><br><span class="line">WHILE 조건</span><br><span class="line">	LOOP </span><br><span class="line">		처리문;</span><br><span class="line">	<span class="keyword">END</span> LOOP;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- WHILE 문</span></span><br><span class="line"><span class="comment">-- 구구단 5단</span></span><br><span class="line"><span class="comment">-- 입력</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">DECLARE</span></span><br><span class="line">    vn_base_num NUMBER :<span class="operator">=</span> <span class="number">5</span>;</span><br><span class="line">    vn_cnt      NUMBER :<span class="operator">=</span> <span class="number">1</span>;</span><br><span class="line"><span class="keyword">BEGIN</span>  </span><br><span class="line"><span class="comment">-- 조건식이 참일 때만 실행되는 것</span></span><br><span class="line"><span class="comment">-- 조건식이 거짓이 되면 실행 중지</span></span><br><span class="line">WHILE vn_cnt <span class="operator">&lt;=</span> <span class="number">9</span> <span class="comment">-- vn_cnt가 9보다 크면 루프 종료</span></span><br><span class="line">    LOOP</span><br><span class="line">        DBMS_OUTPUT.PUT_LINE(vn_base_num <span class="operator">||</span> <span class="string">&#x27;*&#x27;</span> <span class="operator">||</span> vn_cnt <span class="operator">||</span> <span class="string">&#x27;=&#x27;</span> <span class="operator">||</span> vn_base_num <span class="operator">*</span> vn_cnt);</span><br><span class="line">        vn_cnt :<span class="operator">=</span> vn_cnt <span class="operator">+</span> <span class="number">1</span>;</span><br><span class="line">        </span><br><span class="line">    <span class="keyword">END</span> LOOP;</span><br><span class="line"><span class="keyword">END</span>;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>WHILE문에서도 루프를 돌다가 특정 조건에 부합하면 EXIT를 써서 루프를 빠져나올 수 있다.</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- WHILE (EXIT)</span></span><br><span class="line"><span class="comment">-- 입력</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">DECLARE</span></span><br><span class="line">    vn_base_num NUMBER :<span class="operator">=</span> <span class="number">5</span>;</span><br><span class="line">    vn_cnt      NUMBER :<span class="operator">=</span> <span class="number">1</span>;</span><br><span class="line"><span class="keyword">BEGIN</span>  </span><br><span class="line"><span class="comment">-- 조건식이 참일 때만 실행되는 것</span></span><br><span class="line"><span class="comment">-- 조건식이 거짓이 되면 실행 중지</span></span><br><span class="line">WHILE vn_cnt <span class="operator">&lt;=</span> <span class="number">9</span> <span class="comment">-- vn_cnt가 9보다 크면 루프 종료</span></span><br><span class="line">    LOOP</span><br><span class="line">        DBMS_OUTPUT.PUT_LINE(vn_base_num <span class="operator">||</span> <span class="string">&#x27;*&#x27;</span> <span class="operator">||</span> vn_cnt <span class="operator">||</span> <span class="string">&#x27;=&#x27;</span> <span class="operator">||</span> vn_base_num <span class="operator">*</span> vn_cnt);</span><br><span class="line">        </span><br><span class="line">        <span class="comment">-- Break (= EXIT)</span></span><br><span class="line">        EXIT <span class="keyword">WHEN</span> vn_cnt <span class="operator">=</span> <span class="number">5</span>;</span><br><span class="line">        vn_cnt :<span class="operator">=</span> vn_cnt <span class="operator">+</span> <span class="number">1</span>;</span><br><span class="line">        </span><br><span class="line">    <span class="keyword">END</span> LOOP;</span><br><span class="line"><span class="keyword">END</span>;</span><br></pre></td></tr></table></figure>
+
+<h1 id="—-FOR문-—"><a href="#—-FOR문-—" class="headerlink" title="— FOR문 —"></a>— FOR문 —</h1><ul>
+<li>인덱스는 초깃값에서 시작해 최종값까지 루프를 돌며 1씩 증가되는데, 인덱스는 참조는 가능 하지만 변경할 수는 없고 참조도 오직 루프 안에서만 가능하다. 그리고 REVERSE를 명시하면 순서가 거꾸로 된다.</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 기본 유형</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">FOR</span> 인덱스 <span class="keyword">IN</span> [REVERSSE] 초깃값..최종값</span><br><span class="line">LOOP</span><br><span class="line">	처리문;</span><br><span class="line"><span class="keyword">END</span> LOOP;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- FOR문</span></span><br><span class="line"><span class="comment">-- 구구단 3단</span></span><br><span class="line"><span class="comment">-- 입력</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">DECLARE</span></span><br><span class="line">    vn_base_num NUMBER :<span class="operator">=</span> <span class="number">3</span>;</span><br><span class="line">    </span><br><span class="line"><span class="keyword">BEGIN</span> </span><br><span class="line">    <span class="keyword">FOR</span> i <span class="keyword">IN</span> <span class="number">1.</span><span class="number">.9</span></span><br><span class="line">    LOOP</span><br><span class="line">        DBMS_OUTPUT.PUT_LINE ( vn_base_num <span class="operator">||</span> <span class="string">&#x27;*&#x27;</span> <span class="operator">||</span> i <span class="operator">||</span> <span class="string">&#x27;=&#x27;</span> <span class="operator">||</span> vn_base_num <span class="operator">*</span> i);</span><br><span class="line">    <span class="keyword">END</span> LOOP;</span><br><span class="line"><span class="keyword">END</span>;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>REVERSE</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- REVERSE </span></span><br><span class="line"><span class="comment">-- 입력</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">DECLARE</span></span><br><span class="line">    vn_base_num NUMBER :<span class="operator">=</span> <span class="number">3</span>;</span><br><span class="line">    </span><br><span class="line"><span class="keyword">BEGIN</span> </span><br><span class="line">    <span class="keyword">FOR</span> i <span class="keyword">IN</span> REVERSE <span class="number">1.</span><span class="number">.9</span></span><br><span class="line">    LOOP</span><br><span class="line">        DBMS_OUTPUT.PUT_LINE ( vn_base_num <span class="operator">||</span> <span class="string">&#x27;*&#x27;</span> <span class="operator">||</span> i <span class="operator">||</span> <span class="string">&#x27;=&#x27;</span> <span class="operator">||</span> vn_base_num <span class="operator">*</span> i);</span><br><span class="line">    <span class="keyword">END</span> LOOP;</span><br><span class="line"><span class="keyword">END</span>;</span><br></pre></td></tr></table></figure>
+
+<h1 id="—-CONTINUE-—"><a href="#—-CONTINUE-—" class="headerlink" title="— CONTINUE —"></a>— CONTINUE —</h1><ul>
+<li>CONTINUE문은 FOR나 WHILE 같은 반복문은 아니지만, 반복문 내에서 특정 조건에 부합할 때 처리 로직을 건너뛰고 상단의 루프 조건으로 건너가 루프를 계속 수행할 때 사용한다.</li>
+<li>EXIT는 루프를 완전히 빠져 나오는데 반해, CONTINUE는 제어 범위가 조건절로 넘어간다.</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- CONTINUE</span></span><br><span class="line"><span class="keyword">DECLARE</span></span><br><span class="line">    vn_base_num NUMBER :<span class="operator">=</span> <span class="number">3</span>;</span><br><span class="line">    </span><br><span class="line"><span class="keyword">BEGIN</span> </span><br><span class="line">    <span class="keyword">FOR</span> i <span class="keyword">IN</span> <span class="number">1.</span><span class="number">.9</span></span><br><span class="line">    LOOP</span><br><span class="line">        CONTINUE <span class="keyword">WHEN</span> i <span class="operator">=</span> <span class="number">5</span>;</span><br><span class="line">        DBMS_OUTPUT.PUT_LINE ( vn_base_num <span class="operator">||</span> <span class="string">&#x27;*&#x27;</span> <span class="operator">||</span> i <span class="operator">||</span> <span class="string">&#x27;=&#x27;</span> <span class="operator">||</span> vn_base_num <span class="operator">*</span> i);</span><br><span class="line">    <span class="keyword">END</span> LOOP;</span><br><span class="line"><span class="keyword">END</span>;</span><br></pre></td></tr></table></figure>
+
+<p>→ 인덱스 5를 제외</p>
+<h1 id="—-GOTO-문-—"><a href="#—-GOTO-문-—" class="headerlink" title="— GOTO 문 —"></a>— GOTO 문 —</h1><ul>
+<li>PL&#x2F;SQL 코드 상에서 GOTO문을 만나면 GOTO문이 지정하는 라벨로 제어가 넘어간다.</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- GOTO 문</span></span><br><span class="line"><span class="comment">-- 구구단 3단과 4단</span></span><br><span class="line"><span class="comment">-- 사용자 정의 함수</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">DECLARE</span></span><br><span class="line">    vn_base_num NUMBER :<span class="operator">=</span> <span class="number">3</span>;</span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line">    <span class="operator">&lt;&lt;</span>third<span class="operator">&gt;&gt;</span>  <span class="comment">-- 구구단 3단</span></span><br><span class="line">    <span class="keyword">FOR</span> i <span class="keyword">IN</span> <span class="number">1.</span><span class="number">.9</span></span><br><span class="line">    LOOP</span><br><span class="line">        DBMS_OUTPUT.PUT_LINE ( vn_base_num <span class="operator">||</span> <span class="string">&#x27;*&#x27;</span> <span class="operator">||</span> i <span class="operator">||</span> <span class="string">&#x27;=&#x27;</span> <span class="operator">||</span> vn_base_num <span class="operator">*</span> i);</span><br><span class="line">        IF i <span class="operator">=</span> <span class="number">3</span> <span class="keyword">THEN</span>  </span><br><span class="line">            GOTO fourth;  <span class="comment">-- 3 * 3 = 9 출력 다음으로 4단이 나온다.</span></span><br><span class="line">        <span class="keyword">END</span> IF;</span><br><span class="line">    <span class="keyword">END</span> LOOP;</span><br><span class="line">    </span><br><span class="line">    <span class="operator">&lt;&lt;</span>fourth<span class="operator">&gt;&gt;</span> <span class="comment">-- 구구단 4단</span></span><br><span class="line">    vn_base_num :<span class="operator">=</span> <span class="number">4</span>;</span><br><span class="line">    <span class="keyword">FOR</span> i <span class="keyword">IN</span> <span class="number">1.</span><span class="number">.9</span></span><br><span class="line">    LOOP</span><br><span class="line">        DBMS_OUTPUT.PUT_LINE ( vn_base_num <span class="operator">||</span> <span class="string">&#x27;*&#x27;</span> <span class="operator">||</span> i <span class="operator">||</span> <span class="string">&#x27;=&#x27;</span> <span class="operator">||</span> vn_base_num <span class="operator">*</span> i);</span><br><span class="line">    <span class="keyword">END</span> LOOP;</span><br><span class="line"><span class="keyword">END</span>;</span><br></pre></td></tr></table></figure>
+
+<p>→ 구구단 3단이 진행되다가 3 x 3 &#x3D; 9 다음으로 4단 출력</p>
+<ul>
+<li>개발 현장에서는 GOTO문을 잘 사용하지 않는다. 왜냐하면 일반적으로 특정 로직에 맞게 PL&#x2F;SQL 코드를 순차적으로 작성하는데, 중간중간에 GOTO문을 사용해 제어를 다른 부분으로 넘기면 로직의 일관성을 훼손하기 때문이다. 소스가 길어지면 이런 문제가 더 불거져 프로그램 가독성이 극도로 나빠져 버린다.</li>
+</ul>
+<h1 id="—-NULL문-—"><a href="#—-NULL문-—" class="headerlink" title="— NULL문 —"></a>— NULL문 —</h1><ul>
+<li>NULL문은 아무것도 처리하지 않는 문장이다. NULL문은 보통 IF문이나 CASE문을 작성할 때 주로 사용하는데, 조건에 따라 로직을 작성하고 앞에서 작성한 모든 조건에 부합되지 않을 때, 즉 ELSE절을 수행할 때 아무것도 처리하지 않고 싶은 경우 NULL문을 사용한다.</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 기본 유형</span></span><br><span class="line"></span><br><span class="line">IF vn_variable <span class="operator">=</span> <span class="string">&#x27;A&#x27;</span> <span class="keyword">THEN</span></span><br><span class="line">	처리로직 <span class="number">1</span>;</span><br><span class="line">ELSIF vn_variable <span class="operator">=</span> <span class="string">&#x27;B&#x27;</span> <span class="keyword">THEN</span></span><br><span class="line">	처리로직 <span class="number">2</span>;</span><br><span class="line">...</span><br><span class="line"><span class="keyword">ELSE</span> <span class="keyword">NULL</span>;</span><br><span class="line"><span class="keyword">END</span> IF;</span><br><span class="line"></span><br><span class="line"><span class="keyword">CASE</span> <span class="keyword">WHEN</span> vn_variable <span class="operator">=</span> <span class="string">&#x27;A&#x27;</span> <span class="keyword">THEN</span></span><br><span class="line">			처리로직 <span class="number">1</span>;</span><br><span class="line">		 <span class="keyword">WHEN</span> vn_variable <span class="operator">=</span> <span class="string">&#x27;B&#x27;</span> <span class="keyword">THEN</span></span><br><span class="line">			처리로직 <span class="number">2</span>;</span><br><span class="line">			...</span><br><span class="line">		 <span class="keyword">ELSE</span> <span class="keyword">NULL</span>;</span><br><span class="line"><span class="keyword">END</span> <span class="keyword">CASE</span>;</span><br></pre></td></tr></table></figure>
+
+<h1 id="—-PL-x2F-SQL의-사용자-정의-함수"><a href="#—-PL-x2F-SQL의-사용자-정의-함수" class="headerlink" title="— PL&#x2F;SQL의 사용자 정의 함수"></a>— PL&#x2F;SQL의 사용자 정의 함수</h1><h2 id="함수-생성"><a href="#함수-생성" class="headerlink" title="함수 생성"></a>함수 생성</h2><ul>
+<li>SQL 함수는 오라클에서 제공하는 내장 함수이고, 여기에서 말하는 함수는 사용자가 직접 로직을 구현하는 사용자 정의 함수를 말한다.</li>
+<li>함수 구문</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">OR</span> REPLACE <span class="keyword">FUNCTION</span> 함수 이름 (매개변수 <span class="number">1</span>, 매개변수 <span class="number">2</span>, ...)</span><br><span class="line"><span class="keyword">RETURN</span> 데이터 타입;</span><br><span class="line"><span class="keyword">IS</span>[<span class="keyword">AS</span>]</span><br><span class="line">	변수, 상수 등 선언</span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line">	실행부</span><br><span class="line"></span><br><span class="line">	<span class="keyword">RETURN</span> 반환값;</span><br><span class="line">[EXCEPTION</span><br><span class="line">	예외 처리부]</span><br><span class="line"><span class="keyword">END</span> [함수 이름];</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>CREATE OR REPLACE FUNCTION : CREATE OR REPLACE 구문을 사용해 함수를 생성한다. 최초 함수를 만들고 나서 수정을 하더라도 이 구문을 사용해 계속 컴파일할 수 있고 마지막으로 수정된 최종본이 반영된다.</li>
+<li>매개변수 : 함수로 전달되는 매개변수로, “매개변수명 데이터 타입” 형태로 명시한다. 매개변수는 생략할 수 있다.</li>
+<li>RETURN 데이터 타입 : 함수가 반환할 데이터 타입을 지정한다.</li>
+<li>RETURN 반환값 : 매개변수를 받아 특정 연산을 수행한 후 반환할 값을 명시한다.</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">OR</span> REPLACE <span class="keyword">FUNCTION</span> my_mod( num1 NUMBER, num2 NUMBER )</span><br><span class="line">    <span class="keyword">RETURN</span> NUMBER <span class="comment">-- 반환 데이터 타입은 NUMBER</span></span><br><span class="line"><span class="keyword">IS</span> </span><br><span class="line">    vn_remainder NUMBER :<span class="operator">=</span> <span class="number">0</span>; <span class="comment">-- 반환할 나머지</span></span><br><span class="line">    vn_quotient NUMBER :<span class="operator">=</span> <span class="number">0</span>; <span class="comment">-- 몫</span></span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line">    vn_quotient :<span class="operator">=</span> <span class="built_in">FLOOR</span>(num1 <span class="operator">/</span> num2); <span class="comment">-- 피젯수/ 젯수 결과에서 정수 부분을 걸러낸다</span></span><br><span class="line">    vn_remainder :<span class="operator">=</span> num1 <span class="operator">-</span> (num2 <span class="operator">*</span> vn_quotient); <span class="comment">-- 나머지 = 피제수 - (제수 * 몫)</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">RETURN</span> vn_remainder; <span class="comment">-- 나머지를 반환</span></span><br><span class="line"><span class="keyword">END</span>;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>나머지를 출력하는 my_mod를 만들었다.</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> my_mod(<span class="number">16</span>, <span class="number">3</span>) <span class="keyword">AS</span> remider <span class="keyword">FROM</span> DUAL;</span><br></pre></td></tr></table></figure>
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="http://eomtaehyeon.github.io/2022/05/03/CHAPTER_9_01/" data-id="cl2pm0wne0000pwto9pk4de9u" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "Taehyeon Eom"
+        },
+        "headline": "Oracle Chapter_9_01",
+        "image": "http://eomtaehyeon.github.iothemes/ORACLE.png",
+        "keywords": "",
+        "genre": "",
+        "datePublished": "2022-05-03",
+        "dateCreated": "2022-05-03",
+        "dateModified": "2022-05-03",
+        "url": "http://eomtaehyeon.github.io/2022/05/03/CHAPTER_9_01/",
+        "description": "— 핵심 정리 —
+PL&#x2F;SQL에서 제공하는 제어문에는 IF, CASE, LOOP, WHILE, FOR, GOTO, NULL 문이 있다.
+특정 조건에 따라 처리할 때는 IF나 CASE문을, 반복처리를 위해서는 LOOP, WHILE, FOR문을 사용한다.
+대표적인 PL&#x2F;SQL 서브 프로그램으로는 함수와 프로시저가 있는데, 함수는 특정 연산을 ",
+        "wordCount": 3101
+    }
+</script>
+
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+
+    
+    </section>
+
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>follow:</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="twitter" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-twitter"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="facebook" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-facebook"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="stack-overflow" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-stack-overflow"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/eomtaehyeon" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="weibo" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-weibo"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="rss" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-rss"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/2022/05/02/Chapter_6_Self_Check/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">older</strong>
+        <p class="article-nav-title">Chapter_6_Self_Check</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">recents</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2022/05/03/CHAPTER_9_01/" class="thumbnail">
+    
+    
+        <span style="background-image:url(themes/ORACLE.png)" alt="Oracle Chapter_9_01" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2022/05/03/CHAPTER_9_01/" class="title">Oracle Chapter_9_01</a></p>
+                            <p class="item-date"><time datetime="2022-05-03T03:42:56.263Z" itemprop="datePublished">2022-05-03</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2022/05/02/Chapter_6_Self_Check/" class="thumbnail">
+    
+    
+        <span style="background-image:url(themes/SELFCHECK.png)" alt="Chapter_6_Self_Check" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2022/05/02/Chapter_6_Self_Check/" class="title">Chapter_6_Self_Check</a></p>
+                            <p class="item-date"><time datetime="2022-05-02T00:47:50.785Z" itemprop="datePublished">2022-05-02</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2022/05/01/Oracle_Install/" class="thumbnail">
+    
+    
+        <span style="background-image:url(themes/Oracle_install.png)" alt="Oracle Install" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2022/05/01/Oracle_Install/" class="title">Oracle Install</a></p>
+                            <p class="item-date"><time datetime="2022-05-01T00:32:34.000Z" itemprop="datePublished">2022-05-01</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2022/05/01/hello-world/" class="thumbnail">
+    
+    
+        <span style="background-image:url(themes/helloworld.jpg)" alt="Hello World" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2022/05/01/hello-world/" class="title">Hello World</a></p>
+                            <p class="item-date"><time datetime="2022-04-30T15:00:00.000Z" itemprop="datePublished">2022-05-01</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2022/04/27/Chapter_3/" class="thumbnail">
+    
+    
+        <span style="background-image:url(themes/ORACLE.png)" alt="Oracle CHAPTER 3" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2022/04/27/Chapter_3/" class="title">Oracle CHAPTER 3</a></p>
+                            <p class="item-date"><time datetime="2022-04-27T14:49:40.000Z" itemprop="datePublished">2022-04-27</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">archives</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/05/">May 2022</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/04/">April 2022</a><span class="archive-list-count">2</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+
+            
+                
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">links</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2022 Taehyeon Eom</p>
+                
+                <p>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="https://github.com/ppoffice" target="_blank">PPOffice</a></p>
+                
+            </div>
+            <div class="footer-plugins">
+              
+    
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+    </div>
+    
+    
+    <script>
+    var disqus_shortname = 'hexo-theme-hueman';
+    
+    
+    var disqus_url = 'http://eomtaehyeon.github.io/2022/05/03/CHAPTER_9_01/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+
+
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+
+    
+    
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+</body>
+</html>
