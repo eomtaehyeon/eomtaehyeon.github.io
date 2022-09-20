@@ -1,0 +1,1018 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+
+    
+
+    
+    <title>1과목. 빅데이터 분석 기획 | thanks for noticing</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="자격증공부요점정리,빅데이터분석기사필기,빅분기,필기,빅데이터,데이터사이언티스트" />
+    
+    <meta name="description" content="1장. 빅데이터의 이해 빅데이터를 공부할 때 가장 기초가 되는 부분이다.   핵심 키워드  빅데이터의 개념 데이터사이언티스트 인사이트 도출 빅데이터 플랫폼    01_빅데이터 개요 및 활용학습목표  빅데이터의 기초 개념과 산업 그리고 조직에 관한 일반적인 지식을 습득한다.  1. 빅데이터 기초데이터의 유형   정량적 데이터(정형 데이터) - 수치로 표현할">
+<meta property="og:type" content="article">
+<meta property="og:title" content="1과목. 빅데이터 분석 기획">
+<meta property="og:url" content="http://eomtaehyeon.github.io/2022/09/21/Study/DataQ/BigData/Class1.1_Understanding_Big_Data/index.html">
+<meta property="og:site_name" content="thanks for noticing">
+<meta property="og:description" content="1장. 빅데이터의 이해 빅데이터를 공부할 때 가장 기초가 되는 부분이다.   핵심 키워드  빅데이터의 개념 데이터사이언티스트 인사이트 도출 빅데이터 플랫폼    01_빅데이터 개요 및 활용학습목표  빅데이터의 기초 개념과 산업 그리고 조직에 관한 일반적인 지식을 습득한다.  1. 빅데이터 기초데이터의 유형   정량적 데이터(정형 데이터) - 수치로 표현할">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://eomtaehyeon.github.io/images/DataQ/BigData/0.png">
+<meta property="article:published_time" content="2022-09-21T00:00:00.000Z">
+<meta property="article:modified_time" content="2022-09-20T18:42:00.617Z">
+<meta property="article:author" content="Eom Taehyeon">
+<meta property="article:tag" content="자격증공부요점정리">
+<meta property="article:tag" content="빅데이터분석기사필기">
+<meta property="article:tag" content="빅분기">
+<meta property="article:tag" content="필기">
+<meta property="article:tag" content="빅데이터">
+<meta property="article:tag" content="데이터사이언티스트">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://eomtaehyeon.github.io/images/DataQ/BigData/0.png">
+    
+
+    
+
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/titillium-web/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/3.5.0/jquery.min.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+    
+    
+
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">Home</a>
+                                </li>
+                            
+                                    <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/About/">About</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Settings/">Settings</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Settings/Blog/">Blog</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%9E%90%EA%B2%A9%EC%A6%9D%EA%B3%B5%EB%B6%80%EC%9A%94%EC%A0%90%EC%A0%95%EB%A6%AC/">자격증공부요점정리</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%9E%90%EA%B2%A9%EC%A6%9D%EA%B3%B5%EB%B6%80%EC%9A%94%EC%A0%90%EC%A0%95%EB%A6%AC/%EB%B9%85%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B6%84%EC%84%9D%EA%B8%B0%EC%82%AC%ED%95%84%EA%B8%B0/">빅데이터분석기사필기</a></li></ul></li></ul>
+                                
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/%EC%9E%90%EA%B2%A9%EC%A6%9D%EA%B3%B5%EB%B6%80%EC%9A%94%EC%A0%90%EC%A0%95%EB%A6%AC/">자격증공부요점정리</a><i class="icon fa fa-angle-right"></i><a class="page-title-link" href="/categories/%EC%9E%90%EA%B2%A9%EC%A6%9D%EA%B3%B5%EB%B6%80%EC%9A%94%EC%A0%90%EC%A0%95%EB%A6%AC/%EB%B9%85%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B6%84%EC%84%9D%EA%B8%B0%EC%82%AC%ED%95%84%EA%B8%B0/">빅데이터분석기사필기</a>
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-Study/DataQ/BigData/Class1.1_Understanding_Big_Data" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        1과목. 빅데이터 분석 기획
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+  <div class="article-date">
+    <i class="fa fa-calendar"></i>
+    <a href="/2022/09/21/Study/DataQ/BigData/Class1.1_Understanding_Big_Data/" class="article-date">
+       <time datetime="2022-09-21T00:00:00.000Z" itemprop="datePublished">2022-09-21</time>
+    </a>
+  </div>
+
+
+<div class="article-date">
+  <i class="fa fa-calendar-plus-o"></i>
+  <a href="/2022/09/21/Study/DataQ/BigData/Class1.1_Understanding_Big_Data/" class="article-date">
+     <time datetime="2022-09-20T18:42:00.617Z" itemprop="dateModified">2022-09-21</time>
+  </a>
+</div>
+
+
+                
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%82%AC%EC%9D%B4%EC%96%B8%ED%8B%B0%EC%8A%A4%ED%8A%B8/" rel="tag">데이터사이언티스트</a>, <a class="tag-link-link" href="/tags/%EB%B9%85%EB%8D%B0%EC%9D%B4%ED%84%B0/" rel="tag">빅데이터</a>, <a class="tag-link-link" href="/tags/%EB%B9%85%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B6%84%EC%84%9D%EA%B8%B0%EC%82%AC%ED%95%84%EA%B8%B0/" rel="tag">빅데이터분석기사필기</a>, <a class="tag-link-link" href="/tags/%EB%B9%85%EB%B6%84%EA%B8%B0/" rel="tag">빅분기</a>, <a class="tag-link-link" href="/tags/%EC%9E%90%EA%B2%A9%EC%A6%9D%EA%B3%B5%EB%B6%80%EC%9A%94%EC%A0%90%EC%A0%95%EB%A6%AC/" rel="tag">자격증공부요점정리</a>, <a class="tag-link-link" href="/tags/%ED%95%84%EA%B8%B0/" rel="tag">필기</a>
+    </div>
+
+                
+
+                
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            
+
+            
+
+            
+
+            <h1 id="1장-빅데이터의-이해"><a href="#1장-빅데이터의-이해" class="headerlink" title="1장. 빅데이터의 이해"></a>1장. 빅데이터의 이해</h1><ul>
+<li><p><strong>빅데이터를 공부할 때 가장 기초가 되는 부분이다.</strong></p>
+<p>  <strong><code>핵심 키워드</code></strong></p>
+<ul>
+<li><strong>빅데이터의 개념</strong></li>
+<li><strong>데이터사이언티스트</strong></li>
+<li><strong>인사이트 도출</strong></li>
+<li><strong>빅데이터 플랫폼</strong></li>
+</ul>
+</li>
+</ul>
+<h1 id="01-빅데이터-개요-및-활용"><a href="#01-빅데이터-개요-및-활용" class="headerlink" title="01_빅데이터 개요 및 활용"></a>01_빅데이터 개요 및 활용</h1><p><strong><code>학습목표</code></strong></p>
+<ul>
+<li><strong>빅데이터의 기초 개념과 산업 그리고 조직에 관한 일반적인 지식을 습득한다.</strong></li>
+</ul>
+<h2 id="1-빅데이터-기초"><a href="#1-빅데이터-기초" class="headerlink" title="1. 빅데이터 기초"></a>1. 빅데이터 기초</h2><h3 id="데이터의-유형"><a href="#데이터의-유형" class="headerlink" title="데이터의 유형"></a>데이터의 유형</h3><table>
+<thead>
+<tr>
+<th>정량적 데이터(정형 데이터)</th>
+<th>- 수치로 표현할 수 있는 숫자 · 도형 · 기호 등의 데이터 <br> - 저장 · 검색 · 분석 활용에 용이</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>정성적 데이터(비정형 데이터)</td>
+<td>- 언어 · 문자 등의 정형화되지 않은 데이터 <br> - ‘영화 감상평’, ‘SNS 실시간 검색어’ 등의 정성적 데이터 수집과 분석에는 상대적으로 많은 비용과 기술적 투자가 필요</td>
+</tr>
+</tbody></table>
+<h3 id="암묵지와-형식지"><a href="#암묵지와-형식지" class="headerlink" title="암묵지와 형식지"></a>암묵지와 형식지</h3><ul>
+<li><strong>암묵지(Tacit Knowledge)</strong></li>
+</ul>
+<p>: 학습과 체험을 통해 개인에게 습득되어 있지만, 겉으로 드러나지 않는 상태의 지식</p>
+<ul>
+<li><strong>형식지(Explicit Knowledge)</strong></li>
+</ul>
+<p>: 암묵지가 문서나 매뉴얼처럼 외부로 표출돼 여러 사람이 공유할 수 있는 지식</p>
+<ul>
+<li><strong>암묵지와 형식지의 상호작용</strong></li>
+</ul>
+<p>: 공유화되기 어려운 암묵지가 형식지로 표출되고 연결되면 그 상호작용으로 지식이 형성된다.</p>
+<table>
+<thead>
+<tr>
+<th>암묵지</th>
+<th>형식지</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>공통화(Socialization)</td>
+<td>표출화(Externalization)</td>
+</tr>
+<tr>
+<td>내면화(Internalization)</td>
+<td>연결화(Combination)</td>
+</tr>
+</tbody></table>
+<h3 id="데이터와-정보"><a href="#데이터와-정보" class="headerlink" title="데이터와 정보"></a>데이터와 정보</h3><p><img src="/images/DataQ/BigData/0.png"></p>
+<ul>
+<li><strong>데이터(Data)</strong></li>
+</ul>
+<p>: 개별 데이터 자체는 의미가 중요하지 않은 객관적인 사실</p>
+<ul>
+<li><strong>정보(Information)</strong></li>
+</ul>
+<p>: 데이터의 가공 · 처리와 데이터 간 연관 관계 속에서 의미가 도출된 것</p>
+<ul>
+<li><strong>지식(Knowledge)</strong></li>
+</ul>
+<p>: 데이터를 통해 도출된 다양한 정보를 구조화하여 유의미한 정보를 분류하고 개인적인 경험을 결합해 고유의 지식으로 내재화된 것</p>
+<ul>
+<li><strong>지혜(Wisdom)</strong></li>
+</ul>
+<p>: 지식의 축적과 아이디어가 결합된 창의적 산물</p>
+<p><img src="/images/DataQ/BigData/1.png"></p>
+<h3 id="데이터베이스의-특징"><a href="#데이터베이스의-특징" class="headerlink" title="데이터베이스의 특징"></a>데이터베이스의 특징</h3><table>
+<thead>
+<tr>
+<th>정보의 축적 및 전달 측면</th>
+<th>- 기계 가독성 : 대량의 정보를 일정한 형식에 따라 컴퓨터 등의 정보처리기기가 읽고 쓸 수 있다. <br> - 검색 가능성 : 다양한 방법으로 필요한 정보를 검색할 수 있다. <br> - 원격 조작성 : 정보통신망을 통해 원거리에서도 즉시 온라인으로 이용 가능하다.</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>정보이용 측면</td>
+<td>- 이용자의 정보요구에 따라 다양한 정보를 신속하게 획득할 수 있고 원하는 정보를 정확하고 경제적으로 찾아낼 수 있다.</td>
+</tr>
+<tr>
+<td>정보관리 측면</td>
+<td>- 정보를 일정한 질서와 구조에 따라 정리 · 저장하고 검색 · 관리할 수 있게 하여 방대한 양의 정보를 체계적으로 축적하고, 새로운 내용 추가나 갱신이 용이하다.</td>
+</tr>
+<tr>
+<td>정보기술발전 측면</td>
+<td>- 데이터베이스는 정보처리, 검색 · 관리 소프트웨어, 관련 하드웨어, 정보 전송을 위한 네트워크 기술 등의 발전을 견인할 수 있다.</td>
+</tr>
+<tr>
+<td>경제 · 산업적측면</td>
+<td>- 데이터베이스는 다양한 정보를 필요에 따라 신속하게 제공 · 이용할 수 있는 인프라의 특성을 가지고 있어 경제, 산업, 사회 활동의 효율성을 제고하고 국민의 편의를 증진하는 수단으로써의 의미를 가진다.</td>
+</tr>
+</tbody></table>
+<h3 id="부문별-사회-기반-구조의-데이터베이스"><a href="#부문별-사회-기반-구조의-데이터베이스" class="headerlink" title="부문별 사회 기반 구조의 데이터베이스"></a>부문별 사회 기반 구조의 데이터베이스</h3><table>
+<thead>
+<tr>
+<th>물류 부문</th>
+<th>- ‘실시간 차량 추적’을 위한 종합물류정보망 구축 <br> - CVO 서비스, EDI 서비스, 물류 정보 DB 서비스, 부가서비스로 구성 <br> - CALS(Commerce At Light Speed): 제품의 설계 · 개발 · 생산에서 유통 · 폐기에 이르기까지 제품의 라이프사이클 전반에 관련된 데이터를 통합하고 공유 · 교환할 수 있게 한 경영통합정보시스템을 말한다. <br> - PORT-MIS : 항만운영정보시스템 <br> - KROIS : 철도운영정보시스템</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>지리 부문</td>
+<td>- GIS 응용에 활용하는 4S 통합기술 <br> - 지리정보유통망 가시화 : 지리정보 통합관리소 운영, 지리정보 수요자에 정보 제공 <br> - GIS(Geographic Information System) : 지리정보시스템 <br> - LBS(Location-Based Service) : 위치정보서비스 <br> - SIM(Spatial Information Management) : 공간정보 관리시스템</td>
+</tr>
+<tr>
+<td>교통 부문</td>
+<td>- 지능형교통정보시스템(ITS), 교통정보, 기초자료 및 통계 제공, 대국민 서비스 확대</td>
+</tr>
+<tr>
+<td>의료 부문</td>
+<td>- 의료정보시스템 : 처방전달시스템, 임상병리, 전자의무기록, 영상처리시스템, 병원의 멀티미디어, 원격의료, 지식 정보화 <br> - HL7 국내 표준화 작업에 따라 전국적인 진료 정보 공유 체계 구축 계획 수립 - U헬스 실현에 기존 의료정보 데이터베이스 기반 활용 - PACS(Picture Archiving and Communications System) - U-Health(Ubiquitous-Health)</td>
+</tr>
+<tr>
+<td>교육 부문</td>
+<td>- 첨단 정보통신기술(ICT)을 활용한 각종 교육 정보의 개발 및 보급, 정보 활용 교육 <br> - 대학 정보화 및 교육행정 정보화 위주로 사업 추진 <br> - 교육행정정보시스템(NEIS)은 학사뿐만 아니라 기타 교육행정 전 업무를 처리하는 시스템</td>
+</tr>
+</tbody></table>
+<h2 id="2-빅데이터의-이해와-가치"><a href="#2-빅데이터의-이해와-가치" class="headerlink" title="2. 빅데이터의 이해와 가치"></a>2. 빅데이터의 이해와 가치</h2><h3 id="빅데이터의-특징-3V"><a href="#빅데이터의-특징-3V" class="headerlink" title="빅데이터의 특징 - 3V"></a>빅데이터의 특징 - 3V</h3><table>
+<thead>
+<tr>
+<th>구분</th>
+<th>세부내용</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Volume(크기)</td>
+<td>대량의 데이터 증가 발생으로 기존 데이터 수집, 관리 한계</td>
+</tr>
+<tr>
+<td>Variety(다양성)</td>
+<td>비정형 데이터(영상, SNS 등)의 발생으로 다양한 데이터 형식 증가</td>
+</tr>
+<tr>
+<td>Velocity(속도)</td>
+<td>실시간 정보 발생으로 데이터의 유입, 처리 속도 요구</td>
+</tr>
+<tr>
+<td>Value(가치)</td>
+<td>데이터 전체를 파악하고 패턴을 발견하기가 어렵게 되면서 가치(Value)의 중요성 강조</td>
+</tr>
+<tr>
+<td>Veracity(정확성)</td>
+<td>빅데이터 기반의 예측 분석 결과에 대한 신뢰성이 중요하게 됨</td>
+</tr>
+</tbody></table>
+<h3 id="빅데이터에-거는-기대"><a href="#빅데이터에-거는-기대" class="headerlink" title="빅데이터에 거는 기대"></a>빅데이터에 거는 기대</h3><table>
+<thead>
+<tr>
+<th>빅데이터는  <br> “산업혁명의 석탄 · 철”</th>
+<th>제조업뿐만 아니라 서비스 분야의 생산성을 획기적으로 끌어올려 사회 · 경제 · 문화 · 생활 전반에 혁명적 변화를 가져올 것으로 기대된다.</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>빅데이터는  <br> “21세기 원유”</td>
+<td>빅데이터도 원유처럼 각종 비즈니스, 공공기관 대국민 서비스, 그리고 경제 성장에 필요한 정보를 제공하여 산업 전반의 생산성을 향상시키고 새로운 범주의 산업을 만들어낼 것으로 기대된다.</td>
+</tr>
+<tr>
+<td>빅데이터는  <br> “렌즈”</td>
+<td>렌즈를 통해 현미경이 생물학 발전에 끼쳤던 영향만큼, 빅데이터도 렌즈처럼 산업 발전에 큰 영향을 줄 것으로 기대된다. <br> 대표 사례) 구글의 Ngram Viewer</td>
+</tr>
+<tr>
+<td>빅데이터는  <br> “플랫폼”</td>
+<td>플랫폼은 공동 활용의 목적으로 구축된 유무형의 구조물을 말한다. 빅데이는 플랫폼으로서 다양한 서드파티 비즈니스에 활용될 것으로 기대된다. <br> 대표 사례) 페이스북, 카카오톡 등</td>
+</tr>
+</tbody></table>
+<h3 id="빅데이터가-만들어내는-변화"><a href="#빅데이터가-만들어내는-변화" class="headerlink" title="빅데이터가 만들어내는 변화"></a>빅데이터가 만들어내는 변화</h3><ul>
+<li><strong><code>사전처리 → 사후처리</code></strong> : 데이터를 사전 처리하지 않고, 가능한 많은 데이터를 모으고 데이터를 다양한 방식으로 조합하여 숨은 인사이트를 발굴한다.</li>
+<li><strong><code>표본조사 → 전수조사</code></strong> : IoT · 클라우드 기술의 발전으로 데이터 처리 비용이 감소하게 되면서, 데이터 활용 방법이 표본조사에서 전수조사로 변화됐다.</li>
+<li><strong><code>질 → 양</code></strong> : 수집 데이터의 양이 증가할수록 분석의 정확도가 높아져 양질의 분석 결과 산출에 긍정적인 영향을 줬다.</li>
+<li><strong><code>인과관계 → 상관관계</code></strong> : 특정한 인과관계가 중요시되던 과거와 달리, 데이터의 양이 급격하게 늘어나면서 상관관계를 통해 특정 현상의 발생 가능성이 포착되고 그에 상응하는 행동을 추천하는 등 상관관계를 통한 인사이트 도출이 점점 확산되고 있다.</li>
+</ul>
+<h3 id="7가지-빅데이터-활용-기본-테크닉"><a href="#7가지-빅데이터-활용-기본-테크닉" class="headerlink" title="7가지 빅데이터 활용 기본 테크닉"></a>7가지 빅데이터 활용 기본 테크닉</h3><table>
+<thead>
+<tr>
+<th>테크닉</th>
+<th>방법</th>
+<th>예</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>연관규칙 학습(Association rule learning)</td>
+<td>어떤 변인 간에 주목할 만한 상관관계가 있는지를 찾아내는 방법</td>
+<td>- A를 구매한 사람이 B를 더 많이 사는가?  <br> - 이것을 구매한 사람들이 많이 구매한 물품은? <br> - 장바구니 분석 <br> - 상품 추천</td>
+</tr>
+<tr>
+<td>유형 분석(Classification tree analysis)</td>
+<td>새로운 사건이 속할 범주를 찾아 내는 일</td>
+<td>- 이 사용자가 어떤 특성을 가진 집단에 속하는가? <br> - 마케팅에서의 세그멘테이션(세분화) <br> - 소비자 유형 분류</td>
+</tr>
+<tr>
+<td>유전 알고리즘(Genetic algorithms)</td>
+<td>최적화가 필요한 문제의 해결책을 자연 선택, 돌연변이 등과 같은 메커니즘을 통해 점진적으로 진화시키는 방법</td>
+<td>- 최대 시청률을 얻으려면 어떤 프로그램을 어느 시간대에 방송할지 파악 <br> - 최적화된 택배 차량 배치</td>
+</tr>
+<tr>
+<td>기계 학습 &#x3D; 머신러닝(Machine learning)</td>
+<td>학습 데이터로부터 학습한 알려진 특성을 활용해 ‘예측’하는 데 초점</td>
+<td>- 기존 시청 기록을 바탕으로 시청자가 보유한 영화 중 어떤 영화를 가장 보고 싶어 하는지를 파악 <br> - 넷플릭스의 영화 추천 시스템</td>
+</tr>
+<tr>
+<td>회귀분석(Regression analysis)</td>
+<td>독립변수를 조작하면서 종속변수가 어떻게 변하는지를 보며 두변인의 관계를 파악</td>
+<td>- 구매자의 나이가 구매 차량의 타입에 어떤 영향을 미치는가?</td>
+</tr>
+<tr>
+<td>감정분석(Sentiment analysis)</td>
+<td>특정 주제에 대해 말하거나 글을 쓴 사람의 감정을 분석</td>
+<td>- 새로운 환불 정책에 대한 고객의 평가는 어떤가?</td>
+</tr>
+<tr>
+<td>소셜 네트워크 분석(Social network analysis)</td>
+<td>오피니언 리더, 즉 영향력 있는 사람을 찾아낼 수 있으며, 고객 간 소셜 관계를 파악</td>
+<td>- 특정인과 다른 사람이 몇 촌 정도의 관계인가? <br> - 이 사람이 어느 정도 영향력 있는 인플루언서인가?</td>
+</tr>
+</tbody></table>
+<h3 id="빅데이터의-위기-요인과-통제-방안"><a href="#빅데이터의-위기-요인과-통제-방안" class="headerlink" title="빅데이터의 위기 요인과 통제 방안"></a>빅데이터의 위기 요인과 통제 방안</h3><table>
+<thead>
+<tr>
+<th>위기 요인</th>
+<th>통제 방안</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1. 사생활 침해</td>
+<td>1. 동의에서 책임으로</td>
+</tr>
+<tr>
+<td>- 개인의 사생활 침해 위협을 넘어 사회 · 경제적 위협으로 변형될 수 있음 <br> - 익명화 기술이 발전되고 있으나, 아직 충분하지 않음. 정보가 오용될 때 위협의 크기는 막대함 <br> - 예) 조지 오웰의 &lt;&lt;1984&gt;&gt;에서의 ‘빅브리더’</td>
+<td>- 개인정보 제공자의 ‘동의’를 통해 해결하기보다 개인정보 사용자의 ‘책임’으로 해결</td>
+</tr>
+<tr>
+<td>2. 책임 원칙 훼손</td>
+<td>2. 결과 기반 책임 원칙 고수</td>
+</tr>
+<tr>
+<td>- 빅데이터 기반 분석과 예측 기술이 발전하면서 정확도가 증가한 만큼, 분석 대상이 되는 사람들이 예측 알고리즘의 희생양이 될 가능성도 높아짐 <br> - 빅데이터 시스템에 의해 부당하게 피해 보는 상황을 최소화할 장치 마련 필요 <br> - 예) 영화 &lt;마이너리티 리포트&gt;</td>
+<td>- 특정인의 ‘성향’에 따라 처벌하는 것이 아닌 ‘행동 결과’를 보고 처벌 <br> - 신용카드 발급 여부 판단에 있어 불이익을 배제</td>
+</tr>
+<tr>
+<td>3. 데이터 오용</td>
+<td>3. 알고리즘 접근 허용</td>
+</tr>
+<tr>
+<td>- 데이터 과신, 잘못된 지표의 사용으로 인한 잘못된 인사이트를 얻어 비즈니스에 적용할 경우 직접 손실 발생 <br> - 예) 적군의 사망자 수로 전쟁의 승리를 예측하는 오류</td>
+<td>- 알고리즘 접근권 보장 <br> - 알고리즈미스트 : 알고리즘에 의해 불이익을 당한 사람들을 대변해 피해자를 구제할 능력을 갖춘 전문가로서, 컴퓨터와 수학, 통계학이나 비즈니스에 두루 깊은 지식을 갖춘 전문가 대두</td>
+</tr>
+</tbody></table>
+<h2 id="3-빅데이터-산업의-이해"><a href="#3-빅데이터-산업의-이해" class="headerlink" title="3. 빅데이터 산업의 이해"></a>3. 빅데이터 산업의 이해</h2><h3 id="데이터-사이언티스트에게-요구되는-역량"><a href="#데이터-사이언티스트에게-요구되는-역량" class="headerlink" title="데이터 사이언티스트에게 요구되는 역량"></a>데이터 사이언티스트에게 요구되는 역량</h3><ul>
+<li><strong><code>하드 스킬(Hard skill)</code></strong><ul>
+<li><strong>빅데이터에 대한 이론적 지식</strong> : 관련 기법에 대한 이해와 방법론 습득</li>
+<li><strong>분석 기술에 대한 숙련</strong> : 최적의 분석 설계 및 노하우 축적</li>
+</ul>
+</li>
+<li><strong><code>소프트 스킬(Soft skill)</code></strong><ul>
+<li><strong>통찰력 있는 분석</strong> : 창의적 사고, 호기심, 논리적 비판</li>
+<li><strong>설득력 있는 전달</strong> : 스토리텔링, 시각화</li>
+<li><strong>다분야 간 협력</strong> : 커뮤니케이션</li>
+</ul>
+</li>
+</ul>
+<p><img src="/images/DataQ/BigData/2.png"></p>
+<h3 id="가치-패러다임의-변화"><a href="#가치-패러다임의-변화" class="headerlink" title="가치 패러다임의 변화"></a>가치 패러다임의 변화</h3><table>
+<thead>
+<tr>
+<th>디지털화(Digitalization)</th>
+<th>- 아날로그 세상을 어떻게 효과적으로 디지털화하는가가 이 시대의 가치를 창출해내는 원천 <br> 예) 도스 운영체제, 워드&#x2F;파워포인트와 같은 오피스 프로그램</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>연결(Connection)</td>
+<td>- 디지털화된 정보와 대상들이 서로 연결되어 이 연결이 얼마나 효과적이고 효율적으로 제공되느냐가 이 시대의 성패를 가름 <br> 예) 구글의 검색 알고리즘, 네이버의 콘텐츠</td>
+</tr>
+<tr>
+<td>에이전시(Agency)</td>
+<td>- 사물인터넷(IoT)의 성숙과 함께 연결이 증가하고 복잡해짐 <br> - 복잡한 연결을 얼마나 효과적이고 믿을 만하게 관리하는가가 이슈 <br> - 데이터 사이언스의 역량에 따라 좌우</td>
+</tr>
+</tbody></table>
+<h2 id="4-빅데이터-조직-및-인력"><a href="#4-빅데이터-조직-및-인력" class="headerlink" title="4. 빅데이터 조직 및 인력"></a>4. 빅데이터 조직 및 인력</h2><h3 id="분석-준비도-평가"><a href="#분석-준비도-평가" class="headerlink" title="분석 준비도 평가"></a>분석 준비도 평가</h3><table>
+<thead>
+<tr>
+<th>분석 업무 파악</th>
+<th>분석 인력 및 조직</th>
+<th>분석 기법</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>- 발생한 사실 분석 업무 <br> - 예측 분석 업무 <br> - 시뮬레이션 분석 업무 <br> - 최적화 분석 업무 <br> - 분석 업무 정기적 개선</td>
+<td>- 분석전문가 직무 존재 <br> - 분석전문가 교육 훈련프로그램 <br> - 관리자 기본 분석 능력 <br> - 전사총괄조직 <br> - 경영진 분석 업무 이해</td>
+<td>- 업무별 적합한 분석 기법 사용 <br> - 분석 업무 도입 방법론 <br> - 분석 기법 라이브러리 <br> - 분석 기법 효과성 평가 <br> - 분석 기법 정기적 개선</td>
+</tr>
+<tr>
+<td>분석 데이터</td>
+<td>분석 문화</td>
+<td>IT 인프라</td>
+</tr>
+<tr>
+<td>- 분석 업무를 위한 데이터 <br> 충분성&#x2F; 신뢰성&#x2F; 적시성 <br> - 비구조적 데이터 관리 <br> - 외부데이터 활용 체계 <br> - 기준 데이터 관리(MDM)</td>
+<td>- 사실에 근거한 의사결정 <br> - 관리자의 데이터 중시 <br> - 회의 등에서 데이터 활용 <br> - 경영진 직관보다 데이터 활용 <br> - 데이터 공유 및 협업 문화</td>
+<td>- 운영시스템 데이터 통합 <br> - EAI, ETL 등 데이터 유통체계 <br> - 분석 전용 서버 및 스토리지 <br> - 빅데이터&#x2F; 통계&#x2F; 비주얼 분석환경</td>
+</tr>
+</tbody></table>
+<h3 id="분석-성숙도-평가"><a href="#분석-성숙도-평가" class="headerlink" title="분석 성숙도 평가"></a>분석 성숙도 평가</h3><table>
+<thead>
+<tr>
+<th>단계</th>
+<th>내용</th>
+<th>비즈니스 부문</th>
+<th>조직 · 역량 부문</th>
+<th>IT 부문</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>[1단계] 도입</td>
+<td>분석 시작, <br> 환경과 시스템 구축</td>
+<td>- 실적 분석 및 통계 <br> - 정기 보고 수행 <br> - 운영 데이터 기반</td>
+<td>- 일부 부서에서 수행 <br> - 담당자 역량에 의존</td>
+<td>- 데이터 웨어하우스 <br> - 데이터 마트 <br> - ETL&#x2F; EAI <br> - OLAP</td>
+</tr>
+<tr>
+<td>[2단계] 활용</td>
+<td>분석 결과를 업무에 적용</td>
+<td>- 미래결과 예측 <br> - 시뮬레이션 <br> - 운영 데이터 기반</td>
+<td>- 전문 담당 부서 수행 <br> - 분석 기법 도입 <br> - 관리자가 분석 수행</td>
+<td>- 실시간 대시보드 <br> - 통계분석 환경</td>
+</tr>
+<tr>
+<td>[3단계] 확산</td>
+<td>전사 차원에서 분석 관리, 공유</td>
+<td>- 전사성과 실시간 분석 <br> - 프로세스 혁신 3.0 <br> - 분석규칙 관리 <br> - 이벤트 관리</td>
+<td>- 전사 모든 부서 수행 <br> - 분석 COE 운영 <br> - 데이터 사이언티스트 확보</td>
+<td>- 빅데이터 관리 환경 <br> - 시뮬레이션 · 최적화 <br> - 비주얼 분석 <br> - 분석 전용 서버</td>
+</tr>
+<tr>
+<td>[4단계] 최적화</td>
+<td>분석을 진화시켜 혁신 및 성과 향상에 기여</td>
+<td>- 외부 환경 분석 활용 <br> - 최적화 업무 적용 <br> - 실시간 분석 <br> - 비즈니스 모델 진화</td>
+<td>- 데이터 사이언스 그룹 <br> - 경영진 분석 활용 <br> - 전략 연계</td>
+<td>- 분석 협업환경 <br> - 분석 SandBox <br> - 프로세스 내재화 <br> - 빅데이터 분석</td>
+</tr>
+</tbody></table>
+<h3 id="분석준비도-및-성숙도-진단-결과를-4분면으로-구분"><a href="#분석준비도-및-성숙도-진단-결과를-4분면으로-구분" class="headerlink" title="분석준비도 및 성숙도 진단 결과를 4분면으로 구분"></a>분석준비도 및 성숙도 진단 결과를 4분면으로 구분</h3><p><img src="/images/DataQ/BigData/3.png"></p>
+<h3 id="분석-조직-유형"><a href="#분석-조직-유형" class="headerlink" title="분석 조직 유형"></a>분석 조직 유형</h3><p><img src="/images/DataQ/BigData/4.png"></p>
+<h1 id="02-빅데이터-기술-및-제도"><a href="#02-빅데이터-기술-및-제도" class="headerlink" title="02_ 빅데이터 기술 및 제도"></a>02_ 빅데이터 기술 및 제도</h1><p><strong><code>학습목표</code></strong></p>
+<ul>
+<li><strong>빅데이터 플랫폼의 개념과 빅데이터 에코시스템을 구성하고 있는 개별 요소들의 기능에 대해 이해한다.</strong></li>
+<li><strong>인공지능과 마이데이터의 배경과 그 내용에 대해 알아본다.</strong></li>
+</ul>
+<h2 id="1-빅데이터-플랫폼"><a href="#1-빅데이터-플랫폼" class="headerlink" title="1. 빅데이터 플랫폼"></a>1. 빅데이터 플랫폼</h2><h3 id="빅데이터-플랫폼-개념도"><a href="#빅데이터-플랫폼-개념도" class="headerlink" title="빅데이터 플랫폼 개념도"></a>빅데이터 플랫폼 개념도</h3><p><img src="/images/DataQ/BigData/5.png"></p>
+<h3 id="에코시스템"><a href="#에코시스템" class="headerlink" title="에코시스템"></a>에코시스템</h3><p>빅데이터는 수집, 정제, 적재, 분석, 시각화의 여러 단계를 거치는데, 이 단계를 거치는 동안 여러 가지 기술 및 프레임워크, 솔루션 등을 이용해 플랫폼을 완성하게 된다. 바로 이 기술 및 프레임워크, 솔루션 등을 통틀어 빅데이터 에코시스템(Big Data Ecosystem)이라고 한다. Google, IBM, Amazon, Oracle 등은 직접 개발한 여러 솔루션을 하나로 묶어 빅데이터 생태계, 즉 에코시스템을 구축하고 있다.</p>
+<h2 id="2-빅데이터와-인공지능"><a href="#2-빅데이터와-인공지능" class="headerlink" title="2. 빅데이터와 인공지능"></a>2. 빅데이터와 인공지능</h2><h3 id="머신러닝과-딥러닝의-차이"><a href="#머신러닝과-딥러닝의-차이" class="headerlink" title="머신러닝과 딥러닝의 차이"></a>머신러닝과 딥러닝의 차이</h3><p>머신러닝은 데이터를 분석하고, 분석한 후에 그 데이터를 바탕으로 결정을 내리기 위해 학습한 내용을 적용하는 알고리즘을 말한다. 딥러닝은 카테고리 상으로는 머신러닝에 포함된 개념이지만, 실제로는 딥러닝 기술이 훨씬 더 진보적이다. 딥러닝은 예측의 정확성 여부를 스스로 판단하고 결정을 내린다. 딥러닝은 인간이 결론을 내리는 방식과 유사한 논리 구조로 데이터를 엄청나게 빠른 속도로 분석하여 결과를 도출해낸다. 이런 분석 기술을 인공신경망 분석 기술이라고 부른다.</p>
+<h3 id="미래의-인공지능-활용-분야"><a href="#미래의-인공지능-활용-분야" class="headerlink" title="미래의 인공지능 활용 분야"></a>미래의 인공지능 활용 분야</h3><table>
+<thead>
+<tr>
+<th>자율주행</th>
+<th>- 우리나라 자동차 반자율주행에서 완전자율주행으로 기술 발전 <br> - 자율주행차 신규 제조업체 등장 예상 <br> - 자율주행 보험 및 여행 서비스 등장</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>스마트 홈</td>
+<td>- 스마트 가전으로 편리한 생활 <br> - 공간 지능화로 노인 케어 방식 변화</td>
+</tr>
+<tr>
+<td>메디컬 케어</td>
+<td>- 바이탈데이터 및 유전자 정보 활용 건강 관리 <br> - 의료진 대상 지적 도우미 서비스 등장 <br> - 우리나라 원격진료의 경우 관련법 개정 및 정책 지원이 필요</td>
+</tr>
+<tr>
+<td>인프라</td>
+<td>- 우리나라 공공 스마트 사업 본격화 <br> - 전력, 수도, 가스 등의 자동 조절 <br> - 다리, 발전소 등 공공인프라 이상 감지</td>
+</tr>
+<tr>
+<td>스마트 농업</td>
+<td>- 농업의 대형화 및 자동화 <br> - 농작업 자동화 및 드론 이용 정밀 농업 <br> - AI 기반 기상 예측 및 농업 보험 등장</td>
+</tr>
+<tr>
+<td>업무 환경 변화</td>
+<td>- 서류 관리 및 데이터 분석 등 자동화 전문 업무에 AI 도입 활발(법률, 번역) <br> - 음성 인식 관련 기술 발전 및 관련 산업 확대</td>
+</tr>
+<tr>
+<td>자율 배송, 유통</td>
+<td>- 자율 화물배송, 무인화물선, 드론 배달 <br> - 물류 창고 내 AI 로봇 이용</td>
+</tr>
+<tr>
+<td>커머스</td>
+<td>- 무인 점포, 얼굴 인식으로 추천 서비스 <br> - 구매 데이터 분석으로 맞춤형 광고 제공</td>
+</tr>
+<tr>
+<td>스마트 교육</td>
+<td>- 학생별 맞춤형 교육 콘텐츠 제공 <br> - AI 기반 대학 커리큘럼 설계 지원</td>
+</tr>
+<tr>
+<td>AI 기반 금융</td>
+<td>- 주식, 투자 상품의 로봇 어드바이저 신용 평가, 대출, 금융상품 지원 업무</td>
+</tr>
+<tr>
+<td>안전 보장 로봇</td>
+<td>- 재해 지역 구조 활동 <br> - 극한 환경에서 자율 행동 가능</td>
+</tr>
+<tr>
+<td>인텔리전스 시큐리티</td>
+<td>- 빅데이터 분석에 따른 범죄 예측&#x2F;예방 <br> - 행동 분석으로 이상 행동 사전 감지</td>
+</tr>
+</tbody></table>
+<h2 id="3-개인정보-활용-‘마이데이터’"><a href="#3-개인정보-활용-‘마이데이터’" class="headerlink" title="3. 개인정보 활용 ‘마이데이터’"></a>3. 개인정보 활용 ‘마이데이터’</h2><h3 id="‘마이데이터-Mydata-’-운동의-확산"><a href="#‘마이데이터-Mydata-’-운동의-확산" class="headerlink" title="‘마이데이터(Mydata)’ 운동의 확산"></a>‘마이데이터(Mydata)’ 운동의 확산</h3><p>마이데이터 운동은 정보의 주체가 개인정보 권한을 갖고 관리할 수 있게 하자는 취지다. 2015년 브뤼셀에서 처음 시작된 이 운동은 유럽을 거쳐 전 세계로 확산되었다. 마이뎅터 기구(mydata.org) 사이트에서 이들의 선언문(declaration)을 보면 그 취지를 잘 알 수 있다. 마이데이터 선언문에는 ‘이 선언에서 제시하는 변화와 원친은 균형을 회복하고 개인 정보에 대한 인간 중심의 비전을 향해 나아가는 것을 목표로 한다’고 명시되어 있다. 그리고 이것은 ‘공정하고 지속 가능하며 번영하는 디지털 사회의 조건’이라고 말한다.</p>
+<h3 id="마이데이터-개념"><a href="#마이데이터-개념" class="headerlink" title="마이데이터 개념"></a>마이데이터 개념</h3><p><img src="/images/DataQ/BigData/6.png"></p>
+<h3 id="종전-‘동의’-제도와-마이데이터의-‘동의’-제도"><a href="#종전-‘동의’-제도와-마이데이터의-‘동의’-제도" class="headerlink" title="종전 ‘동의’ 제도와 마이데이터의 ‘동의’ 제도"></a>종전 ‘동의’ 제도와 마이데이터의 ‘동의’ 제도</h3><p><img src="/images/DataQ/BigData/7.png"></p>
+<h3 id="업권별-마이데이터-서비스-예시"><a href="#업권별-마이데이터-서비스-예시" class="headerlink" title="업권별 마이데이터 서비스 예시"></a>업권별 마이데이터 서비스 예시</h3><p><img src="/images/DataQ/BigData/8.png"></p>
+<h2 id="4-개인정보보호-법-·-제도"><a href="#4-개인정보보호-법-·-제도" class="headerlink" title="4. 개인정보보호 법 · 제도"></a>4. 개인정보보호 법 · 제도</h2><h1 id="출처"><a href="#출처" class="headerlink" title="출처"></a>출처</h1><ul>
+<li><p>내용 출처</p>
+<ul>
+<li><dl><dt><strong>이지패스 2021 빅데이터분석기사 필기 (수험서 앱 제공) <br>&#x2F; 위키북스 &#x2F; 전용문, 정다혜, 임예은, 오경서 지음</strong></dt><dd><a target="_blank" rel="noopener" href="https://wikibook.co.kr/bigdata2021/">https://wikibook.co.kr/bigdata2021/</a></dd></dl></li>
+<li><dl><dt><strong>[빅데이터 분석기사 필기 | 1. 빅데이터 분석 기획 (1) 빅데이터의 이해] <br>- 세우초밥</strong></dt><dd><a target="_blank" rel="noopener" href="https://blog.naver.com/ericalee97/222162052706">https://blog.naver.com/ericalee97/222162052706</a></dd></dl></li>
+<li><dl><dt><strong>개인정보보호법 - 국가법령정보센터</strong></dt><dd><a target="_blank" rel="noopener" href="https://www.law.go.kr/%EB%B2%95%EB%A0%B9/%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EB%B3%B4%ED%98%B8%EB%B2%95">https://www.law.go.kr/법령/개인정보보호법</a></dd></dl></li>
+</ul>
+</li>
+<li><p>사진 출처</p>
+<ul>
+<li><strong>DIKW 피라미드 도식도</strong><br>: <a target="_blank" rel="noopener" href="https://codedragon.tistory.com/9330">https://codedragon.tistory.com/9330</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="http://eomtaehyeon.github.io/2022/09/21/Study/DataQ/BigData/Class1.1_Understanding_Big_Data/" data-id="cl8ai3su60000kkto18ppck2n" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "Eom Taehyeon"
+        },
+        "headline": "1과목. 빅데이터 분석 기획",
+        "image": "http://eomtaehyeon.github.io/images/DataQ/BigData/0.png",
+        "keywords": "자격증공부요점정리 빅데이터분석기사필기 빅분기 필기 빅데이터 데이터사이언티스트",
+        "genre": "자격증공부요점정리 빅데이터분석기사필기",
+        "datePublished": "2022-09-21",
+        "dateCreated": "2022-09-21",
+        "dateModified": "2022-09-21",
+        "url": "http://eomtaehyeon.github.io/2022/09/21/Study/DataQ/BigData/Class1.1_Understanding_Big_Data/",
+        "description": "1장. 빅데이터의 이해
+빅데이터를 공부할 때 가장 기초가 되는 부분이다.
+  핵심 키워드
+
+빅데이터의 개념
+데이터사이언티스트
+인사이트 도출
+빅데이터 플랫폼
+
+
+
+01_빅데이터 개요 및 활용학습목표
+
+빅데이터의 기초 개념과 산업 그리고 조직에 관한 일반적인 지식을 습득한다.
+
+1. 빅데이터 기초데이터의 유형
+
+
+정량적 데이터(정형 데이터)
+- 수치로 표현할 ",
+        "wordCount": 2275
+    }
+</script>
+
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+
+    
+    </section>
+
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>follow:</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="user" href="https://github.com/eomtaehyeon/Resume" target="_blank" rel="noopener">
+                        <i class="icon fa fa-user"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="instagram" href="https://www.instagram.com/hi__gorae/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-instagram"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/eomtaehyeon" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/2022/09/20/About/eomtaehyeon/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">older</strong>
+        <p class="article-nav-title">I am ~</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">recents</h3>
+        <div class="widget">
+            <ul id="recent-post" class="no-thumbnail">
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%EC%9E%90%EA%B2%A9%EC%A6%9D%EA%B3%B5%EB%B6%80%EC%9A%94%EC%A0%90%EC%A0%95%EB%A6%AC/">자격증공부요점정리</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/%EC%9E%90%EA%B2%A9%EC%A6%9D%EA%B3%B5%EB%B6%80%EC%9A%94%EC%A0%90%EC%A0%95%EB%A6%AC/%EB%B9%85%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B6%84%EC%84%9D%EA%B8%B0%EC%82%AC%ED%95%84%EA%B8%B0/">빅데이터분석기사필기</a></p>
+                            <p class="item-title"><a href="/2022/09/21/Study/DataQ/BigData/Class1.1_Understanding_Big_Data/" class="title">1과목. 빅데이터 분석 기획</a></p>
+                            <p class="item-date"><time datetime="2022-09-21T00:00:00.000Z" itemprop="datePublished">2022-09-21</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/About/">About</a></p>
+                            <p class="item-title"><a href="/2022/09/20/About/eomtaehyeon/" class="title">I am ~</a></p>
+                            <p class="item-date"><time datetime="2022-09-20T10:25:18.896Z" itemprop="datePublished">2022-09-20</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Settings/">Settings</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Settings/Blog/">Blog</a></p>
+                            <p class="item-title"><a href="/2022/09/16/Github/Hexo/HexoThemeSetting/" class="title">Hexo블로그 테마적용하기</a></p>
+                            <p class="item-date"><time datetime="2022-09-16T00:00:00.000Z" itemprop="datePublished">2022-09-16</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Settings/">Settings</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Settings/Blog/">Blog</a></p>
+                            <p class="item-title"><a href="/2022/09/16/Github/Hexo/hexoBlog/" class="title">정적 사이트 생성</a></p>
+                            <p class="item-date"><time datetime="2022-09-16T00:00:00.000Z" itemprop="datePublished">2022-09-16</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">categories</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/About/">About</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Settings/">Settings</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Settings/Blog/">Blog</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%9E%90%EA%B2%A9%EC%A6%9D%EA%B3%B5%EB%B6%80%EC%9A%94%EC%A0%90%EC%A0%95%EB%A6%AC/">자격증공부요점정리</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%9E%90%EA%B2%A9%EC%A6%9D%EA%B3%B5%EB%B6%80%EC%9A%94%EC%A0%90%EC%A0%95%EB%A6%AC/%EB%B9%85%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B6%84%EC%84%9D%EA%B8%B0%EC%82%AC%ED%95%84%EA%B8%B0/">빅데이터분석기사필기</a><span class="category-list-count">1</span></li></ul></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">archives</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/09/">September 2022</a><span class="archive-list-count">4</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">tags</h3>
+        <div class="widget">
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Blog/" rel="tag">Blog</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Github/" rel="tag">Github</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%82%AC%EC%9D%B4%EC%96%B8%ED%8B%B0%EC%8A%A4%ED%8A%B8/" rel="tag">데이터사이언티스트</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EB%B9%85%EB%8D%B0%EC%9D%B4%ED%84%B0/" rel="tag">빅데이터</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EB%B9%85%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B6%84%EC%84%9D%EA%B8%B0%EC%82%AC%ED%95%84%EA%B8%B0/" rel="tag">빅데이터분석기사필기</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EB%B9%85%EB%B6%84%EA%B8%B0/" rel="tag">빅분기</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EC%9E%90%EA%B2%A9%EC%A6%9D%EA%B3%B5%EB%B6%80%EC%9A%94%EC%A0%90%EC%A0%95%EB%A6%AC/" rel="tag">자격증공부요점정리</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%ED%95%84%EA%B8%B0/" rel="tag">필기</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">tag cloud</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/Blog/" style="font-size: 20px;">Blog</a> <a href="/tags/Github/" style="font-size: 20px;">Github</a> <a href="/tags/Hexo/" style="font-size: 20px;">Hexo</a> <a href="/tags/%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%82%AC%EC%9D%B4%EC%96%B8%ED%8B%B0%EC%8A%A4%ED%8A%B8/" style="font-size: 10px;">데이터사이언티스트</a> <a href="/tags/%EB%B9%85%EB%8D%B0%EC%9D%B4%ED%84%B0/" style="font-size: 10px;">빅데이터</a> <a href="/tags/%EB%B9%85%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B6%84%EC%84%9D%EA%B8%B0%EC%82%AC%ED%95%84%EA%B8%B0/" style="font-size: 10px;">빅데이터분석기사필기</a> <a href="/tags/%EB%B9%85%EB%B6%84%EA%B8%B0/" style="font-size: 10px;">빅분기</a> <a href="/tags/%EC%9E%90%EA%B2%A9%EC%A6%9D%EA%B3%B5%EB%B6%80%EC%9A%94%EC%A0%90%EC%A0%95%EB%A6%AC/" style="font-size: 10px;">자격증공부요점정리</a> <a href="/tags/%ED%95%84%EA%B8%B0/" style="font-size: 10px;">필기</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">links</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a target="_blank" rel="noopener" href="https://github.com/eomtaehyeon">Github</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2022 Eom Taehyeon</p>
+                
+                <p>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="https://github.com/ppoffice" target="_blank">PPOffice</a></p>
+                
+            </div>
+            <div class="footer-plugins">
+              
+    
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+    </div>
+    
+    
+    <script>
+    var disqus_shortname = 'hexo-theme-hueman';
+    
+    
+    var disqus_url = 'http://eomtaehyeon.github.io/2022/09/21/Study/DataQ/BigData/Class1.1_Understanding_Big_Data/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+
+
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+
+    
+    
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+</body>
+</html>
