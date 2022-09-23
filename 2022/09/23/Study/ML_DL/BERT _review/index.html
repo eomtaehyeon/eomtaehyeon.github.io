@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+
+    
+
+    
+    <title>논문 BERT 리뷰 | thanks for noticing</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="논문리뷰,NLP,NAACL,BERT,Transformers" />
+    
+    <meta name="description" content="BERT:Pre-training of Deep Bidirectional Transformers for Language Understanding Review  Conference : NAACL Link :  BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding  Yea">
+<meta property="og:type" content="article">
+<meta property="og:title" content="논문 BERT 리뷰">
+<meta property="og:url" content="http://eomtaehyeon.github.io/2022/09/23/Study/ML_DL/BERT%20_review/index.html">
+<meta property="og:site_name" content="thanks for noticing">
+<meta property="og:description" content="BERT:Pre-training of Deep Bidirectional Transformers for Language Understanding Review  Conference : NAACL Link :  BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding  Yea">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://eomtaehyeon.github.io/images/ML_DL/BERT_Pre-t/1.png">
+<meta property="article:published_time" content="2022-09-23T00:00:00.000Z">
+<meta property="article:modified_time" content="2022-09-23T14:38:48.305Z">
+<meta property="article:author" content="Eom Taehyeon">
+<meta property="article:tag" content="논문리뷰">
+<meta property="article:tag" content="NLP">
+<meta property="article:tag" content="NAACL">
+<meta property="article:tag" content="BERT">
+<meta property="article:tag" content="Transformers">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://eomtaehyeon.github.io/images/ML_DL/BERT_Pre-t/1.png">
+    
+
+    
+
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/titillium-web/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/3.5.0/jquery.min.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+    
+    
+
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">Home</a>
+                                </li>
+                            
+                                    <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/About/">About</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Settings/">Settings</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Settings/Blog/">Blog</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EB%85%BC%EB%AC%B8%EB%A6%AC%EB%B7%B0/">논문리뷰</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EB%85%BC%EB%AC%B8%EB%A6%AC%EB%B7%B0/NLP/">NLP</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%9E%90%EA%B2%A9%EC%A6%9D%EA%B3%B5%EB%B6%80%EC%9A%94%EC%A0%90%EC%A0%95%EB%A6%AC/">자격증공부요점정리</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%9E%90%EA%B2%A9%EC%A6%9D%EA%B3%B5%EB%B6%80%EC%9A%94%EC%A0%90%EC%A0%95%EB%A6%AC/%EB%B9%85%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B6%84%EC%84%9D%EA%B8%B0%EC%82%AC%ED%95%84%EA%B8%B0/">빅데이터분석기사필기</a></li></ul></li></ul>
+                                
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/%EB%85%BC%EB%AC%B8%EB%A6%AC%EB%B7%B0/">논문리뷰</a><i class="icon fa fa-angle-right"></i><a class="page-title-link" href="/categories/%EB%85%BC%EB%AC%B8%EB%A6%AC%EB%B7%B0/NLP/">NLP</a>
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-Study/ML_DL/BERT _review" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        논문 BERT 리뷰
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+  <div class="article-date">
+    <i class="fa fa-calendar"></i>
+    <a href="/2022/09/23/Study/ML_DL/BERT%20_review/" class="article-date">
+       <time datetime="2022-09-23T00:00:00.000Z" itemprop="datePublished">2022-09-23</time>
+    </a>
+  </div>
+
+
+<div class="article-date">
+  <i class="fa fa-calendar-plus-o"></i>
+  <a href="/2022/09/23/Study/ML_DL/BERT%20_review/" class="article-date">
+     <time datetime="2022-09-23T14:38:48.305Z" itemprop="dateModified">2022-09-23</time>
+  </a>
+</div>
+
+
+                
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/BERT/" rel="tag">BERT</a>, <a class="tag-link-link" href="/tags/NAACL/" rel="tag">NAACL</a>, <a class="tag-link-link" href="/tags/NLP/" rel="tag">NLP</a>, <a class="tag-link-link" href="/tags/Transformers/" rel="tag">Transformers</a>, <a class="tag-link-link" href="/tags/%EB%85%BC%EB%AC%B8%EB%A6%AC%EB%B7%B0/" rel="tag">논문리뷰</a>
+    </div>
+
+                
+
+                
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            
+
+            
+
+            
+
+            <p>BERT:Pre-training of Deep Bidirectional Transformers for Language Understanding Review</p>
+<ul>
+<li>Conference : NAACL</li>
+<li>Link :</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://arxiv.org/abs/1810.04805">BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding</a></p>
+<ul>
+<li>Year : 2018</li>
+<li>저자 : Jacob Devlin, Ming-Wei Chang, Kenton Lee, Kristina Toutanova</li>
+<li>Github :</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://github.com/google-research/bert">https://github.com/google-research/bert</a></p>
+<ul>
+<li>동영상 :</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://vimeo.com/365139010">https://vimeo.com/365139010</a></p>
+<h1 id="BERT란"><a href="#BERT란" class="headerlink" title="BERT란?"></a>BERT란?</h1><p>Bidirectional Encoder Representations from Transformers. </p>
+<p>Unlike recent language representation models.</p>
+<p>BERT is designed to pre-train deep bidirectional representations from unlabeled text by jointly conditioning on both left and right context in all layers.</p>
+<p>As a result, the pre-trained BERT model can be fine tuned with just one additional output layer to create state-of-the art models for a wide range of tasks, such as question answering and language inference, without substanial task specific architecure modifications.</p>
+<h1 id="핵심-요약"><a href="#핵심-요약" class="headerlink" title="핵심 요약"></a>핵심 요약</h1><ul>
+<li><p>trasformer의 encoder network를 기반으로, self-attention을 이용하여 bidirectional하게 언어 특성을 학습합니다.</p>
+<ul>
+<li>transformer란?</li>
+</ul>
+<p>  transformer는 the mechanism of self-attention<strong>을 채택하는 딥 러닝 모델로서, 입력 데이터의 각 부분의 중요성을 차등적으로 가중시킨다. 주로 자연어 처리(NLP)와 컴퓨터 비전(CV) 분야에서 사용된다.</strong></p>
+<ul>
+<li>transformer background</li>
+</ul>
+<p>  before transformers, most state-of-the-art NLP systems relied on gated RNNs, such as LSTM and gated recurrent units (GRUs), with added attention mechanisms. Transformers are built on these attention technologies without using an RNN structure, highlighting the fact that attention mechanisms alone can match the performance of RNNs with attention.</p>
+<p>  transformer 이전에 대부분의 최첨단 NLP 시스템은 LSTM과 게이트 반복 유닛(GRU)과 같은 게이트 RNN에 의존했으며 주의 메커니즘이 추가되었다. 변압기는 RNN 구조를 사용하지 않고 이러한 주의 기술을 기반으로 구축되어 주의 메커니즘만으로도 RNN의 성능을 주의와 일치시킬 수 있다는 사실을 강조한다.</p>
+<ul>
+<li>Encoder</li>
+</ul>
+<p>  Each encoder consists of two major components : a self-attention mechanism and a feed-forward neural network. The self-attention mechanism accepts input encodings from the previous encoder and weighs their relevance to each other to generate output encodings.</p>
+<p>  각 인코더는 self-attention mechanism과 feed-forward neural network 이라는 두 가지 주요 구성 요소로 구성된다. 자체 주의 메커니즘은 이전 인코더로부터 입력 인코딩을 받아들이고 출력 인코딩을 생성하기 위해 서로 관련성을 평가한다.</p>
+<p>  참조 : <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Transformer_(machine_learning_model)?msclkid=a821d608bd7b11ec9cad602d05a50e33">Transformer (machine learning model) - Wikipedia</a></p>
+<p>  <a target="_blank" rel="noopener" href="https://arxiv.org/abs/1706.03762">Attention Is All You Need</a></p>
+<p>  참조 : </p>
+<p>  <a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=mxGCEWOxfe8">https://www.youtube.com/watch?v=mxGCEWOxfe8</a>
+  </p>
+</li>
+<li><p>MLM(Masked language model)과 NSP(next sentence prediction)등의 pre-training방법을 제시하였습니다.</p>
+<ul>
+<li>MLM</li>
+</ul>
+<p>  In order to train a deep bidirectional representation, we simply mask some percentage of the input tokens at random, and then predict those masked tokens.</p>
+<p>  deep bidirectional representation을 훈련시키기 위해 입력 토큰의 일부 비율을 무작위로 마스킹한 다음, 마스킹된 토큰을 예측한다.</p>
+<p>  참조 : </p>
+<p>  <a target="_blank" rel="noopener" href="https://aclanthology.org/2020.acl-main.240.pdf?msclkid=3edd2a0dbe0211ecab2f655db1333859"></a></p>
+<ul>
+<li>NSP</li>
+</ul>
+</li>
+<li><p>pre-training방법으로 feature representation을 학습한 뒤 fine-tuning만으로 down-stream task를 수행합니다.</p>
+</li>
+</ul>
+<h1 id="Introduction-amp-Related-Work"><a href="#Introduction-amp-Related-Work" class="headerlink" title="Introduction &amp; Related Work"></a>Introduction &amp; Related Work</h1><p>저자는 먼저 사전 훈련을 통해 자연어 처리 Task의 성능을 향상 시키는 PLM(pre-trained language model)의 사례를 제시합니다.</p>
+<ul>
+<li>Feature-based<ul>
+<li>예시)ELMo : pre-trained representation 을 추가 특성으로 사용하여 Task에 특화된 모델 구조를 설계합니다.</li>
+</ul>
+</li>
+<li>fine-tuning<ul>
+<li>예시) GPT : task에 특화된 파라미터를 최소화 하고, 사전 학습된 파라미터 전부를 fine-tuning 합니다.</li>
+</ul>
+</li>
+</ul>
+<p>두 방식 모두 pre-training에서 동일한 objective를 사용하고, unidirectional language model을 가정합니다. 이 때문에, 문맥을 단 방향으로만 습득하게 되어, 양방향의 문맥 이해가 필요한 문답 task 등의 성능을 보장하지 못함을 지적합니다.</p>
+<p>이에 논문은, fine-tuning 방식을 개선하는 PLM으로 BERT(Bidirectional Encoder Representations from Transformers) 구조를 제안합니다. BERT의 pre-training은 masked language model(MLM) 과 next-sentence-prediction task(NSP)를 통해 양방향 문맥을 학습하게 됩니다.</p>
+<h1 id="BERT"><a href="#BERT" class="headerlink" title="BERT"></a>BERT</h1><p><img src="/images/ML_DL/BERT_Pre-t/1.png" alt="출력 계층을 제외하고, 사전 훈련과 미세 조정 모두에서 동일한 아키텍처가 사용된다. 동일한 사전 훈련된 모델 매개 변수는 다양한 다운스트림 작업에 대한 모델을 초기화하는 데 사용된다. 미세 조정 중에는 모든 파라미터가 미세 조정됩니다. [CLS]는 모든 입력 예제 앞에 추가된 특수 기호이고 [SEP]는 특수 구분 토큰(예: 질문/답변 구분)입니다."></p>
+<p>출력 계층을 제외하고, 사전 훈련과 미세 조정 모두에서 동일한 아키텍처가 사용된다. 동일한 사전 훈련된 모델 매개 변수는 다양한 다운스트림 작업에 대한 모델을 초기화하는 데 사용된다. 미세 조정 중에는 모든 파라미터가 미세 조정됩니다. [CLS]는 모든 입력 예제 앞에 추가된 특수 기호이고 [SEP]는 특수 구분 토큰(예: 질문&#x2F;답변 구분)입니다.</p>
+<p>BERT는 크게 pre-training 단계와 fine-tuning 단계, 두가지 단계로 구분하며, 각 단계는 모두 동일한 모델 구조를 공유합니다.</p>
+<p>Pre-training 단계에서는 레이블링 하지 않는 데이터를 기반으로 학습을 진행합니다.</p>
+<p>Fine-tuning에서는 pre-trained 파라미터로 초기화된 모델을 레이블링된 데이터로 학습합니다.</p>
+<h2 id="Model-Architecture"><a href="#Model-Architecture" class="headerlink" title="Model Architecture"></a>Model Architecture</h2><p>BERT의 구조는 다층레이어로 구성된 양방향 Transformer의 Encoder를 기본으로 하며, 아래와 같은 표기로 모델 속성을 나타내었습니다.</p>
+<ul>
+<li>L : Layer 갯수 (ex : Transformer Block)</li>
+<li>H : Hidden size</li>
+<li>A : self-attention head 의 갯수</li>
+</ul>
+<p>논문에서는 크게 두 모델을 제시합니다.</p>
+<ul>
+<li>BERT-BASE : L &#x3D; 12, H &#x3D; 768, A &#x3D; 12, 총 파라미터 수 &#x3D; 110M (GPT 와 동일)</li>
+<li>BERT-LATGE : L &#x3D; 24, H &#x3D; 1024, A &#x3D; 16, 총 파라미터 수 &#x3D; 240M</li>
+</ul>
+<h2 id="Input-x2F-Output-Representations"><a href="#Input-x2F-Output-Representations" class="headerlink" title="Input&#x2F;Output Representations"></a>Input&#x2F;Output Representations</h2><p>실제 사용하는 다양한 task에 사용할 수 있도록, 단일 문장과 쌍으로 이어진 문자을 모두 하나의 Sequence 로 표현합니다. 단어 임베딩으로는 WordPiece embedding 을 사용하며 30,000개의 token vocalbulary를 사용합니다.</p>
+<p><img src="/images/ML_DL/BERT_Pre-t/2.png"></p>
+<p>Input은 Token embedding + Segment embedding + Position embedding 으로 구성됩니다.</p>
+<ul>
+<li>Token Embedding<ul>
+<li>Sequence 의 첫 토큰은 [CLS]토큰을 사용합니다.</li>
+<li>두 문장이 이어진 경우, [SEP]토큰으로 문장을 구분하며, 마지막에도 [SEP] 토큰을 추가합니다.<ul>
+<li>[CLS]는 모든 입력 예제 앞에 추가된 특수 기호이고 [SEP]는 특수 구분 토큰(예: 질문&#x2F;답변 구분)입니다.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Segment Embedding<ul>
+<li>두 문장이 있을 때, 각각의 문장에 sentence A &#x2F; sentence B 임베딩을 적용합니다.</li>
+</ul>
+</li>
+<li>Positional Embedding<ul>
+<li>Transformer 의 삼각함수 Encoding 이 아닌, lookup table 에서 각 position의 vector들을 찾아서 Position 을 embedding합니다.</li>
+</ul>
+</li>
+</ul>
+<h1 id="Pre-training-BERT"><a href="#Pre-training-BERT" class="headerlink" title="Pre-training BERT"></a>Pre-training BERT</h1><p>전통적인 left-to-right &#x2F; right-to-left LM 을 사용해서 pre-train 하는 ELMo, GPT와는 다르게, BERT는 2개의 unsupervised task를 이용해서 사전학습을 수행합니다.</p>
+<h2 id="Task-1-Masked-LM"><a href="#Task-1-Masked-LM" class="headerlink" title="Task #1 : Masked LM"></a>Task #1 : Masked LM</h2><p>기존의 언어 모델을 Bidirectional 하게 처리하는 경우, 간접적으로 예측하려는 단어를 참조할 수 있게 되어 예측 자체가 무의미해질 수 있음을 지적합니다.</p>
+<p>BERT는 전체 Sequence 에서 15%의 토큰을 가리는 Mask 를 추가하여 양방향 학습의 문제를 해결하였습니다.</p>
+<p>또한, 사전 훈련 모델이 [MASK] 토큰을 사용하지 않는 Fine-tuning에도 적용될 수 있도록 하는 Masking Rule을 제시합니다.</p>
+<ul>
+<li>80%는 [MASK]로 치환</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">my dog is hairy -&gt; my dog is [MASK]</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>10%는 랜덤한 토큰으로 치환</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">my dog is hairy -&gt; my dog is apple</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>10%는 기존의 토큰을 그대로 사용</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">my dog is hairy -&gt; my dog is hairy</span><br></pre></td></tr></table></figure>
+
+<p>이로 인해 model은 단어의 기원(원본&#x2F;MASK&#x2F;random changed)을 알지 못한 채 모든 input token에 대해서 distributional contextual representation을 유지하게 됩니다. 또한 전체의 1.5% 토큰만이 랜덤하게 변경되었기에, 모델이 잘못 학습될 우려 또한 적음을 제시합니다.</p>
+<p><img src="/images/ML_DL/BERT_Pre-t/3.png"></p>
+<p>이러한 비율은 위의 실험을 통해 제시되었습니다.</p>
+<ul>
+<li>전체적으로 fine-tuning task 가 feature-based 보다 좋은 성능을 보임</li>
+<li>특정 Masking Rule 만을 사용하는 것이 아닌, Rule 혼합이 더 좋은 성능을 보임</li>
+</ul>
+<p>최종적으로는 cross-entropy loss 를 사용해서 기존의 토큰을 예측하도록 학습합니다.</p>
+<h2 id="Task-2-Next-Sentence-Prediction-NSP"><a href="#Task-2-Next-Sentence-Prediction-NSP" class="headerlink" title="Task #2: Next Sentence Prediction (NSP)"></a>Task #2: Next Sentence Prediction (NSP)</h2><ul>
+<li><p>Many important downstream tasks such as Question Answering (QA) and Natural Language Inference (NLI) are based on understanding  he relationship between two sentences, which is not directly captured by language modeling. In order to train a model that understands sentence relationships, we pre-train for a binarized next sentence prediction task that can be trivially generated from any monolingual corpus. Specifically, when choosing the entences A and B for each pretraining example, 50% of the time B is the actual next sentence that follows A (labeled as IsNext), and 50% of the time it is a random sentence from the corpus (labeled as NotNext). As we show in Figure 1, C is used for next sentence prediction (NSP).</p>
+  <aside>
+  💡 문장 관계를 이해하는 모델을 훈련하기 위해, 우리는 모든 단일 언어 말뭉치에서 사소한 것으로 생성될 수 있는 이항화된 다음 문장 예측 작업을 위해 사전 훈련한다. 구체적으로, 각 사전 훈련 예에 대한 문장 A와 B를 선택할 때, 시간의 50%는 A를 따르는 실제 다음 문장(IsNext로 레이블링됨)이고, 50%는 말뭉치(NotNext로 레이블링됨)의 무작위 문장이다. 그림 1에서 알 수 있듯이, C는 다음 문장 예측(NSP)에 사용된다.
+  
+  </aside></li>
+</ul>
+<p>Question-answering(QA), Natural Language Interference(NLI) 등의 task는 두 문장 사이의 관계를 이해해야 하는 task입니다. 일반적인 LM 으로는 해당 Task 의 학습이 어려우므로, 이 또한 학습을 진행합니다.</p>
+<p>두 문장과 레이블로 구성된 다음의 데이터 셋으로 Binary 분류 문제를 학습합니다.</p>
+<ul>
+<li>50% : 실제로 이어진 두 문장을 제시 : 레이블 IsNext</li>
+<li>50% : 관계가 없는 임의의 문장을 제시 : 레이블 NotNext</li>
+</ul>
+<h3 id="Pre-training-data"><a href="#Pre-training-data" class="headerlink" title="Pre-training data"></a>Pre-training data</h3><p>사전 훈련을 위해 사용한 corpus 를 제시합니다.</p>
+<ul>
+<li>BooksCorpus (800M words)</li>
+<li>English Wikipedia (2,500M words) :  text passage 만 사용했고, 목록이나 표 등은 제외하여 사용</li>
+</ul>
+<p>긴 문맥을 학습하기 위해서 Billion Word Benchmark 와 같이 섞인 문장으로 구성된 데이터는 사용하지 않았습니다.</p>
+<h2 id="Fine-tuning-BERT"><a href="#Fine-tuning-BERT" class="headerlink" title="Fine-tuning BERT"></a>Fine-tuning BERT</h2><p>Task 별 입력의 개수(단일 문장, 2개의 문장)에 따라 하나의 sequence 를 생성하여 입력으로 사용합니다.</p>
+<p>이후, 파라미터들을 해당 task에 맞게 end-to-end로 업데이트합니다.</p>
+<p>Sequence tagging 이나 question answering 같이 token-level task 들의 경우, 마지막 transformer layer의 token 들을 사용하여 fine-tuning 합니다.</p>
+<p>Sentence Classification, sentiment analysis 등의 sentence-level classification task 들은 마지막 layer의 CLS token의 hidden state를 fine-tuning에 이용합니다.</p>
+<p>Pre-training과 비교했을 때, fine-tuning 은 빠르게 학습이 가능합니다.</p>
+<h1 id="Experiments"><a href="#Experiments" class="headerlink" title="Experiments"></a>Experiments</h1><p>BERT fine-tuning을 이용한 11개의 NLP task의 결과를 제공합니다. 모든 Task 에서 State-Of-Arts 를 달성하였고, 각각의 특성에 맞는 학습 방법을 제시합니다.</p>
+<p><img src="/images/ML_DL/BERT_Pre-t/4.png"></p>
+<h2 id="GLUE"><a href="#GLUE" class="headerlink" title="GLUE"></a>GLUE</h2><p>GLEU benchmark는 다양한 natural language understanding task를 위한 문장 분류 Task 입니다. BERT 모델에 분류를 위한 classification layer를 추가합니다.</p>
+<h2 id="SQuAD-v1-1"><a href="#SQuAD-v1-1" class="headerlink" title="SQuAD v1.1"></a>SQuAD v1.1</h2><p>SQuAD v1.1 dataset은 Question Answering dataset으로, 질문과 지문의 형태 주어진 데이터에서 답변을 찾는 과제입니다. BERT 는 질문과 지문을 하나의 single sequence 로 묶어서 input으로 만든 뒤, 지문에서 정답이 될 수 있는 영역을 찾는 방식으로 Task 를 전환해 학습합니다.</p>
+<h2 id="SQuAD-v2-0"><a href="#SQuAD-v2-0" class="headerlink" title="SQuAD v2.0"></a>SQuAD v2.0</h2><p>SQuAD v2.0 은 1.1 과 유사하지만, 지문만으로는 대답이 불가능한 질문이 포함된 dataset 입니다. BERT 는 대답이 불가능한지 여부를 CLS token 을 이용해 분류하는 문제를 추가합니다.</p>
+<h2 id="SWAG"><a href="#SWAG" class="headerlink" title="SWAG"></a>SWAG</h2><p>The Situations With Adversarial Generations (SWAG) dataset은 앞 문장이 주어졌을 때, 보기로 주어진 4 문장 중 가장 잘 어울리는 문장을 찾는 task 입니다.</p>
+<p>Fine-tuning 을 위해, 앞 뒤 문장을 조합해 4개의 문장을 생성하고, 해당 sequence 의 정답 여부를 Classification 하는 Task 를 수행합니다. </p>
+<h1 id="Ablation-Studies"><a href="#Ablation-Studies" class="headerlink" title="Ablation Studies"></a>Ablation Studies</h1><h2 id="Effect-of-Pre-training-Tasks"><a href="#Effect-of-Pre-training-Tasks" class="headerlink" title="Effect of Pre-training Tasks"></a>Effect of Pre-training Tasks</h2><p><img src="/images/ML_DL/BERT_Pre-t/5.png"></p>
+<p>사전 훈련의 효과를 확인하기 위해, 훈련을 제거하며 실험한 결과를 제시합니다.</p>
+<ul>
+<li>No NSP : masked LM(MLM) 으로만 학습되고 NSP는 사용하지 않는 경우<ul>
+<li>NLI 문제에서 성능이 하락</li>
+<li>NSP 가 문장간의 논리적인 구조 파악에 중요한 역할을 수행함을 시사</li>
+</ul>
+</li>
+<li>LTR &amp; No NSP : MLM이 아닌 Left-To-Right model 을 사용하고 NSP도 사용하지 않는 경우<ul>
+<li>모든 task에 대해서 성능이 감소하며, 특히 MRPC와 SQuAD 에서 큰 폭의 성능 저하를 확인</li>
+</ul>
+</li>
+<li>LTR &amp; No NSP + BiLSTM : BiLSTM 을 추가하여 양방향성을 제공<ul>
+<li>BiLSTM 이 없는 경우에 비해 미미하게 성능이 상승하지만, MLM 에 비해서는 떨어짐</li>
+<li>MLM이 bi-directionality 가 더 강함을 시사</li>
+</ul>
+</li>
+</ul>
+<h2 id="Effect-of-Model-size"><a href="#Effect-of-Model-size" class="headerlink" title="Effect of Model size"></a>Effect of Model size</h2><p><img src="/images/ML_DL/BERT_Pre-t/7.png"></p>
+<p>모델의 크기가 fine-tuning 정확도에 어떠한 영향을 주는지를 확인합니다.</p>
+<ul>
+<li>모델이 커질수록, Pre-training 의 정확도가 상승</li>
+<li>downstream task 가 작은 스케일의 데이터셋을 사용할 때에도 성능이 상승</li>
+</ul>
+<h2 id="Feature-based-Approach-with-BERT"><a href="#Feature-based-Approach-with-BERT" class="headerlink" title="Feature-based Approach with BERT"></a>Feature-based Approach with BERT</h2><p>BERT를 ELMo 와 같은 feature-based 로 사용하는 방식과 그 장점을 제시합니다.</p>
+<ul>
+<li>task-specific model 의 추가로 Transformer encoder 만으로 수행 불가능한 task에 적용 가능</li>
+<li>Update parameter 감소로 학습 비용 절감</li>
+</ul>
+<p><img src="/images/ML_DL/BERT_Pre-t/8.png"></p>
+<p>CoNLL-2003 Named Entity Recognition task 로 성능을 평가합니다.</p>
+<p>BERT 레이어의 일부 activation 에 Bi-LSTM을 부착시켜 해당 레이어만 학습시키는 방식으로 Feature-based approach 를 구현하였고, 기존 ELMo 에 비해서도 좋은 성능을 보입니다.</p>
+<p>또한 Fine-Tuning 방법만을 사용하였을 때도, SOTA 에 근접한 결과를 얻었음을 제시합니다.</p>
+<p><img src="/images/ML_DL/BERT_Pre-t/9.png"></p>
+<p>참조 : </p>
+<p><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=30SvdoA6ApE">https://www.youtube.com/watch?v=30SvdoA6ApE</a></p>
+<h1 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h1><ul>
+<li>RNN은 순차적으로 계산한다면 Transformer는 한번에 계산.</li>
+<li>BERT는 Transformer를 이용해서 양방향의 문맥을 숫자의 형태로 바꿔주는 딥러닝 모델이다.</li>
+</ul>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="http://eomtaehyeon.github.io/2022/09/23/Study/ML_DL/BERT%20_review/" data-id="cl8el1faw0000lgto60wpfgyb" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "Eom Taehyeon"
+        },
+        "headline": "논문 BERT 리뷰",
+        "image": "http://eomtaehyeon.github.io/images/ML_DL/BERT_Pre-t/1.png",
+        "keywords": "논문리뷰 NLP NAACL BERT Transformers",
+        "genre": "논문리뷰 NLP",
+        "datePublished": "2022-09-23",
+        "dateCreated": "2022-09-23",
+        "dateModified": "2022-09-23",
+        "url": "http://eomtaehyeon.github.io/2022/09/23/Study/ML_DL/BERT _review/",
+        "description": "BERT:Pre-training of Deep Bidirectional Transformers for Language Understanding Review
+
+Conference : NAACL
+Link :
+
+BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding
+
+Yea",
+        "wordCount": 1749
+    }
+</script>
+
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+
+    
+    </section>
+
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>follow:</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="user" href="https://github.com/eomtaehyeon/Resume" target="_blank" rel="noopener">
+                        <i class="icon fa fa-user"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="instagram" href="https://www.instagram.com/hi__gorae/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-instagram"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/eomtaehyeon" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/2022/09/22/Study/DataQ/BigData/Class1.2_Data_Analysis_Plan/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">older</strong>
+        <p class="article-nav-title">1과목. 빅데이터 분석 기획 2장. 데이터 분석 계획</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">recents</h3>
+        <div class="widget">
+            <ul id="recent-post" class="no-thumbnail">
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%EB%85%BC%EB%AC%B8%EB%A6%AC%EB%B7%B0/">논문리뷰</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/%EB%85%BC%EB%AC%B8%EB%A6%AC%EB%B7%B0/NLP/">NLP</a></p>
+                            <p class="item-title"><a href="/2022/09/23/Study/ML_DL/BERT%20_review/" class="title">논문 BERT 리뷰</a></p>
+                            <p class="item-date"><time datetime="2022-09-23T00:00:00.000Z" itemprop="datePublished">2022-09-23</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%EC%9E%90%EA%B2%A9%EC%A6%9D%EA%B3%B5%EB%B6%80%EC%9A%94%EC%A0%90%EC%A0%95%EB%A6%AC/">자격증공부요점정리</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/%EC%9E%90%EA%B2%A9%EC%A6%9D%EA%B3%B5%EB%B6%80%EC%9A%94%EC%A0%90%EC%A0%95%EB%A6%AC/%EB%B9%85%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B6%84%EC%84%9D%EA%B8%B0%EC%82%AC%ED%95%84%EA%B8%B0/">빅데이터분석기사필기</a></p>
+                            <p class="item-title"><a href="/2022/09/22/Study/DataQ/BigData/Class1.2_Data_Analysis_Plan/" class="title">1과목. 빅데이터 분석 기획 2장. 데이터 분석 계획</a></p>
+                            <p class="item-date"><time datetime="2022-09-22T00:00:00.000Z" itemprop="datePublished">2022-09-22</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%EC%9E%90%EA%B2%A9%EC%A6%9D%EA%B3%B5%EB%B6%80%EC%9A%94%EC%A0%90%EC%A0%95%EB%A6%AC/">자격증공부요점정리</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/%EC%9E%90%EA%B2%A9%EC%A6%9D%EA%B3%B5%EB%B6%80%EC%9A%94%EC%A0%90%EC%A0%95%EB%A6%AC/%EB%B9%85%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B6%84%EC%84%9D%EA%B8%B0%EC%82%AC%ED%95%84%EA%B8%B0/">빅데이터분석기사필기</a></p>
+                            <p class="item-title"><a href="/2022/09/21/Study/DataQ/BigData/Class1.1_Understanding_Big_Data/" class="title">1과목. 빅데이터 분석 기획 1장. 빅데이터의 이해</a></p>
+                            <p class="item-date"><time datetime="2022-09-21T00:00:00.000Z" itemprop="datePublished">2022-09-21</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/About/">About</a></p>
+                            <p class="item-title"><a href="/2022/09/20/About/eomtaehyeon/" class="title">I am ~</a></p>
+                            <p class="item-date"><time datetime="2022-09-20T10:25:18.896Z" itemprop="datePublished">2022-09-20</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Settings/">Settings</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Settings/Blog/">Blog</a></p>
+                            <p class="item-title"><a href="/2022/09/16/Github/Hexo/HexoThemeSetting/" class="title">Hexo블로그 테마적용하기</a></p>
+                            <p class="item-date"><time datetime="2022-09-16T00:00:00.000Z" itemprop="datePublished">2022-09-16</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">categories</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/About/">About</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Settings/">Settings</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Settings/Blog/">Blog</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EB%85%BC%EB%AC%B8%EB%A6%AC%EB%B7%B0/">논문리뷰</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%EB%85%BC%EB%AC%B8%EB%A6%AC%EB%B7%B0/NLP/">NLP</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%9E%90%EA%B2%A9%EC%A6%9D%EA%B3%B5%EB%B6%80%EC%9A%94%EC%A0%90%EC%A0%95%EB%A6%AC/">자격증공부요점정리</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%9E%90%EA%B2%A9%EC%A6%9D%EA%B3%B5%EB%B6%80%EC%9A%94%EC%A0%90%EC%A0%95%EB%A6%AC/%EB%B9%85%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B6%84%EC%84%9D%EA%B8%B0%EC%82%AC%ED%95%84%EA%B8%B0/">빅데이터분석기사필기</a><span class="category-list-count">2</span></li></ul></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">archives</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/09/">September 2022</a><span class="archive-list-count">6</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">tags</h3>
+        <div class="widget">
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/BERT/" rel="tag">BERT</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Blog/" rel="tag">Blog</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Github/" rel="tag">Github</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NAACL/" rel="tag">NAACL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NLP/" rel="tag">NLP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Transformers/" rel="tag">Transformers</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EB%85%BC%EB%AC%B8%EB%A6%AC%EB%B7%B0/" rel="tag">논문리뷰</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%82%AC%EC%9D%B4%EC%96%B8%ED%8B%B0%EC%8A%A4%ED%8A%B8/" rel="tag">데이터사이언티스트</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EB%B9%85%EB%8D%B0%EC%9D%B4%ED%84%B0/" rel="tag">빅데이터</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EB%B9%85%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B6%84%EC%84%9D%EA%B8%B0%EC%82%AC%ED%95%84%EA%B8%B0/" rel="tag">빅데이터분석기사필기</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EB%B9%85%EB%B6%84%EA%B8%B0/" rel="tag">빅분기</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EC%9E%90%EA%B2%A9%EC%A6%9D%EA%B3%B5%EB%B6%80%EC%9A%94%EC%A0%90%EC%A0%95%EB%A6%AC/" rel="tag">자격증공부요점정리</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%ED%95%84%EA%B8%B0/" rel="tag">필기</a><span class="tag-list-count">2</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">tag cloud</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/BERT/" style="font-size: 10px;">BERT</a> <a href="/tags/Blog/" style="font-size: 20px;">Blog</a> <a href="/tags/Github/" style="font-size: 20px;">Github</a> <a href="/tags/Hexo/" style="font-size: 20px;">Hexo</a> <a href="/tags/NAACL/" style="font-size: 10px;">NAACL</a> <a href="/tags/NLP/" style="font-size: 10px;">NLP</a> <a href="/tags/Transformers/" style="font-size: 10px;">Transformers</a> <a href="/tags/%EB%85%BC%EB%AC%B8%EB%A6%AC%EB%B7%B0/" style="font-size: 10px;">논문리뷰</a> <a href="/tags/%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%82%AC%EC%9D%B4%EC%96%B8%ED%8B%B0%EC%8A%A4%ED%8A%B8/" style="font-size: 20px;">데이터사이언티스트</a> <a href="/tags/%EB%B9%85%EB%8D%B0%EC%9D%B4%ED%84%B0/" style="font-size: 20px;">빅데이터</a> <a href="/tags/%EB%B9%85%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B6%84%EC%84%9D%EA%B8%B0%EC%82%AC%ED%95%84%EA%B8%B0/" style="font-size: 20px;">빅데이터분석기사필기</a> <a href="/tags/%EB%B9%85%EB%B6%84%EA%B8%B0/" style="font-size: 20px;">빅분기</a> <a href="/tags/%EC%9E%90%EA%B2%A9%EC%A6%9D%EA%B3%B5%EB%B6%80%EC%9A%94%EC%A0%90%EC%A0%95%EB%A6%AC/" style="font-size: 20px;">자격증공부요점정리</a> <a href="/tags/%ED%95%84%EA%B8%B0/" style="font-size: 20px;">필기</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">links</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a target="_blank" rel="noopener" href="https://github.com/eomtaehyeon">Github</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2022 Eom Taehyeon</p>
+                
+                <p>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="https://github.com/ppoffice" target="_blank">PPOffice</a></p>
+                
+            </div>
+            <div class="footer-plugins">
+              
+    
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+    </div>
+    
+    
+    <script>
+    var disqus_shortname = 'hexo-theme-hueman';
+    
+    
+    var disqus_url = 'http://eomtaehyeon.github.io/2022/09/23/Study/ML_DL/BERT%20_review/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+
+
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+
+    
+    
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+</body>
+</html>
