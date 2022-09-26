@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+
+    
+
+    
+    <title>2과목. 빅데이터 탐색 2장. 데이터 탐색 | thanks for noticing</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="자격증공부요점정리,빅데이터분석기사필기,빅분기,필기,빅데이터,데이터사이언티스트" />
+    
+    <meta name="description" content="2장 데이터 탐색데이터 간의 유의미한 관계 파악 및 이해를 위한 탐색 방법들을 학습한다. 핵심 키워드  EDA 상관분석 기초통계량 다변량분석  01. 데이터 탐색 기초학습목표 데이터 탐색을 위한 기본적인 통계 확인과 관계 및 분포를 해석하는 방법을 학습 1. 데이터 탐색 개요EDA EDA의 4R  데이터 탐색 개요 개별 변수 탐색 방법 다차원 데이터 탐색">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2과목. 빅데이터 탐색 2장. 데이터 탐색">
+<meta property="og:url" content="http://eomtaehyeon.github.io/2022/09/26/Study/DataQ/BigData/Class2.2_Data_Exploration/index.html">
+<meta property="og:site_name" content="thanks for noticing">
+<meta property="og:description" content="2장 데이터 탐색데이터 간의 유의미한 관계 파악 및 이해를 위한 탐색 방법들을 학습한다. 핵심 키워드  EDA 상관분석 기초통계량 다변량분석  01. 데이터 탐색 기초학습목표 데이터 탐색을 위한 기본적인 통계 확인과 관계 및 분포를 해석하는 방법을 학습 1. 데이터 탐색 개요EDA EDA의 4R  데이터 탐색 개요 개별 변수 탐색 방법 다차원 데이터 탐색">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://eomtaehyeon.github.io/images/DataQ/BigData/Class2.2_Data_Exploration/1.png">
+<meta property="article:published_time" content="2022-09-26T00:00:00.000Z">
+<meta property="article:modified_time" content="2022-09-26T08:42:37.701Z">
+<meta property="article:author" content="Eom Taehyeon">
+<meta property="article:tag" content="자격증공부요점정리">
+<meta property="article:tag" content="빅데이터분석기사필기">
+<meta property="article:tag" content="빅분기">
+<meta property="article:tag" content="필기">
+<meta property="article:tag" content="빅데이터">
+<meta property="article:tag" content="데이터사이언티스트">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://eomtaehyeon.github.io/images/DataQ/BigData/Class2.2_Data_Exploration/1.png">
+    
+
+    
+
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/titillium-web/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/3.5.0/jquery.min.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+    
+    
+
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">Home</a>
+                                </li>
+                            
+                                    <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/About/">About</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Settings/">Settings</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Settings/Blog/">Blog</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EB%85%BC%EB%AC%B8%EB%A6%AC%EB%B7%B0/">논문리뷰</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EB%85%BC%EB%AC%B8%EB%A6%AC%EB%B7%B0/NLP/">NLP</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%9E%90%EA%B2%A9%EC%A6%9D%EA%B3%B5%EB%B6%80%EC%9A%94%EC%A0%90%EC%A0%95%EB%A6%AC/">자격증공부요점정리</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%9E%90%EA%B2%A9%EC%A6%9D%EA%B3%B5%EB%B6%80%EC%9A%94%EC%A0%90%EC%A0%95%EB%A6%AC/%EB%B9%85%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B6%84%EC%84%9D%EA%B8%B0%EC%82%AC%ED%95%84%EA%B8%B0/">빅데이터분석기사필기</a></li></ul></li></ul>
+                                
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/%EC%9E%90%EA%B2%A9%EC%A6%9D%EA%B3%B5%EB%B6%80%EC%9A%94%EC%A0%90%EC%A0%95%EB%A6%AC/">자격증공부요점정리</a><i class="icon fa fa-angle-right"></i><a class="page-title-link" href="/categories/%EC%9E%90%EA%B2%A9%EC%A6%9D%EA%B3%B5%EB%B6%80%EC%9A%94%EC%A0%90%EC%A0%95%EB%A6%AC/%EB%B9%85%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B6%84%EC%84%9D%EA%B8%B0%EC%82%AC%ED%95%84%EA%B8%B0/">빅데이터분석기사필기</a>
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-Study/DataQ/BigData/Class2.2_Data_Exploration" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        2과목. 빅데이터 탐색 2장. 데이터 탐색
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+  <div class="article-date">
+    <i class="fa fa-calendar"></i>
+    <a href="/2022/09/26/Study/DataQ/BigData/Class2.2_Data_Exploration/" class="article-date">
+       <time datetime="2022-09-26T00:00:00.000Z" itemprop="datePublished">2022-09-26</time>
+    </a>
+  </div>
+
+
+<div class="article-date">
+  <i class="fa fa-calendar-plus-o"></i>
+  <a href="/2022/09/26/Study/DataQ/BigData/Class2.2_Data_Exploration/" class="article-date">
+     <time datetime="2022-09-26T08:42:37.701Z" itemprop="dateModified">2022-09-26</time>
+  </a>
+</div>
+
+
+                
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%82%AC%EC%9D%B4%EC%96%B8%ED%8B%B0%EC%8A%A4%ED%8A%B8/" rel="tag">데이터사이언티스트</a>, <a class="tag-link-link" href="/tags/%EB%B9%85%EB%8D%B0%EC%9D%B4%ED%84%B0/" rel="tag">빅데이터</a>, <a class="tag-link-link" href="/tags/%EB%B9%85%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B6%84%EC%84%9D%EA%B8%B0%EC%82%AC%ED%95%84%EA%B8%B0/" rel="tag">빅데이터분석기사필기</a>, <a class="tag-link-link" href="/tags/%EB%B9%85%EB%B6%84%EA%B8%B0/" rel="tag">빅분기</a>, <a class="tag-link-link" href="/tags/%EC%9E%90%EA%B2%A9%EC%A6%9D%EA%B3%B5%EB%B6%80%EC%9A%94%EC%A0%90%EC%A0%95%EB%A6%AC/" rel="tag">자격증공부요점정리</a>, <a class="tag-link-link" href="/tags/%ED%95%84%EA%B8%B0/" rel="tag">필기</a>
+    </div>
+
+                
+
+                
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            
+
+            
+
+            
+
+            <h1 id="2장-데이터-탐색"><a href="#2장-데이터-탐색" class="headerlink" title="2장 데이터 탐색"></a>2장 데이터 탐색</h1><p><strong>데이터 간의 유의미한 관계 파악 및 이해를 위한 탐색 방법들을 학습한다.</strong></p>
+<p><strong><code>핵심 키워드</code></strong></p>
+<ul>
+<li><strong>EDA</strong></li>
+<li><strong>상관분석</strong></li>
+<li><strong>기초통계량</strong></li>
+<li><strong>다변량분석</strong></li>
+</ul>
+<h1 id="01-데이터-탐색-기초"><a href="#01-데이터-탐색-기초" class="headerlink" title="01. 데이터 탐색 기초"></a>01. 데이터 탐색 기초</h1><p><strong><code>학습목표</code></strong></p>
+<p><strong>데이터 탐색을 위한 기본적인 통계 확인과 관계 및 분포를 해석하는 방법을 학습</strong></p>
+<h2 id="1-데이터-탐색-개요"><a href="#1-데이터-탐색-개요" class="headerlink" title="1. 데이터 탐색 개요"></a>1. 데이터 탐색 개요</h2><h3 id="EDA"><a href="#EDA" class="headerlink" title="EDA"></a>EDA</h3><p><img src="/images/DataQ/BigData/Class2.2_Data_Exploration/1.png"></p>
+<h3 id="EDA의-4R"><a href="#EDA의-4R" class="headerlink" title="EDA의 4R"></a>EDA의 4R</h3><p><img src="/images/DataQ/BigData/Class2.2_Data_Exploration/2.png"></p>
+<p><img src="/images/DataQ/BigData/Class2.2_Data_Exploration/3.png"></p>
+<h3 id="데이터-탐색-개요"><a href="#데이터-탐색-개요" class="headerlink" title="데이터 탐색 개요"></a>데이터 탐색 개요</h3><p><img src="/images/DataQ/BigData/Class2.2_Data_Exploration/4.png"></p>
+<h3 id="개별-변수-탐색-방법"><a href="#개별-변수-탐색-방법" class="headerlink" title="개별 변수 탐색 방법"></a>개별 변수 탐색 방법</h3><p><img src="/images/DataQ/BigData/Class2.2_Data_Exploration/5.png"></p>
+<h3 id="다차원-데이터-탐색-방법"><a href="#다차원-데이터-탐색-방법" class="headerlink" title="다차원 데이터 탐색 방법"></a>다차원 데이터 탐색 방법</h3><p><img src="/images/DataQ/BigData/Class2.2_Data_Exploration/6.png"></p>
+<h3 id="JOIN-종류"><a href="#JOIN-종류" class="headerlink" title="JOIN 종류"></a>JOIN 종류</h3><p><img src="/images/DataQ/BigData/Class2.2_Data_Exploration/7.png"></p>
+<h2 id="2-상관-관계-분석"><a href="#2-상관-관계-분석" class="headerlink" title="2. 상관 관계 분석"></a>2. 상관 관계 분석</h2><h3 id="상관분석과-상관계수"><a href="#상관분석과-상관계수" class="headerlink" title="상관분석과 상관계수"></a>상관분석과 상관계수</h3><ul>
+<li>스피어만 상관계수</li>
+<li>켄달 상관계수</li>
+<li>피어슨 상관계수(가장 일반적)</li>
+<li>-1과 1 사이의 값을 가지고 강도와 방향의 측면에서 해석할 수 있다.</li>
+</ul>
+<p><img src="/images/DataQ/BigData/Class2.2_Data_Exploration/8.png"></p>
+<h3 id="상관계수-해석"><a href="#상관계수-해석" class="headerlink" title="상관계수 해석"></a>상관계수 해석</h3><ul>
+<li><strong>강도</strong> : 상관계수의 절댓값이 클수록 강한 상관이 있다.<ul>
+<li>상관계수 ±1의 극단 값 : 실제로 거의 존재하지 않으며 완전한 선형관계를 의미</li>
+<li>상관계수 0 : 선형의 상관관계가 없음을 의미</li>
+</ul>
+</li>
+<li><strong>방향</strong> : 상관계수의 부호는 관계의 방향을 의미<ul>
+<li><strong>양(+)의 상관계수</strong> : 한 변수의 값이 증가함에 따라 다른 변수의 값도 증가</li>
+<li><strong>음(-)의 상관계수</strong> : 한 변수의 값이 증가함에 따라 다른 변수의 값은 감소</li>
+</ul>
+</li>
+</ul>
+<p><img src="/images/DataQ/BigData/Class2.2_Data_Exploration/9.png"></p>
+<h3 id="상관계수에-따른-그래프-유형"><a href="#상관계수에-따른-그래프-유형" class="headerlink" title="상관계수에 따른 그래프 유형"></a>상관계수에 따른 그래프 유형</h3><p><img src="/images/DataQ/BigData/Class2.2_Data_Exploration/10.png"></p>
+<h3 id="피어슨-상관-계수-vs-스피어만-상관계수"><a href="#피어슨-상관-계수-vs-스피어만-상관계수" class="headerlink" title="피어슨 상관 계수 vs. 스피어만 상관계수"></a>피어슨 상관 계수 vs. 스피어만 상관계수</h3><p><img src="/images/DataQ/BigData/Class2.2_Data_Exploration/11.png"></p>
+<h2 id="3-기초통계량-추출-및-이해"><a href="#3-기초통계량-추출-및-이해" class="headerlink" title="3. 기초통계량 추출 및 이해"></a>3. 기초통계량 추출 및 이해</h2><h3 id="기초통계량-추출-및-이해"><a href="#기초통계량-추출-및-이해" class="headerlink" title="기초통계량 추출 및 이해"></a>기초통계량 추출 및 이해</h3><ul>
+<li><strong>중심경향치</strong> : 단일 값으로 전체 데이터를 대표할 수 있게 중앙에 위치한 데이터를 표현</li>
+</ul>
+<p><img src="/images/DataQ/BigData/Class2.2_Data_Exploration/12.png"></p>
+<ul>
+<li><strong>산포도</strong> : 데이터의 흩어진 정도를 설명하는 통계치</li>
+</ul>
+<p><img src="/images/DataQ/BigData/Class2.2_Data_Exploration/13.png"></p>
+<ul>
+<li><strong>왜도</strong> : 데이터 분포의 비대칭성을 나타내는 지표</li>
+</ul>
+<p><img src="/images/DataQ/BigData/Class2.2_Data_Exploration/14.png"></p>
+<ul>
+<li><strong>첨도</strong> : 데이터들이 분포의 중심에 어느 정도 몰려 있는 가를 측정할 때 사용하는 지표</li>
+</ul>
+<p><img src="/images/DataQ/BigData/Class2.2_Data_Exploration/15.png"></p>
+<h2 id="4-시각적-데이터-탐색"><a href="#4-시각적-데이터-탐색" class="headerlink" title="4. 시각적 데이터 탐색"></a>4. 시각적 데이터 탐색</h2><h3 id="시각적-데이터-탐색-그래프-종류"><a href="#시각적-데이터-탐색-그래프-종류" class="headerlink" title="시각적 데이터 탐색 - 그래프 종류"></a>시각적 데이터 탐색 - 그래프 종류</h3><p><img src="/images/DataQ/BigData/Class2.2_Data_Exploration/16.png"></p>
+<ul>
+<li>히스토그램</li>
+</ul>
+<p><img src="/images/DataQ/BigData/Class2.2_Data_Exploration/17.png"></p>
+<ul>
+<li>막대그래프</li>
+</ul>
+<p><img src="/images/DataQ/BigData/Class2.2_Data_Exploration/18.png"></p>
+<ul>
+<li>줄기-잎 그림</li>
+</ul>
+<p><img src="/images/DataQ/BigData/Class2.2_Data_Exploration/19.png"></p>
+<ul>
+<li>상자그림</li>
+</ul>
+<p><img src="/images/DataQ/BigData/Class2.2_Data_Exploration/20.png"></p>
+<ul>
+<li>산점도</li>
+</ul>
+<p><img src="/images/DataQ/BigData/Class2.2_Data_Exploration/21.png"></p>
+<ul>
+<li>원그래프</li>
+</ul>
+<p><img src="/images/DataQ/BigData/Class2.2_Data_Exploration/22.png"></p>
+<h1 id="02-고급-데이터-탐색"><a href="#02-고급-데이터-탐색" class="headerlink" title="02. 고급 데이터 탐색"></a>02. 고급 데이터 탐색</h1><p><strong><code>학습목표</code></strong></p>
+<p><strong>현실 속의 다양한 형태로 존재하는 데이터를 처리하고 분석하는 방법</strong></p>
+<h2 id="1-시공간-데이터-탐색"><a href="#1-시공간-데이터-탐색" class="headerlink" title="1. 시공간 데이터 탐색"></a>1. 시공간 데이터 탐색</h2><h3 id="시간-데이터의-이해"><a href="#시간-데이터의-이해" class="headerlink" title="시간 데이터의 이해"></a>시간 데이터의 이해</h3><ul>
+<li>날짜와 시간 데이터는 실생활에서 자주 접할 수 있는 데이터 형태로 유용한 정보를 제공</li>
+</ul>
+<h3 id="R에서-자주-사용하는-시간-포맷-형식"><a href="#R에서-자주-사용하는-시간-포맷-형식" class="headerlink" title="R에서 자주 사용하는 시간 포맷 형식"></a>R에서 자주 사용하는 시간 포맷 형식</h3><p><img src="/images/DataQ/BigData/Class2.2_Data_Exploration/23.png"></p>
+<h3 id="공간분석과-GIS"><a href="#공간분석과-GIS" class="headerlink" title="공간분석과 GIS"></a>공간분석과 GIS</h3><p><img src="/images/DataQ/BigData/Class2.2_Data_Exploration/24.png"></p>
+<h3 id="GIS-구성요소"><a href="#GIS-구성요소" class="headerlink" title="GIS 구성요소"></a>GIS 구성요소</h3><p><img src="/images/DataQ/BigData/Class2.2_Data_Exploration/25.png"></p>
+<h3 id="시공간-데이터"><a href="#시공간-데이터" class="headerlink" title="시공간 데이터"></a>시공간 데이터</h3><ul>
+<li>공간적 객체에 시간의 개념이 추가되어 시간에 따라 위치나 형상이 변하는 데이터</li>
+<li><strong>시공간 데이터의 특징</strong></li>
+</ul>
+<p><img src="/images/DataQ/BigData/Class2.2_Data_Exploration/26.png"></p>
+<ul>
+<li><strong>시공간 데이터의 타입</strong><ul>
+<li><strong>포인트 타입</strong> : 하나의 노드로 구성되는 공간 데이터 타입</li>
+<li><strong>라인 타입</strong> : 서로 다른 두 개의 노드와 두 노드를 잇는 하나의 세그먼트로 구성</li>
+<li><strong>폴리곤 타입</strong> : n개의 노드와 n개의 세그먼트로 구성</li>
+<li><strong>폴리라인 타입</strong> : n개의 노드와 n-1개의 세그먼트로 구성</li>
+</ul>
+</li>
+</ul>
+<h3 id="시공간-데이터-탐색-절차"><a href="#시공간-데이터-탐색-절차" class="headerlink" title="시공간 데이터 탐색 절차"></a>시공간 데이터 탐색 절차</h3><ul>
+<li><strong>주소를 행정구역으로 변환</strong><ul>
+<li>문자열 처리 함수를 이용해 쉽게 변환 가능</li>
+</ul>
+</li>
+<li><strong>주소를 좌표계로 변환</strong><ul>
+<li>시공간 데이터의 주소를 이용하여 위도와 경도로 변환</li>
+<li>지오 코딩 서비스를 이용하여 좌표계로 변환<ul>
+<li>ex.Geocoder.us (위도 경도 반환 서비스)</li>
+<li>Google Maps Latitude Popup (구글 매쉬업 프로젝트)</li>
+<li>Geopy (파이썬용 지오 코딩 도구 모음)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>행정구역 및 좌표계를 지도에 표시</strong><ul>
+<li><p>시공간 데이터에 따라 행정구역 데이터를 지도에 표시하거나 좌표계를 지도에 표시함</p>
+</li>
+<li><p><strong>코로플레스 지도</strong></p>
+<ul>
+<li>어떤 데이터 수치에 따라 지정한 색상 스케일로 영역을 색칠해서 표현하는 방법으로 등치지역도라고도 함</li>
+<li>영역별 데이터를 표현하는 가장 보편적인 방법으로 데이터값의 크기에 따라 지역별로 색을 다르게 표시함</li>
+<li>인구밀도가 매우 높은 지역과 낮은 지역에 동일한 척도를 적용할 경우 표시한 지역의 면적이 실제 데이터값의 크기를 반영할 수 없다는 단점</li>
+</ul>
+<p>  <img src="/images/DataQ/BigData/Class2.2_Data_Exploration/27.png">
+  </p>
+</li>
+<li><p><strong>카토그램</strong></p>
+<ul>
+<li>특정한 데이터값의 변화에 따라 지도의 면적이 왜곡되는 지도로 변량비례도라고도 함</li>
+<li>데이터값이 큰 지역의 면적이 시각적으로도 더 크게 표시됨으로써 데이터값의 크기를 직관적으로 인지할 수 있다는 장점</li>
+<li>지도의 형태를 왜곡시킴으로써 데이터 지각의 왜곡을 방지하도록 보정</li>
+</ul>
+<p>  <img src="/images/DataQ/BigData/Class2.2_Data_Exploration/28.png">
+  </p>
+</li>
+<li><p><strong>버블플롯맵</strong></p>
+<ul>
+<li>버블차트에 위도 경도 정보를 적용하여 좌표를 원으로 시각화한 지도</li>
+<li>원의 크기, 색깔 등을 반영하여 시각화 표현</li>
+</ul>
+<p>  <img src="/images/DataQ/BigData/Class2.2_Data_Exploration/29.png"></p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="2-다변량-데이터-탐색"><a href="#2-다변량-데이터-탐색" class="headerlink" title="2. 다변량 데이터 탐색"></a>2. 다변량 데이터 탐색</h2><h3 id="다변량-데이터"><a href="#다변량-데이터" class="headerlink" title="다변량 데이터"></a>다변량 데이터</h3><ul>
+<li><strong>변량</strong> : 조사 대상의 특징, 성질을 숫자 또는 문자로 나타낸 값</li>
+</ul>
+<h3 id="일변량-분석-vs-이변량-분석-vs-다변량-분석"><a href="#일변량-분석-vs-이변량-분석-vs-다변량-분석" class="headerlink" title="일변량 분석 vs. 이변량 분석 vs. 다변량 분석"></a>일변량 분석 vs. 이변량 분석 vs. 다변량 분석</h3><p><img src="/images/DataQ/BigData/Class2.2_Data_Exploration/30.png"></p>
+<h3 id="다변량-분석-기법"><a href="#다변량-분석-기법" class="headerlink" title="다변량 분석 기법"></a>다변량 분석 기법</h3><p><img src="/images/DataQ/BigData/Class2.2_Data_Exploration/31.png"></p>
+<h3 id="다변량-데이터-탐색-도구"><a href="#다변량-데이터-탐색-도구" class="headerlink" title="다변량 데이터 탐색 도구"></a>다변량 데이터 탐색 도구</h3><ul>
+<li><strong>산점도 행렬</strong><ul>
+<li><p>두 변수 간의 산점도를 행렬로 나타내 변수 간의 연관성을 표현한 그래프</p>
+</li>
+<li><p><strong>그림행렬</strong></p>
+<ul>
+<li>변수가 여러 개 있을 때 변수쌍 간의 관계를 보기 위함</li>
+</ul>
+<p>  <img src="/images/DataQ/BigData/Class2.2_Data_Exploration/32.png">
+  </p>
+</li>
+<li><p><strong>개별 Y대 개별 X 산점도 행렬</strong></p>
+<ul>
+<li>y축 및 x축 변수를 사용하여 가능한 각 xy 조합의 그래프 생성</li>
+</ul>
+<p>  <img src="/images/DataQ/BigData/Class2.2_Data_Exploration/33.png">
+  </p>
+</li>
+<li><p><strong>별 그림</strong></p>
+<ul>
+<li>별 모양의 점을 각각의 변수에 대응되도록 한 뒤 각각의 변숫값에 비례하도록 반경을 나타내어 관찰 값을 그림으로 표시한 것</li>
+</ul>
+<p>  <img src="/images/DataQ/BigData/Class2.2_Data_Exploration/34.png"></p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="3-비정형-데이터-탐색"><a href="#3-비정형-데이터-탐색" class="headerlink" title="3. 비정형 데이터 탐색"></a>3. 비정형 데이터 탐색</h2><h3 id="비정형-데이터의-개념"><a href="#비정형-데이터의-개념" class="headerlink" title="비정형 데이터의 개념"></a>비정형 데이터의 개념</h3><ul>
+<li>일정한 규격이나 형태를 지닌 숫자 데이터와 달리 이미지와 영상, 텍스트처럼 형태와 구조가 다른 구조화되지 않은 데이터</li>
+</ul>
+<h3 id="비정형-데이터의-유형"><a href="#비정형-데이터의-유형" class="headerlink" title="비정형 데이터의 유형"></a>비정형 데이터의 유형</h3><p><img src="/images/DataQ/BigData/Class2.2_Data_Exploration/35.png"></p>
+<h3 id="비정형-데이터의-탐색-방법"><a href="#비정형-데이터의-탐색-방법" class="headerlink" title="비정형 데이터의 탐색 방법"></a>비정형 데이터의 탐색 방법</h3><p><img src="/images/DataQ/BigData/Class2.2_Data_Exploration/36.png"></p>
+<h3 id="비정형-데이터-탐색-플랫폼-구성-예시"><a href="#비정형-데이터-탐색-플랫폼-구성-예시" class="headerlink" title="비정형 데이터 탐색 플랫폼 구성 예시"></a>비정형 데이터 탐색 플랫폼 구성 예시</h3><p><img src="/images/DataQ/BigData/Class2.2_Data_Exploration/37.png"></p>
+<h3 id="텍스트-마이닝"><a href="#텍스트-마이닝" class="headerlink" title="텍스트 마이닝"></a>텍스트 마이닝</h3><p><img src="/images/DataQ/BigData/Class2.2_Data_Exploration/38.png"></p>
+<h3 id="텍스트-마이닝-응용-분야"><a href="#텍스트-마이닝-응용-분야" class="headerlink" title="텍스트 마이닝 응용 분야"></a>텍스트 마이닝 응용 분야</h3><p><img src="/images/DataQ/BigData/Class2.2_Data_Exploration/39.png"></p>
+<h3 id="텍스트-마이닝-용어"><a href="#텍스트-마이닝-용어" class="headerlink" title="텍스트 마이닝 용어"></a>텍스트 마이닝 용어</h3><p><img src="/images/DataQ/BigData/Class2.2_Data_Exploration/40.png"></p>
+<h3 id="소셜-네트워크-분석"><a href="#소셜-네트워크-분석" class="headerlink" title="소셜 네트워크 분석"></a>소셜 네트워크 분석</h3><p><img src="/images/DataQ/BigData/Class2.2_Data_Exploration/41.png"></p>
+<h3 id="소셜-네트워크-분석-방법론"><a href="#소셜-네트워크-분석-방법론" class="headerlink" title="소셜 네트워크 분석 방법론"></a>소셜 네트워크 분석 방법론</h3><p><img src="/images/DataQ/BigData/Class2.2_Data_Exploration/42.png"></p>
+<h3 id="네트워크-구조를-파악하기-위한-요소-중심성"><a href="#네트워크-구조를-파악하기-위한-요소-중심성" class="headerlink" title="네트워크 구조를 파악하기 위한 요소 - 중심성"></a>네트워크 구조를 파악하기 위한 요소 - 중심성</h3><p>전체 네트워크에서 한 개체가 중심에 위치하는 정도를 표현하는 지표</p>
+<p><img src="/images/DataQ/BigData/Class2.2_Data_Exploration/43.png"></p>
+<h3 id="네트워크-노드"><a href="#네트워크-노드" class="headerlink" title="네트워크 노드"></a>네트워크 노드</h3><p><img src="/images/DataQ/BigData/Class2.2_Data_Exploration/44.png"></p>
+<h1 id="출처"><a href="#출처" class="headerlink" title="출처"></a>출처</h1><ul>
+<li>내용 출처<ul>
+<li><p><strong>이지패스 2021 빅데이터분석기사 필기(수험서 앱 제공) &#x2F; 위키북스 &#x2F; 전용문, 정다혜, 임예은, 오경서 지음</strong></p>
+<p>  <a target="_blank" rel="noopener" href="https://wikibook.co.kr/bigdata2021/">https://wikibook.co.kr/bigdata2021/</a></p>
+</li>
+<li><p><strong>[빅데이터 분석기사 필기 | 2. 빅데이터 분석 기획 (2) 데이터 탐색]- 세우초밥</strong></p>
+<p>  <a target="_blank" rel="noopener" href="https://blog.naver.com/ericalee97/222165368988">https://blog.naver.com/ericalee97/222162993681</a></p>
+</li>
+<li><p><strong>상관계수에 따른 그래프 유형</strong></p>
+<p>  <a target="_blank" rel="noopener" href="https://nittaku.tistory.com/456">https://nittaku.tistory.com/456</a></p>
+</li>
+<li><p><strong>Spaceship Titanic data set 그래프</strong></p>
+<p>  <a target="_blank" rel="noopener" href="https://www.kaggle.com/code/taehyeon0915/newbie-s-catboost-spaceship-titanic-prediction">https://www.kaggle.com/code/taehyeon0915/newbie-s-catboost-spaceship-titanic-prediction</a></p>
+</li>
+<li><p><strong>위키피디아 &#x2F; 줄기_잎_그림</strong></p>
+<p>  <a target="_blank" rel="noopener" href="https://ko.wikipedia.org/wiki/%EC%A4%84%EA%B8%B0_%EC%9E%8E_%EA%B7%B8%EB%A6%BC">https://ko.wikipedia.org/wiki/줄기_잎_그림</a></p>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="http://eomtaehyeon.github.io/2022/09/26/Study/DataQ/BigData/Class2.2_Data_Exploration/" data-id="cl8iixdoe0000oktod371fdai" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "Eom Taehyeon"
+        },
+        "headline": "2과목. 빅데이터 탐색 2장. 데이터 탐색",
+        "image": "http://eomtaehyeon.github.io/images/DataQ/BigData/Class2.2_Data_Exploration/1.png",
+        "keywords": "자격증공부요점정리 빅데이터분석기사필기 빅분기 필기 빅데이터 데이터사이언티스트",
+        "genre": "자격증공부요점정리 빅데이터분석기사필기",
+        "datePublished": "2022-09-26",
+        "dateCreated": "2022-09-26",
+        "dateModified": "2022-09-26",
+        "url": "http://eomtaehyeon.github.io/2022/09/26/Study/DataQ/BigData/Class2.2_Data_Exploration/",
+        "description": "2장 데이터 탐색데이터 간의 유의미한 관계 파악 및 이해를 위한 탐색 방법들을 학습한다.
+핵심 키워드
+
+EDA
+상관분석
+기초통계량
+다변량분석
+
+01. 데이터 탐색 기초학습목표
+데이터 탐색을 위한 기본적인 통계 확인과 관계 및 분포를 해석하는 방법을 학습
+1. 데이터 탐색 개요EDA
+EDA의 4R
+
+데이터 탐색 개요
+개별 변수 탐색 방법
+다차원 데이터 탐색 ",
+        "wordCount": 936
+    }
+</script>
+
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+
+    
+    </section>
+
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>follow:</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="user" href="https://github.com/eomtaehyeon/Resume" target="_blank" rel="noopener">
+                        <i class="icon fa fa-user"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="instagram" href="https://www.instagram.com/hi__gorae/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-instagram"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/eomtaehyeon" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/2022/09/25/Study/DataQ/BigData/Class2.1_Data_Preprocessing/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">older</strong>
+        <p class="article-nav-title">2과목. 빅데이터 탐색 1장. 데이터 전처리</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">recents</h3>
+        <div class="widget">
+            <ul id="recent-post" class="no-thumbnail">
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%EC%9E%90%EA%B2%A9%EC%A6%9D%EA%B3%B5%EB%B6%80%EC%9A%94%EC%A0%90%EC%A0%95%EB%A6%AC/">자격증공부요점정리</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/%EC%9E%90%EA%B2%A9%EC%A6%9D%EA%B3%B5%EB%B6%80%EC%9A%94%EC%A0%90%EC%A0%95%EB%A6%AC/%EB%B9%85%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B6%84%EC%84%9D%EA%B8%B0%EC%82%AC%ED%95%84%EA%B8%B0/">빅데이터분석기사필기</a></p>
+                            <p class="item-title"><a href="/2022/09/26/Study/DataQ/BigData/Class2.2_Data_Exploration/" class="title">2과목. 빅데이터 탐색 2장. 데이터 탐색</a></p>
+                            <p class="item-date"><time datetime="2022-09-26T00:00:00.000Z" itemprop="datePublished">2022-09-26</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%EC%9E%90%EA%B2%A9%EC%A6%9D%EA%B3%B5%EB%B6%80%EC%9A%94%EC%A0%90%EC%A0%95%EB%A6%AC/">자격증공부요점정리</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/%EC%9E%90%EA%B2%A9%EC%A6%9D%EA%B3%B5%EB%B6%80%EC%9A%94%EC%A0%90%EC%A0%95%EB%A6%AC/%EB%B9%85%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B6%84%EC%84%9D%EA%B8%B0%EC%82%AC%ED%95%84%EA%B8%B0/">빅데이터분석기사필기</a></p>
+                            <p class="item-title"><a href="/2022/09/25/Study/DataQ/BigData/Class2.1_Data_Preprocessing/" class="title">2과목. 빅데이터 탐색 1장. 데이터 전처리</a></p>
+                            <p class="item-date"><time datetime="2022-09-25T00:00:00.000Z" itemprop="datePublished">2022-09-25</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%EC%9E%90%EA%B2%A9%EC%A6%9D%EA%B3%B5%EB%B6%80%EC%9A%94%EC%A0%90%EC%A0%95%EB%A6%AC/">자격증공부요점정리</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/%EC%9E%90%EA%B2%A9%EC%A6%9D%EA%B3%B5%EB%B6%80%EC%9A%94%EC%A0%90%EC%A0%95%EB%A6%AC/%EB%B9%85%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B6%84%EC%84%9D%EA%B8%B0%EC%82%AC%ED%95%84%EA%B8%B0/">빅데이터분석기사필기</a></p>
+                            <p class="item-title"><a href="/2022/09/24/Study/DataQ/BigData/Class1.3_Data_collection_and_storage_plan/" class="title">1과목. 빅데이터 분석 기획 3장. 데이터 수집 및 저장 계획</a></p>
+                            <p class="item-date"><time datetime="2022-09-24T00:00:00.000Z" itemprop="datePublished">2022-09-24</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%EB%85%BC%EB%AC%B8%EB%A6%AC%EB%B7%B0/">논문리뷰</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/%EB%85%BC%EB%AC%B8%EB%A6%AC%EB%B7%B0/NLP/">NLP</a></p>
+                            <p class="item-title"><a href="/2022/09/23/Study/ML_DL/BERT%20_review/" class="title">논문 BERT 리뷰</a></p>
+                            <p class="item-date"><time datetime="2022-09-23T00:00:00.000Z" itemprop="datePublished">2022-09-23</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%EC%9E%90%EA%B2%A9%EC%A6%9D%EA%B3%B5%EB%B6%80%EC%9A%94%EC%A0%90%EC%A0%95%EB%A6%AC/">자격증공부요점정리</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/%EC%9E%90%EA%B2%A9%EC%A6%9D%EA%B3%B5%EB%B6%80%EC%9A%94%EC%A0%90%EC%A0%95%EB%A6%AC/%EB%B9%85%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B6%84%EC%84%9D%EA%B8%B0%EC%82%AC%ED%95%84%EA%B8%B0/">빅데이터분석기사필기</a></p>
+                            <p class="item-title"><a href="/2022/09/22/Study/DataQ/BigData/Class1.2_Data_Analysis_Plan/" class="title">1과목. 빅데이터 분석 기획 2장. 데이터 분석 계획</a></p>
+                            <p class="item-date"><time datetime="2022-09-22T00:00:00.000Z" itemprop="datePublished">2022-09-22</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">categories</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/About/">About</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Settings/">Settings</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Settings/Blog/">Blog</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EB%85%BC%EB%AC%B8%EB%A6%AC%EB%B7%B0/">논문리뷰</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%EB%85%BC%EB%AC%B8%EB%A6%AC%EB%B7%B0/NLP/">NLP</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%9E%90%EA%B2%A9%EC%A6%9D%EA%B3%B5%EB%B6%80%EC%9A%94%EC%A0%90%EC%A0%95%EB%A6%AC/">자격증공부요점정리</a><span class="category-list-count">5</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%9E%90%EA%B2%A9%EC%A6%9D%EA%B3%B5%EB%B6%80%EC%9A%94%EC%A0%90%EC%A0%95%EB%A6%AC/%EB%B9%85%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B6%84%EC%84%9D%EA%B8%B0%EC%82%AC%ED%95%84%EA%B8%B0/">빅데이터분석기사필기</a><span class="category-list-count">5</span></li></ul></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">archives</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/09/">September 2022</a><span class="archive-list-count">9</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">tags</h3>
+        <div class="widget">
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/BERT/" rel="tag">BERT</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Blog/" rel="tag">Blog</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Github/" rel="tag">Github</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NAACL/" rel="tag">NAACL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NLP/" rel="tag">NLP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Transformers/" rel="tag">Transformers</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EB%85%BC%EB%AC%B8%EB%A6%AC%EB%B7%B0/" rel="tag">논문리뷰</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%82%AC%EC%9D%B4%EC%96%B8%ED%8B%B0%EC%8A%A4%ED%8A%B8/" rel="tag">데이터사이언티스트</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EB%B9%85%EB%8D%B0%EC%9D%B4%ED%84%B0/" rel="tag">빅데이터</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EB%B9%85%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B6%84%EC%84%9D%EA%B8%B0%EC%82%AC%ED%95%84%EA%B8%B0/" rel="tag">빅데이터분석기사필기</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EB%B9%85%EB%B6%84%EA%B8%B0/" rel="tag">빅분기</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EC%9E%90%EA%B2%A9%EC%A6%9D%EA%B3%B5%EB%B6%80%EC%9A%94%EC%A0%90%EC%A0%95%EB%A6%AC/" rel="tag">자격증공부요점정리</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%ED%95%84%EA%B8%B0/" rel="tag">필기</a><span class="tag-list-count">5</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">tag cloud</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/BERT/" style="font-size: 10px;">BERT</a> <a href="/tags/Blog/" style="font-size: 15px;">Blog</a> <a href="/tags/Github/" style="font-size: 15px;">Github</a> <a href="/tags/Hexo/" style="font-size: 15px;">Hexo</a> <a href="/tags/NAACL/" style="font-size: 10px;">NAACL</a> <a href="/tags/NLP/" style="font-size: 10px;">NLP</a> <a href="/tags/Transformers/" style="font-size: 10px;">Transformers</a> <a href="/tags/%EB%85%BC%EB%AC%B8%EB%A6%AC%EB%B7%B0/" style="font-size: 10px;">논문리뷰</a> <a href="/tags/%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%82%AC%EC%9D%B4%EC%96%B8%ED%8B%B0%EC%8A%A4%ED%8A%B8/" style="font-size: 20px;">데이터사이언티스트</a> <a href="/tags/%EB%B9%85%EB%8D%B0%EC%9D%B4%ED%84%B0/" style="font-size: 20px;">빅데이터</a> <a href="/tags/%EB%B9%85%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B6%84%EC%84%9D%EA%B8%B0%EC%82%AC%ED%95%84%EA%B8%B0/" style="font-size: 20px;">빅데이터분석기사필기</a> <a href="/tags/%EB%B9%85%EB%B6%84%EA%B8%B0/" style="font-size: 20px;">빅분기</a> <a href="/tags/%EC%9E%90%EA%B2%A9%EC%A6%9D%EA%B3%B5%EB%B6%80%EC%9A%94%EC%A0%90%EC%A0%95%EB%A6%AC/" style="font-size: 20px;">자격증공부요점정리</a> <a href="/tags/%ED%95%84%EA%B8%B0/" style="font-size: 20px;">필기</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">links</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a target="_blank" rel="noopener" href="https://github.com/eomtaehyeon">Github</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2022 Eom Taehyeon</p>
+                
+                <p>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="https://github.com/ppoffice" target="_blank">PPOffice</a></p>
+                
+            </div>
+            <div class="footer-plugins">
+              
+    
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+    </div>
+    
+    
+    <script>
+    var disqus_shortname = 'hexo-theme-hueman';
+    
+    
+    var disqus_url = 'http://eomtaehyeon.github.io/2022/09/26/Study/DataQ/BigData/Class2.2_Data_Exploration/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+
+
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+
+    
+    
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+</body>
+</html>
