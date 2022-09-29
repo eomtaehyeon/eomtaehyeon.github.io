@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+
+    
+
+    
+    <title>3과목. 빅데이터 모델링 2장. 분석 기법 적용 | thanks for noticing</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="자격증공부요점정리,빅데이터분석기사필기,빅분기,필기,빅데이터,데이터사이언티스트" />
+    
+    <meta name="description" content="2장 분석 기법 적용 여러 가지 분석기법의 개념과 알고리즘에 대해 학습  핵심키워드  지도학습 비지도학습 딥러닝 비모수통계  01. 분석기법 여러 가지 분석기법의 개념과 알고리즘에 대해 학습하고 각 기법이 어떤 상황에서 사용되는지 이해  1. 회귀분석 회귀분석 독립변수와 종속변수 간에 선형적인 관계를 도출해 독립변수가 종속변수에 미치는 영향의 정도를 분석하">
+<meta property="og:type" content="article">
+<meta property="og:title" content="3과목. 빅데이터 모델링 2장. 분석 기법 적용">
+<meta property="og:url" content="http://eomtaehyeon.github.io/2022/09/29/Study/DataQ/BigData/Class3.2_Apply_Analysis_Techniques/index.html">
+<meta property="og:site_name" content="thanks for noticing">
+<meta property="og:description" content="2장 분석 기법 적용 여러 가지 분석기법의 개념과 알고리즘에 대해 학습  핵심키워드  지도학습 비지도학습 딥러닝 비모수통계  01. 분석기법 여러 가지 분석기법의 개념과 알고리즘에 대해 학습하고 각 기법이 어떤 상황에서 사용되는지 이해  1. 회귀분석 회귀분석 독립변수와 종속변수 간에 선형적인 관계를 도출해 독립변수가 종속변수에 미치는 영향의 정도를 분석하">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://eomtaehyeon.github.io/images/DataQ/BigData/Class3.2_Apply_Analysis_Techniques/1.png">
+<meta property="article:published_time" content="2022-09-29T00:00:00.000Z">
+<meta property="article:modified_time" content="2022-09-29T16:02:18.349Z">
+<meta property="article:author" content="Eom Taehyeon">
+<meta property="article:tag" content="자격증공부요점정리">
+<meta property="article:tag" content="빅데이터분석기사필기">
+<meta property="article:tag" content="빅분기">
+<meta property="article:tag" content="필기">
+<meta property="article:tag" content="빅데이터">
+<meta property="article:tag" content="데이터사이언티스트">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://eomtaehyeon.github.io/images/DataQ/BigData/Class3.2_Apply_Analysis_Techniques/1.png">
+    
+
+    
+
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/titillium-web/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/3.5.0/jquery.min.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+    
+    
+
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">Home</a>
+                                </li>
+                            
+                                    <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/About/">About</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Settings/">Settings</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Settings/Blog/">Blog</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EB%85%BC%EB%AC%B8%EB%A6%AC%EB%B7%B0/">논문리뷰</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EB%85%BC%EB%AC%B8%EB%A6%AC%EB%B7%B0/NLP/">NLP</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%9E%90%EA%B2%A9%EC%A6%9D%EA%B3%B5%EB%B6%80%EC%9A%94%EC%A0%90%EC%A0%95%EB%A6%AC/">자격증공부요점정리</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%9E%90%EA%B2%A9%EC%A6%9D%EA%B3%B5%EB%B6%80%EC%9A%94%EC%A0%90%EC%A0%95%EB%A6%AC/%EB%B9%85%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B6%84%EC%84%9D%EA%B8%B0%EC%82%AC%ED%95%84%EA%B8%B0/">빅데이터분석기사필기</a></li></ul></li></ul>
+                                
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/%EC%9E%90%EA%B2%A9%EC%A6%9D%EA%B3%B5%EB%B6%80%EC%9A%94%EC%A0%90%EC%A0%95%EB%A6%AC/">자격증공부요점정리</a><i class="icon fa fa-angle-right"></i><a class="page-title-link" href="/categories/%EC%9E%90%EA%B2%A9%EC%A6%9D%EA%B3%B5%EB%B6%80%EC%9A%94%EC%A0%90%EC%A0%95%EB%A6%AC/%EB%B9%85%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B6%84%EC%84%9D%EA%B8%B0%EC%82%AC%ED%95%84%EA%B8%B0/">빅데이터분석기사필기</a>
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-Study/DataQ/BigData/Class3.2_Apply_Analysis_Techniques" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        3과목. 빅데이터 모델링 2장. 분석 기법 적용
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+  <div class="article-date">
+    <i class="fa fa-calendar"></i>
+    <a href="/2022/09/29/Study/DataQ/BigData/Class3.2_Apply_Analysis_Techniques/" class="article-date">
+       <time datetime="2022-09-29T00:00:00.000Z" itemprop="datePublished">2022-09-29</time>
+    </a>
+  </div>
+
+
+<div class="article-date">
+  <i class="fa fa-calendar-plus-o"></i>
+  <a href="/2022/09/29/Study/DataQ/BigData/Class3.2_Apply_Analysis_Techniques/" class="article-date">
+     <time datetime="2022-09-29T16:02:18.349Z" itemprop="dateModified">2022-09-30</time>
+  </a>
+</div>
+
+
+                
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%82%AC%EC%9D%B4%EC%96%B8%ED%8B%B0%EC%8A%A4%ED%8A%B8/" rel="tag">데이터사이언티스트</a>, <a class="tag-link-link" href="/tags/%EB%B9%85%EB%8D%B0%EC%9D%B4%ED%84%B0/" rel="tag">빅데이터</a>, <a class="tag-link-link" href="/tags/%EB%B9%85%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B6%84%EC%84%9D%EA%B8%B0%EC%82%AC%ED%95%84%EA%B8%B0/" rel="tag">빅데이터분석기사필기</a>, <a class="tag-link-link" href="/tags/%EB%B9%85%EB%B6%84%EA%B8%B0/" rel="tag">빅분기</a>, <a class="tag-link-link" href="/tags/%EC%9E%90%EA%B2%A9%EC%A6%9D%EA%B3%B5%EB%B6%80%EC%9A%94%EC%A0%90%EC%A0%95%EB%A6%AC/" rel="tag">자격증공부요점정리</a>, <a class="tag-link-link" href="/tags/%ED%95%84%EA%B8%B0/" rel="tag">필기</a>
+    </div>
+
+                
+
+                
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            
+
+            
+
+            
+
+            <h1 id="2장-분석-기법-적용"><a href="#2장-분석-기법-적용" class="headerlink" title="2장 분석 기법 적용"></a>2장 분석 기법 적용</h1><ul>
+<li><strong>여러 가지 분석기법의 개념과 알고리즘에 대해 학습</strong></li>
+</ul>
+<p><strong><code>핵심키워드</code></strong></p>
+<ul>
+<li><strong>지도학습</strong></li>
+<li><strong>비지도학습</strong></li>
+<li><strong>딥러닝</strong></li>
+<li><strong>비모수통계</strong></li>
+</ul>
+<h1 id="01-분석기법"><a href="#01-분석기법" class="headerlink" title="01. 분석기법"></a>01. 분석기법</h1><ul>
+<li>여러 가지 분석기법의 개념과 알고리즘에 대해 학습하고 각 기법이 어떤 상황에서 사용되는지 이해</li>
+</ul>
+<h2 id="1-회귀분석"><a href="#1-회귀분석" class="headerlink" title="1. 회귀분석"></a>1. 회귀분석</h2><ul>
+<li><strong>회귀분석</strong><ul>
+<li>독립변수와 종속변수 간에 선형적인 관계를 도출해 독립변수가 종속변수에 미치는 영향의 정도를 분석하고, 독립변수를 통해 종속변수를 예측하는 분석기법</li>
+</ul>
+</li>
+</ul>
+<h3 id="회귀분석의-가정"><a href="#회귀분석의-가정" class="headerlink" title="회귀분석의 가정"></a>회귀분석의 가정</h3><p><img src="/images/DataQ/BigData/Class3.2_Apply_Analysis_Techniques/1.png"></p>
+<ul>
+<li><strong>오차와 잔차</strong><ul>
+<li><strong>오차(error)</strong><ul>
+<li>모집단의 실제값과 회귀선과의 차이</li>
+</ul>
+</li>
+<li><strong>잔차(residual)</strong><ul>
+<li>표본에서 나온 관측값과 회귀선의 차이</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="알고리즘"><a href="#알고리즘" class="headerlink" title="알고리즘"></a>알고리즘</h3><ul>
+<li><p><strong>Y&#x3D;aX+b 형태의 추세선을 정의</strong></p>
+<ul>
+<li>Y : <strong>종속변수</strong></li>
+<li>X : <strong>독립변수</strong></li>
+<li>a : <strong>기울기</strong></li>
+<li>b : <strong>Y축의 절편</strong></li>
+<li>a와 b는 회귀계수 혹은 파라미터</li>
+</ul>
+</li>
+<li><p><strong>회귀분석의 기본 알고리즘</strong></p>
+<ul>
+<li>최소제곱법을 통해 파라미터를 추정하고 추정된 파라미터를 통해 추세선을 그려 값을 예측하는 것</li>
+<li>최소제곱법<ul>
+<li>실제 관측치와 추세선에 의해 예측된 점 사이의 거리</li>
+<li>오차를 제곱해 더한 값을 최소화하는 것</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>잔차의 제곱 합이 최소가 되는 추세선이 가장 합리적인 추세선</p>
+</li>
+<li><p><strong><code>왜 ‘잔차 제곱의 합’인가?</code></strong></p>
+<p>  잔차의 합이 아닌 잔차의 제곱 합을 사용하는 이유는 잔차는 양수가 될 수도 있고 음수가 될 수도 있어 잔차 합을 사용할 경우 잔차합이 0이 되는 추세선이 무수히 많이 발견될 수 있기 때문이다.</p>
+</li>
+</ul>
+<h3 id="회귀분석의-종류"><a href="#회귀분석의-종류" class="headerlink" title="회귀분석의 종류"></a>회귀분석의 종류</h3><p><img src="/images/DataQ/BigData/Class3.2_Apply_Analysis_Techniques/2.png"></p>
+<h3 id="모형-적합성"><a href="#모형-적합성" class="headerlink" title="모형 적합성"></a>모형 적합성</h3><p><img src="/images/DataQ/BigData/Class3.2_Apply_Analysis_Techniques/3.png"></p>
+<ul>
+<li><p><strong>F-통계량은 MSR&#x2F;MSE로 계산</strong></p>
+<ul>
+<li>F-통계량이 커질수록 p-value는 작아지고, 유의수준 0.05에서 F-통계량에 의해 계산된 p-value가 0.05보다 작으면 모형이 통계적으로 유의하다고 판단</li>
+</ul>
+</li>
+<li><p><strong>t-통계량은 회귀계수 &#x2F; 표준오차로 계산</strong></p>
+<ul>
+<li>t-통계량이 크다는 것은 표준오차가 작다는 의미이므로 t-통계량이 클수록 회귀계수가 유의하다고 판단</li>
+<li>t-통계량이 커질수록 p-value는 작아지고,</li>
+<li>유의수준 0.05에서 t-통계량에 의해 계산된 p-value가 0.05보다 작으면 모형이 통계적으로 유의하다고 판단</li>
+</ul>
+</li>
+<li><p><strong>결정계수 R²</strong></p>
+<ul>
+<li>전체 변동 중 회귀모형에 의해 설명되는 변동의 비율로 표본에 의해 추정된 회귀식이 주어진 자료를 얼마나 잘 설명하는지를 보여주는 값</li>
+<li><strong>SSR&#x2F;SST &#x3D; 1-SSE&#x2F;SST 로 계산</strong></li>
+</ul>
+<p>  <img src="/images/DataQ/BigData/Class3.2_Apply_Analysis_Techniques/4.png"></p>
+<ul>
+<li><strong>SST(총변동) &#x3D; SSE + SSR</strong></li>
+<li><strong>SSR</strong>은 회구모형에 의해 설명되는 변동</li>
+<li><strong>SSE</strong>는 회귀모형으로 설명하지 못하는 변동</li>
+<li>결정계수는 0과 1사이의 값</li>
+<li>결정계수가 1에 가까울수록 회귀모형이 주어진 자료를 잘 설명한다고 판단</li>
+</ul>
+</li>
+</ul>
+<h3 id="단순회귀분석의-분산분석표"><a href="#단순회귀분석의-분산분석표" class="headerlink" title="단순회귀분석의 분산분석표"></a>단순회귀분석의 분산분석표</h3><p><img src="/images/DataQ/BigData/Class3.2_Apply_Analysis_Techniques/5.png"></p>
+<h3 id="다중회귀분석의-분산분석표"><a href="#다중회귀분석의-분산분석표" class="headerlink" title="다중회귀분석의 분산분석표"></a>다중회귀분석의 분산분석표</h3><p><img src="/images/DataQ/BigData/Class3.2_Apply_Analysis_Techniques/6.png"></p>
+<h2 id="2-로지스틱-회귀분석"><a href="#2-로지스틱-회귀분석" class="headerlink" title="2. 로지스틱 회귀분석"></a>2. 로지스틱 회귀분석</h2><ul>
+<li>독립변수의 선형결합을 이용해 사건의 발생 가능성을 예측<ul>
+<li><strong>임곗값(threshold)</strong><ul>
+<li>로지스틱 회귀분석에서 데이터가 어느 클래스에 속할지를 결정하는 기준값</li>
+<li>기본값은 0.5, 상황에 따라 그 값을 조정할 수 있다.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>독립변수가 연속형 데이터인 경우에 사용할 수 있으며 독립변수 중에 범주형 데이터가 있을 경우에는 더미 변수로 변환해 분석</li>
+</ul>
+<h3 id="알고리즘-1"><a href="#알고리즘-1" class="headerlink" title="알고리즘"></a>알고리즘</h3><ul>
+<li><p>독립변수의 값에 상관없이 종속변수가 항상 0과 1 사이에 있어야 한다.</p>
+</li>
+<li><p><strong>Odds(오즈)</strong></p>
+<ul>
+<li>확률 p가 주어졌을 때 사건이 발생할 확률이 사건이 발생하지 않을 확률의 몇 배인지에 대한 개념</li>
+<li><strong>Odds &#x3D; 사건이 발생할 확률 &#x2F; 사건이 발생하지 않을 확률(&#x3D; p &#x2F; 1-p)</strong></li>
+</ul>
+<p>  <img src="/images/DataQ/BigData/Class3.2_Apply_Analysis_Techniques/7.png">
+  </p>
+</li>
+<li><p><strong>로짓 변환</strong></p>
+<ul>
+<li>로짓 : 오즈에 로그를 씌운 값</li>
+<li>종속변수 범위는 (-무한대, +무한대)</li>
+<li>오즈 범위 (0, 무한대)</li>
+<li>오즈의 범위를 회귀분석과 동일한 (-무한대, +무한대)로 변환하기 위해 사용</li>
+</ul>
+<p>  <img src="/images/DataQ/BigData/Class3.2_Apply_Analysis_Techniques/8.png">
+  </p>
+</li>
+<li><p><strong>시그모이드 함수</strong></p>
+<ul>
+<li>로짓 함수와 역함수 관계</li>
+<li><strong>log(Odds) &#x3D; wX + b 가 성립</strong></li>
+<li>시그모이드 함수의 w와 b를 통해 시그모이드 함수의 최적선을 찾아 분류를 결정</li>
+</ul>
+</li>
+<li><p>로지스틱 회귀분석은 **최대우도법(Maximum Likelihood Estimator)**을 사용해 데이터를 가장 잘 설명할 수 있는 계수를 추정하고 최적의 회귀식을 찾는다.</p>
+<ul>
+<li>우도함수를 최대로 하는 값으로 파라미터를 결정</li>
+<li><strong>회귀분석 : 최소제곱법, 로지스틱 회귀분석 : 최대우도법</strong></li>
+</ul>
+</li>
+</ul>
+<h3 id="로지스틱-회귀분석-오즈-x2F-오즈-비"><a href="#로지스틱-회귀분석-오즈-x2F-오즈-비" class="headerlink" title="로지스틱 회귀분석 - 오즈&#x2F;오즈 비"></a>로지스틱 회귀분석 - 오즈&#x2F;오즈 비</h3><p><img src="/images/DataQ/BigData/Class3.2_Apply_Analysis_Techniques/9.png"></p>
+<h3 id="로지스틱-회귀분석-오즈-x2F-오즈-비-계산"><a href="#로지스틱-회귀분석-오즈-x2F-오즈-비-계산" class="headerlink" title="로지스틱 회귀분석 - 오즈&#x2F;오즈 비 계산"></a>로지스틱 회귀분석 - 오즈&#x2F;오즈 비 계산</h3><p><img src="/images/DataQ/BigData/Class3.2_Apply_Analysis_Techniques/10.png"></p>
+<h3 id="로지스틱-회귀분석-모형-적합성"><a href="#로지스틱-회귀분석-모형-적합성" class="headerlink" title="로지스틱 회귀분석 - 모형 적합성"></a>로지스틱 회귀분석 - 모형 적합성</h3><ul>
+<li><strong>이탈도</strong><ul>
+<li>모형이 설명하지 못하는 데이터의 정도</li>
+<li><strong>영 이탈도(null deviance)</strong> : 절편만 포함된 모형의 적합도</li>
+<li><strong>잔차 이탈도(residual deviance)</strong> : 독립변수를 포함한 모형의 적합도</li>
+<li><strong>이탈도가 작을수록 모형이 통계적으로 유의하다고 판단</strong></li>
+</ul>
+</li>
+<li><strong>왈드 검정(wald test)</strong><ul>
+<li>왈드 검정에 대한 검정 통계량인 <strong>z-value의 p-value가 유의수준보다 작을 때 계수가 유의</strong>하다</li>
+</ul>
+</li>
+<li><strong>모형의 설명력</strong><ul>
+<li>로지스틱 회귀분석에서 결정계수는 보통 낮게 나오는 편</li>
+<li>결정계수에 너무 의존할 필요는 없다</li>
+<li><strong>AIC값이 작을수록 설명력이 좋다</strong></li>
+</ul>
+</li>
+</ul>
+<p><img src="/images/DataQ/BigData/Class3.2_Apply_Analysis_Techniques/11.png"></p>
+<h2 id="3-의사결정-트리-분석"><a href="#3-의사결정-트리-분석" class="headerlink" title="3. 의사결정 트리 분석"></a>3. 의사결정 트리 분석</h2><ul>
+<li><strong>의사결정 트리(Decision Tree)</strong><ul>
+<li>데이터를 학습하여 데이터 내에 존재하는 규칙을 찾아내고 이 규칙을 나무구조로 모형화해 분류와 예측을 수행하는 분석방법</li>
+</ul>
+</li>
+</ul>
+<h3 id="의사결정-트리의-구성요소"><a href="#의사결정-트리의-구성요소" class="headerlink" title="의사결정 트리의 구성요소"></a>의사결정 트리의 구성요소</h3><p><img src="/images/DataQ/BigData/Class3.2_Apply_Analysis_Techniques/12.png"></p>
+<h3 id="의사결정-트리의-알고리즘"><a href="#의사결정-트리의-알고리즘" class="headerlink" title="의사결정 트리의 알고리즘"></a>의사결정 트리의 알고리즘</h3><ol>
+<li><strong>의사결정 트리 형성과정</strong><ul>
+<li><strong><code>Step 1 나무의 성장</code></strong><ul>
+<li>분석 목적과 자료구조에 따라 적절한 분리 기준과 정지 규칙을 설정해 의사결정 트리를 성장시키는 단계</li>
+<li>각 마디에서 최적의 분리 규칙을 찾아 의사결정 트리를 형성하고 적절한 정지 규칙을 만족하면 나무의 성장을 중단</li>
+<li>최적의 분할은 불순도 감소량을 가장 크게 하는 분할</li>
+</ul>
+</li>
+<li><strong><code>Step 2 가지치기</code></strong><ul>
+<li>불필요한 가지를 제거하는 단계</li>
+<li>분류 오류를 크게 할 위험이 있거나 부적절한 분류기준을 가진 가지를 제거</li>
+<li>너무 큰 트리 구조는 과적합의 위험</li>
+<li>너무 작은 트리 구조는 과소적합의 위험</li>
+</ul>
+</li>
+<li><strong><code>Step 3 타당성 평가</code></strong><ul>
+<li>형성된 의사결정 트리를 평가하는 단계</li>
+<li>검증용 데이터를 이용해 모델의 예측 정확도를 평가</li>
+<li>이익 도표 등의 평가지표를 이용해 의사결정 트리를 평가</li>
+</ul>
+</li>
+<li><strong><code>Step 4 해석 및 예측</code></strong><ul>
+<li>구축된 의사결정 트리를 예측에 적용하고 이를 해석하는 단계</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>정지 규칙과 가지치기</strong><ul>
+<li><strong>정지 규칙</strong><ul>
+<li>더 이상 트리의 분리가 일어나지 않게 하는 규칙</li>
+<li>과적합을 방지하기 위해 트리의 깊이를 제한</li>
+<li>마디에 속하는 자료가 일정 수 이하일 경우 분할을 정지</li>
+<li>적절한 정지 규칙을 통해 모형의 크기를 통제</li>
+</ul>
+</li>
+<li><strong>가지치기</strong><ul>
+<li>불필요한 가지를 제거(타당성이 없는 규칙을 제거)</li>
+<li>검증용 데이터를 활용해 예측 정확도를 산출하고 이를 기반으로 불필요한 가지를 제거</li>
+<li>구축된 모형에서 제시되는 규칙들의 타당성을 검토</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>가지치기 분리 기준</strong></li>
+</ol>
+<h3 id="의사결정-트리에서-사용하는-분류-기준"><a href="#의사결정-트리에서-사용하는-분류-기준" class="headerlink" title="의사결정 트리에서 사용하는 분류 기준"></a>의사결정 트리에서 사용하는 분류 기준</h3><p><img src="/images/DataQ/BigData/Class3.2_Apply_Analysis_Techniques/13.png"></p>
+<h3 id="의사결정-트리-분류-기준-계산식"><a href="#의사결정-트리-분류-기준-계산식" class="headerlink" title="의사결정 트리 분류 기준 계산식"></a>의사결정 트리 분류 기준 계산식</h3><p><img src="/images/DataQ/BigData/Class3.2_Apply_Analysis_Techniques/14.png"></p>
+<h3 id="의사결정-트리의-장단점"><a href="#의사결정-트리의-장단점" class="headerlink" title="의사결정 트리의 장단점"></a>의사결정 트리의 장단점</h3><p><img src="/images/DataQ/BigData/Class3.2_Apply_Analysis_Techniques/15.png"></p>
+<h2 id="4-인공신경망-분석"><a href="#4-인공신경망-분석" class="headerlink" title="4. 인공신경망 분석"></a>4. 인공신경망 분석</h2><ul>
+<li>실제 생물의 신경계를 모방해 예측 및 분류를 하는 머신러닝 알고리즘</li>
+<li>인공신경망 분석에서 값이 입력되면 개별 신호의 정도에 따라 값이 가중</li>
+<li>가중된 값에 편향(bias) 상수를 더한후 활성함수를 거치면 인공신경망의 출력값이 생성</li>
+</ul>
+<h3 id="인공신경망의-활성화함수"><a href="#인공신경망의-활성화함수" class="headerlink" title="인공신경망의 활성화함수"></a>인공신경망의 활성화함수</h3><p><img src="/images/DataQ/BigData/Class3.2_Apply_Analysis_Techniques/16.png"></p>
+<h3 id="신경망의-계층-구조"><a href="#신경망의-계층-구조" class="headerlink" title="신경망의 계층 구조"></a>신경망의 계층 구조</h3><ul>
+<li>인공신경망은 입력층, 은닉층, 출력층으로 구성</li>
+<li><strong>입력층</strong><ul>
+<li>시스템 외부로부터 예측을 위한 데이터를 입력받아 시스템으로 전송하는 역할</li>
+<li>어떠한 연산도 발생하지 않음</li>
+</ul>
+</li>
+<li><strong>은닉층</strong><ul>
+<li>일종의 블랙박스(신경망 외부에서는 은닉층의 노드에 직접 접근할 수 없다)</li>
+<li>입력층으로부터 값을 전달받아 가중합과 편향을 계산한 후 활성함수에 적용</li>
+<li>결과를 산출하고 출력층으로 전송</li>
+</ul>
+</li>
+<li><strong>출력층</strong><ul>
+<li>학습된 데이터가 포함된 층</li>
+<li>활성함수의 결과를 담고 있는 노드로 구성</li>
+<li>노드 수 &#x3D; 출력 범주의 수</li>
+<li>분류 문제일 경우 출력층의 노드는 각 라벨의 확률을 포함</li>
+</ul>
+</li>
+</ul>
+<h3 id="인공신경망의-장단점"><a href="#인공신경망의-장단점" class="headerlink" title="인공신경망의 장단점"></a>인공신경망의 장단점</h3><p><img src="/images/DataQ/BigData/Class3.2_Apply_Analysis_Techniques/17.png"></p>
+<h3 id="인공신경망의-종류"><a href="#인공신경망의-종류" class="headerlink" title="인공신경망의 종류"></a>인공신경망의 종류</h3><ol>
+<li><strong>단층 퍼셉트론</strong><ul>
+<li>입력층이 은닉층을 거치지 않고 바로 출력층과 연결</li>
+<li><strong>동작 절차</strong><ol>
+<li>값을 입력받는다.</li>
+<li>입력값과 가중치를 곱한다.</li>
+<li>2.에서 계산한 값을 모두 더한다.</li>
+<li>활성함수를 적용한다.</li>
+<li>결괏값을 도출한다.</li>
+</ol>
+</li>
+<li><strong>선형분류기이기 때문에 XOR 게이트와 같은 비선형 영역의 구분은 불가능</strong></li>
+</ul>
+</li>
+<li><strong>다층 퍼셉트론</strong><ul>
+<li>둘 이상의 퍼셉트론의 중첩으로 입력층과 출력층 사이에 하나 이상의 은닉층을 두어 비선형적인 데이터도 학습할 수 있게 한 알고리즘</li>
+<li><strong>단층 퍼셉트론에서는 불가능했던 XOR 게이트 연산가능</strong></li>
+<li><strong>동작 절차</strong><ol>
+<li><p>각 층에서의 가중치와 편향을 설정</p>
+</li>
+<li><p>학습 데이터를 통해 출력값을 도출</p>
+</li>
+<li><p>가중치를 업데이트</p>
+<p> (출력층의 활성함수를 통해 계산된 결괏값과 실제값의 오차가 허용 오차 이내에 들어오게 업데이트)</p>
+</li>
+<li><p>오차가 허용 오차 안데 들면 학습을 종료</p>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="5-서포트-벡터-머신"><a href="#5-서포트-벡터-머신" class="headerlink" title="5. 서포트 벡터 머신"></a>5. 서포트 벡터 머신</h2><ul>
+<li>분류와 회귀분석에 사용되는 <strong>지도학습 알고리즘</strong></li>
+<li>데이터를 학습해 새로운 데이터가 어떤 범주에 속할지 결정하는 비확률적 <strong>이진 선형모델</strong></li>
+<li>n차원 데이터를 n-1차원의 초평면으로 분리</li>
+<li><strong>마진</strong><ul>
+<li>서포트 벡터와 결정 경계 사이의 거리</li>
+<li>서포트벡터 : 결정 경계와 가장 가까운 데이터</li>
+</ul>
+</li>
+</ul>
+<h3 id="서포트-벡터-머신의-구성요소"><a href="#서포트-벡터-머신의-구성요소" class="headerlink" title="서포트 벡터 머신의 구성요소"></a>서포트 벡터 머신의 구성요소</h3><p><img src="/images/DataQ/BigData/Class3.2_Apply_Analysis_Techniques/18.png"></p>
+<ul>
+<li><strong>SVM의 최적화 과정</strong><ul>
+<li><strong>마진을 최대화하는 것, ||w||의 값이 최소가 되게 하는 것</strong></li>
+</ul>
+</li>
+</ul>
+<h3 id="하드마진과-소프트마진"><a href="#하드마진과-소프트마진" class="headerlink" title="하드마진과 소프트마진"></a>하드마진과 소프트마진</h3><p><img src="/images/DataQ/BigData/Class3.2_Apply_Analysis_Techniques/19.png"></p>
+<h3 id="서포트-벡터-머신의-파라미터"><a href="#서포트-벡터-머신의-파라미터" class="headerlink" title="서포트 벡터 머신의 파라미터"></a>서포트 벡터 머신의 파라미터</h3><p><img src="/images/DataQ/BigData/Class3.2_Apply_Analysis_Techniques/20.png"></p>
+<h3 id="커널-기법"><a href="#커널-기법" class="headerlink" title="커널 기법"></a>커널 기법</h3><ul>
+<li>선형으로 분리되지 않는 데이터는 커널 트릭을 통해 입력 데이터를 저차원에서 고차원으로 매핑하여 해결할 수 있다.</li>
+<li><strong>커널트릭(kernel trick)</strong><ul>
+<li>고차원의 모든 데이터를 매핑한 후 내적을 하면 계산량과 연산 비용이 폭등되는 문제를 해결</li>
+<li>실제로 데이터를 매핑하여 내적하지 않고 비슷한 효과를 만듬</li>
+</ul>
+</li>
+</ul>
+<h3 id="서포트-벡터-머신의-장단점"><a href="#서포트-벡터-머신의-장단점" class="headerlink" title="서포트 벡터 머신의 장단점"></a>서포트 벡터 머신의 장단점</h3><p><img src="/images/DataQ/BigData/Class3.2_Apply_Analysis_Techniques/21.png"></p>
+<h2 id="6-연관성-분석"><a href="#6-연관성-분석" class="headerlink" title="6. 연관성 분석"></a>6. 연관성 분석</h2><ul>
+<li>상품이나 서비스를 구매하는 등 일련의 거래나 사건의 데이터 안에 존재하는 항목 간의 일정한 연관 규칙을 발견하는 과정</li>
+<li>목표변수가 불필요한 비지도학습의 한 종류</li>
+<li>특정한 분석목표가 없을 때도 사용할 수 있다.</li>
+<li><strong>장바구니 분석</strong></li>
+</ul>
+<h3 id="연관성분석-측정지표"><a href="#연관성분석-측정지표" class="headerlink" title="연관성분석 측정지표"></a>연관성분석 측정지표</h3><p><img src="/images/DataQ/BigData/Class3.2_Apply_Analysis_Techniques/22.png"></p>
+<h3 id="연관성분석-aporiori-알고리즘-절차"><a href="#연관성분석-aporiori-알고리즘-절차" class="headerlink" title="연관성분석 aporiori 알고리즘 절차"></a>연관성분석 aporiori 알고리즘 절차</h3><p><img src="/images/DataQ/BigData/Class3.2_Apply_Analysis_Techniques/23.png"></p>
+<h3 id="연관성분석의-장단점"><a href="#연관성분석의-장단점" class="headerlink" title="연관성분석의 장단점"></a>연관성분석의 장단점</h3><p><img src="/images/DataQ/BigData/Class3.2_Apply_Analysis_Techniques/24.png"></p>
+<h2 id="7-군집분석"><a href="#7-군집분석" class="headerlink" title="7. 군집분석"></a>7. 군집분석</h2><ul>
+<li>관측치들의 유사성(관측치들 사이의 거리)에 기초해 전체 데이터를 몇개의 집단으로 나누는 분석기법</li>
+<li>개체를 분류하기 위한 명확한 기준이 존재하지 않는 경우 사용하는 비지도학습의 한 방법</li>
+</ul>
+<h3 id="군집-간-거리-측정-방법"><a href="#군집-간-거리-측정-방법" class="headerlink" title="군집 간 거리 측정 방법"></a>군집 간 거리 측정 방법</h3><p><img src="/images/DataQ/BigData/Class3.2_Apply_Analysis_Techniques/25.png"></p>
+<h3 id="군집분석-k-평균의-특징"><a href="#군집분석-k-평균의-특징" class="headerlink" title="군집분석 k-평균의 특징"></a>군집분석 k-평균의 특징</h3><p><img src="/images/DataQ/BigData/Class3.2_Apply_Analysis_Techniques/26.png"></p>
+<h3 id="군집분석-EM-알고리즘-절차"><a href="#군집분석-EM-알고리즘-절차" class="headerlink" title="군집분석 EM 알고리즘 절차"></a>군집분석 EM 알고리즘 절차</h3><p><img src="/images/DataQ/BigData/Class3.2_Apply_Analysis_Techniques/27.png"></p>
+<h1 id="02-고급-분석기법"><a href="#02-고급-분석기법" class="headerlink" title="02. 고급 분석기법"></a>02. 고급 분석기법</h1><ul>
+<li>다양한 고급 분석기법의 개념과 활용방안에 대해 학습</li>
+</ul>
+<h2 id="1-범주형-자료분석"><a href="#1-범주형-자료분석" class="headerlink" title="1. 범주형 자료분석"></a>1. 범주형 자료분석</h2><h3 id="범주형-자료분석의-종류"><a href="#범주형-자료분석의-종류" class="headerlink" title="범주형 자료분석의 종류"></a>범주형 자료분석의 종류</h3><p><img src="/images/DataQ/BigData/Class3.2_Apply_Analysis_Techniques/28.png"></p>
+<h3 id="카이제곱-검정"><a href="#카이제곱-검정" class="headerlink" title="카이제곱 검정"></a>카이제곱 검정</h3><p><img src="/images/DataQ/BigData/Class3.2_Apply_Analysis_Techniques/29.png"></p>
+<h3 id="T-검정"><a href="#T-검정" class="headerlink" title="T-검정"></a>T-검정</h3><p><img src="/images/DataQ/BigData/Class3.2_Apply_Analysis_Techniques/30.png"></p>
+<h2 id="2-다변량-분석"><a href="#2-다변량-분석" class="headerlink" title="2. 다변량 분석"></a>2. 다변량 분석</h2><h3 id="다변량-분석의-유형"><a href="#다변량-분석의-유형" class="headerlink" title="다변량 분석의 유형"></a>다변량 분석의 유형</h3><p><img src="/images/DataQ/BigData/Class3.2_Apply_Analysis_Techniques/31.png"></p>
+<h3 id="MANOVA-통계량"><a href="#MANOVA-통계량" class="headerlink" title="MANOVA 통계량"></a>MANOVA 통계량</h3><p><img src="/images/DataQ/BigData/Class3.2_Apply_Analysis_Techniques/32.png"></p>
+<h3 id="요인분석의-조건"><a href="#요인분석의-조건" class="headerlink" title="요인분석의 조건"></a>요인분석의 조건</h3><p><img src="/images/DataQ/BigData/Class3.2_Apply_Analysis_Techniques/33.png"></p>
+<h3 id="요인분석의-목적"><a href="#요인분석의-목적" class="headerlink" title="요인분석의 목적"></a>요인분석의 목적</h3><p><img src="/images/DataQ/BigData/Class3.2_Apply_Analysis_Techniques/34.png"></p>
+<h3 id="요인분석-판별함수의-수"><a href="#요인분석-판별함수의-수" class="headerlink" title="요인분석 판별함수의 수"></a>요인분석 판별함수의 수</h3><p><img src="/images/DataQ/BigData/Class3.2_Apply_Analysis_Techniques/35.png"></p>
+<h3 id="요인분석-MDS의-stress-척도"><a href="#요인분석-MDS의-stress-척도" class="headerlink" title="요인분석 : MDS의 stress 척도"></a>요인분석 : MDS의 stress 척도</h3><p><img src="/images/DataQ/BigData/Class3.2_Apply_Analysis_Techniques/36.png"></p>
+<h2 id="3-시계열-분석"><a href="#3-시계열-분석" class="headerlink" title="3. 시계열 분석"></a>3. 시계열 분석</h2><h3 id="시계열-분석에서의-정상성-조건"><a href="#시계열-분석에서의-정상성-조건" class="headerlink" title="시계열 분석에서의 정상성 조건"></a>시계열 분석에서의 정상성 조건</h3><p><img src="/images/DataQ/BigData/Class3.2_Apply_Analysis_Techniques/37.png"></p>
+<h3 id="시계열의-구성요소"><a href="#시계열의-구성요소" class="headerlink" title="시계열의 구성요소"></a>시계열의 구성요소</h3><p><img src="/images/DataQ/BigData/Class3.2_Apply_Analysis_Techniques/38.png"></p>
+<h3 id="시계열-모형"><a href="#시계열-모형" class="headerlink" title="시계열 모형"></a>시계열 모형</h3><p><img src="/images/DataQ/BigData/Class3.2_Apply_Analysis_Techniques/39.png"></p>
+<h2 id="4-베르지안-기법"><a href="#4-베르지안-기법" class="headerlink" title="4. 베르지안 기법"></a>4. 베르지안 기법</h2><h3 id="베이즈-정리"><a href="#베이즈-정리" class="headerlink" title="베이즈 정리"></a>베이즈 정리</h3><p><img src="/images/DataQ/BigData/Class3.2_Apply_Analysis_Techniques/40.png"></p>
+<h3 id="나이브-베이즈-분류"><a href="#나이브-베이즈-분류" class="headerlink" title="나이브 베이즈 분류"></a>나이브 베이즈 분류</h3><p><img src="/images/DataQ/BigData/Class3.2_Apply_Analysis_Techniques/41.png"></p>
+<h2 id="5-딥러닝-분석"><a href="#5-딥러닝-분석" class="headerlink" title="5. 딥러닝 분석"></a>5. 딥러닝 분석</h2><h3 id="딥러닝-기존-신경망의-문제점을-해결한-방법"><a href="#딥러닝-기존-신경망의-문제점을-해결한-방법" class="headerlink" title="딥러닝 - 기존 신경망의 문제점을 해결한 방법"></a>딥러닝 - 기존 신경망의 문제점을 해결한 방법</h3><p><img src="/images/DataQ/BigData/Class3.2_Apply_Analysis_Techniques/42.png"></p>
+<h3 id="딥러닝-합성곱-신경망"><a href="#딥러닝-합성곱-신경망" class="headerlink" title="딥러닝 - 합성곱 신경망"></a>딥러닝 - 합성곱 신경망</h3><p><img src="/images/DataQ/BigData/Class3.2_Apply_Analysis_Techniques/43.png"></p>
+<h3 id="딥러닝-순환신경망"><a href="#딥러닝-순환신경망" class="headerlink" title="딥러닝 - 순환신경망"></a>딥러닝 - 순환신경망</h3><p><img src="/images/DataQ/BigData/Class3.2_Apply_Analysis_Techniques/44.png"></p>
+<h2 id="6-비정형-데이터-분석"><a href="#6-비정형-데이터-분석" class="headerlink" title="6. 비정형 데이터 분석"></a>6. 비정형 데이터 분석</h2><h3 id="텍스트-마이닝-수행-단계"><a href="#텍스트-마이닝-수행-단계" class="headerlink" title="텍스트 마이닝 수행 단계"></a>텍스트 마이닝 수행 단계</h3><p><img src="/images/DataQ/BigData/Class3.2_Apply_Analysis_Techniques/45.png"></p>
+<h3 id="어간-추출-vs-표제어-추출"><a href="#어간-추출-vs-표제어-추출" class="headerlink" title="어간 추출 vs. 표제어 추출"></a>어간 추출 vs. 표제어 추출</h3><p><img src="/images/DataQ/BigData/Class3.2_Apply_Analysis_Techniques/46.png"></p>
+<h3 id="사회연결망-분석-중심성-척도"><a href="#사회연결망-분석-중심성-척도" class="headerlink" title="사회연결망 분석 중심성 척도"></a>사회연결망 분석 중심성 척도</h3><p><img src="/images/DataQ/BigData/Class3.2_Apply_Analysis_Techniques/47.png"></p>
+<h2 id="7-앙상블-분석"><a href="#7-앙상블-분석" class="headerlink" title="7. 앙상블 분석"></a>7. 앙상블 분석</h2><h3 id="앙상블-분석-방법"><a href="#앙상블-분석-방법" class="headerlink" title="앙상블 분석 방법"></a>앙상블 분석 방법</h3><p><img src="/images/DataQ/BigData/Class3.2_Apply_Analysis_Techniques/48.png"></p>
+<h2 id="8-비모수-통계"><a href="#8-비모수-통계" class="headerlink" title="8. 비모수 통계"></a>8. 비모수 통계</h2><h3 id="비모수-통계"><a href="#비모수-통계" class="headerlink" title="비모수 통계"></a>비모수 통계</h3><p><img src="/images/DataQ/BigData/Class3.2_Apply_Analysis_Techniques/49.png"></p>
+<h1 id="출처"><a href="#출처" class="headerlink" title="출처"></a>출처</h1><ul>
+<li>내용 출처<ul>
+<li><p><strong>이지패스 2021 빅데이터분석기사 필기(수험서 앱 제공) &#x2F; 위키북스 &#x2F; 전용문, 정다혜, 임예은, 오경서 지음</strong></p>
+<p>  <a target="_blank" rel="noopener" href="https://wikibook.co.kr/bigdata2021/">https://wikibook.co.kr/bigdata2021/</a></p>
+</li>
+<li><p><strong>[빅데이터 분석기사 필기 | 3. 빅데이터 모델링 (1) 분석 모형 설계] - 세우초밥</strong></p>
+<p>  <a target="_blank" rel="noopener" href="https://blog.naver.com/ericalee97/222168379772">https://blog.naver.com/ericalee97/222168379772</a></p>
+</li>
+<li><p><strong>로지스틱 회귀 - 73syjs.log</strong></p>
+<p>  <a target="_blank" rel="noopener" href="https://velog.io/@73syjs/Logistic-Regression">https:&#x2F;&#x2F;velog.io&#x2F;@73syjs&#x2F;Logistic-Regression</a></p>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="http://eomtaehyeon.github.io/2022/09/29/Study/DataQ/BigData/Class3.2_Apply_Analysis_Techniques/" data-id="cl8n8vw030000h0toh87o0k3f" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "Eom Taehyeon"
+        },
+        "headline": "3과목. 빅데이터 모델링 2장. 분석 기법 적용",
+        "image": "http://eomtaehyeon.github.io/images/DataQ/BigData/Class3.2_Apply_Analysis_Techniques/1.png",
+        "keywords": "자격증공부요점정리 빅데이터분석기사필기 빅분기 필기 빅데이터 데이터사이언티스트",
+        "genre": "자격증공부요점정리 빅데이터분석기사필기",
+        "datePublished": "2022-09-29",
+        "dateCreated": "2022-09-29",
+        "dateModified": "2022-09-30",
+        "url": "http://eomtaehyeon.github.io/2022/09/29/Study/DataQ/BigData/Class3.2_Apply_Analysis_Techniques/",
+        "description": "2장 분석 기법 적용
+여러 가지 분석기법의 개념과 알고리즘에 대해 학습
+
+핵심키워드
+
+지도학습
+비지도학습
+딥러닝
+비모수통계
+
+01. 분석기법
+여러 가지 분석기법의 개념과 알고리즘에 대해 학습하고 각 기법이 어떤 상황에서 사용되는지 이해
+
+1. 회귀분석
+회귀분석
+독립변수와 종속변수 간에 선형적인 관계를 도출해 독립변수가 종속변수에 미치는 영향의 정도를 분석하",
+        "wordCount": 1526
+    }
+</script>
+
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+
+    
+    </section>
+
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>follow:</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="user" href="https://github.com/eomtaehyeon/Resume" target="_blank" rel="noopener">
+                        <i class="icon fa fa-user"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="instagram" href="https://www.instagram.com/hi__gorae/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-instagram"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/eomtaehyeon" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/2022/09/28/Study/DataQ/BigData/Class3.1_Analytical_Model_Design/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">older</strong>
+        <p class="article-nav-title">3과목. 빅데이터 모델링 1장. 분석 모형 설계</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">recents</h3>
+        <div class="widget">
+            <ul id="recent-post" class="no-thumbnail">
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%EC%9E%90%EA%B2%A9%EC%A6%9D%EA%B3%B5%EB%B6%80%EC%9A%94%EC%A0%90%EC%A0%95%EB%A6%AC/">자격증공부요점정리</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/%EC%9E%90%EA%B2%A9%EC%A6%9D%EA%B3%B5%EB%B6%80%EC%9A%94%EC%A0%90%EC%A0%95%EB%A6%AC/%EB%B9%85%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B6%84%EC%84%9D%EA%B8%B0%EC%82%AC%ED%95%84%EA%B8%B0/">빅데이터분석기사필기</a></p>
+                            <p class="item-title"><a href="/2022/09/29/Study/DataQ/BigData/Class3.2_Apply_Analysis_Techniques/" class="title">3과목. 빅데이터 모델링 2장. 분석 기법 적용</a></p>
+                            <p class="item-date"><time datetime="2022-09-29T00:00:00.000Z" itemprop="datePublished">2022-09-29</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%EC%9E%90%EA%B2%A9%EC%A6%9D%EA%B3%B5%EB%B6%80%EC%9A%94%EC%A0%90%EC%A0%95%EB%A6%AC/">자격증공부요점정리</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/%EC%9E%90%EA%B2%A9%EC%A6%9D%EA%B3%B5%EB%B6%80%EC%9A%94%EC%A0%90%EC%A0%95%EB%A6%AC/%EB%B9%85%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B6%84%EC%84%9D%EA%B8%B0%EC%82%AC%ED%95%84%EA%B8%B0/">빅데이터분석기사필기</a></p>
+                            <p class="item-title"><a href="/2022/09/28/Study/DataQ/BigData/Class3.1_Analytical_Model_Design/" class="title">3과목. 빅데이터 모델링 1장. 분석 모형 설계</a></p>
+                            <p class="item-date"><time datetime="2022-09-28T00:00:00.000Z" itemprop="datePublished">2022-09-28</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%EC%9E%90%EA%B2%A9%EC%A6%9D%EA%B3%B5%EB%B6%80%EC%9A%94%EC%A0%90%EC%A0%95%EB%A6%AC/">자격증공부요점정리</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/%EC%9E%90%EA%B2%A9%EC%A6%9D%EA%B3%B5%EB%B6%80%EC%9A%94%EC%A0%90%EC%A0%95%EB%A6%AC/%EB%B9%85%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B6%84%EC%84%9D%EA%B8%B0%EC%82%AC%ED%95%84%EA%B8%B0/">빅데이터분석기사필기</a></p>
+                            <p class="item-title"><a href="/2022/09/27/Study/DataQ/BigData/Class2.3_Understanding_Statistical_Techniques/" class="title">2과목. 빅데이터 탐색 3장. 통계 기법 이해</a></p>
+                            <p class="item-date"><time datetime="2022-09-27T00:00:00.000Z" itemprop="datePublished">2022-09-27</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%EC%9E%90%EA%B2%A9%EC%A6%9D%EA%B3%B5%EB%B6%80%EC%9A%94%EC%A0%90%EC%A0%95%EB%A6%AC/">자격증공부요점정리</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/%EC%9E%90%EA%B2%A9%EC%A6%9D%EA%B3%B5%EB%B6%80%EC%9A%94%EC%A0%90%EC%A0%95%EB%A6%AC/%EB%B9%85%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B6%84%EC%84%9D%EA%B8%B0%EC%82%AC%ED%95%84%EA%B8%B0/">빅데이터분석기사필기</a></p>
+                            <p class="item-title"><a href="/2022/09/26/Study/DataQ/BigData/Class2.2_Data_Exploration/" class="title">2과목. 빅데이터 탐색 2장. 데이터 탐색</a></p>
+                            <p class="item-date"><time datetime="2022-09-26T00:00:00.000Z" itemprop="datePublished">2022-09-26</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%EC%9E%90%EA%B2%A9%EC%A6%9D%EA%B3%B5%EB%B6%80%EC%9A%94%EC%A0%90%EC%A0%95%EB%A6%AC/">자격증공부요점정리</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/%EC%9E%90%EA%B2%A9%EC%A6%9D%EA%B3%B5%EB%B6%80%EC%9A%94%EC%A0%90%EC%A0%95%EB%A6%AC/%EB%B9%85%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B6%84%EC%84%9D%EA%B8%B0%EC%82%AC%ED%95%84%EA%B8%B0/">빅데이터분석기사필기</a></p>
+                            <p class="item-title"><a href="/2022/09/25/Study/DataQ/BigData/Class2.1_Data_Preprocessing/" class="title">2과목. 빅데이터 탐색 1장. 데이터 전처리</a></p>
+                            <p class="item-date"><time datetime="2022-09-25T00:00:00.000Z" itemprop="datePublished">2022-09-25</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">categories</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/About/">About</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Settings/">Settings</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Settings/Blog/">Blog</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EB%85%BC%EB%AC%B8%EB%A6%AC%EB%B7%B0/">논문리뷰</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%EB%85%BC%EB%AC%B8%EB%A6%AC%EB%B7%B0/NLP/">NLP</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%9E%90%EA%B2%A9%EC%A6%9D%EA%B3%B5%EB%B6%80%EC%9A%94%EC%A0%90%EC%A0%95%EB%A6%AC/">자격증공부요점정리</a><span class="category-list-count">8</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%9E%90%EA%B2%A9%EC%A6%9D%EA%B3%B5%EB%B6%80%EC%9A%94%EC%A0%90%EC%A0%95%EB%A6%AC/%EB%B9%85%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B6%84%EC%84%9D%EA%B8%B0%EC%82%AC%ED%95%84%EA%B8%B0/">빅데이터분석기사필기</a><span class="category-list-count">8</span></li></ul></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">archives</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/09/">September 2022</a><span class="archive-list-count">12</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">tags</h3>
+        <div class="widget">
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/BERT/" rel="tag">BERT</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Blog/" rel="tag">Blog</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Github/" rel="tag">Github</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NAACL/" rel="tag">NAACL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NLP/" rel="tag">NLP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Transformers/" rel="tag">Transformers</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EB%85%BC%EB%AC%B8%EB%A6%AC%EB%B7%B0/" rel="tag">논문리뷰</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%82%AC%EC%9D%B4%EC%96%B8%ED%8B%B0%EC%8A%A4%ED%8A%B8/" rel="tag">데이터사이언티스트</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EB%B9%85%EB%8D%B0%EC%9D%B4%ED%84%B0/" rel="tag">빅데이터</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EB%B9%85%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B6%84%EC%84%9D%EA%B8%B0%EC%82%AC%ED%95%84%EA%B8%B0/" rel="tag">빅데이터분석기사필기</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EB%B9%85%EB%B6%84%EA%B8%B0/" rel="tag">빅분기</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EC%9E%90%EA%B2%A9%EC%A6%9D%EA%B3%B5%EB%B6%80%EC%9A%94%EC%A0%90%EC%A0%95%EB%A6%AC/" rel="tag">자격증공부요점정리</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%ED%95%84%EA%B8%B0/" rel="tag">필기</a><span class="tag-list-count">8</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">tag cloud</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/BERT/" style="font-size: 10px;">BERT</a> <a href="/tags/Blog/" style="font-size: 15px;">Blog</a> <a href="/tags/Github/" style="font-size: 15px;">Github</a> <a href="/tags/Hexo/" style="font-size: 15px;">Hexo</a> <a href="/tags/NAACL/" style="font-size: 10px;">NAACL</a> <a href="/tags/NLP/" style="font-size: 10px;">NLP</a> <a href="/tags/Transformers/" style="font-size: 10px;">Transformers</a> <a href="/tags/%EB%85%BC%EB%AC%B8%EB%A6%AC%EB%B7%B0/" style="font-size: 10px;">논문리뷰</a> <a href="/tags/%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%82%AC%EC%9D%B4%EC%96%B8%ED%8B%B0%EC%8A%A4%ED%8A%B8/" style="font-size: 20px;">데이터사이언티스트</a> <a href="/tags/%EB%B9%85%EB%8D%B0%EC%9D%B4%ED%84%B0/" style="font-size: 20px;">빅데이터</a> <a href="/tags/%EB%B9%85%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B6%84%EC%84%9D%EA%B8%B0%EC%82%AC%ED%95%84%EA%B8%B0/" style="font-size: 20px;">빅데이터분석기사필기</a> <a href="/tags/%EB%B9%85%EB%B6%84%EA%B8%B0/" style="font-size: 20px;">빅분기</a> <a href="/tags/%EC%9E%90%EA%B2%A9%EC%A6%9D%EA%B3%B5%EB%B6%80%EC%9A%94%EC%A0%90%EC%A0%95%EB%A6%AC/" style="font-size: 20px;">자격증공부요점정리</a> <a href="/tags/%ED%95%84%EA%B8%B0/" style="font-size: 20px;">필기</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">links</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a target="_blank" rel="noopener" href="https://github.com/eomtaehyeon">Github</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2022 Eom Taehyeon</p>
+                
+                <p>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="https://github.com/ppoffice" target="_blank">PPOffice</a></p>
+                
+            </div>
+            <div class="footer-plugins">
+              
+    
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+    </div>
+    
+    
+    <script>
+    var disqus_shortname = 'hexo-theme-hueman';
+    
+    
+    var disqus_url = 'http://eomtaehyeon.github.io/2022/09/29/Study/DataQ/BigData/Class3.2_Apply_Analysis_Techniques/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+
+
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+
+    
+    
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+</body>
+</html>
